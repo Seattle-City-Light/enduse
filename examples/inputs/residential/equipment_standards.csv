@@ -1,0 +1,303 @@
+Segment,End Use,Ramp Efficiency Description,Start Year,End Year,Start Ramp Efficiency Probability,End Ramp Efficiency Probability,Interpolate Ramp Efficiency Probability,Customer Class
+Multifamily - High Rise,Air Purifier,Market Average Air Purifier,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Circulation - DHW,Market Average DHW Pump,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Circulation - Hydronic Heating,Market Average Hydronic Heating Pump,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Computer - Desktop,Washington State Code Baseline,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Computer - Laptop,Market Average Laptop Computer,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Cooking Oven,Federal Standard 2012 Cooking Oven,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Cooking Range,Federal Standard 2012 Cooking Range,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Cool Central,Federal Standard 2015 Central Air Conditioner - SEER/EER 13/11.2 (Split System),2022,2022,1,1,linear,Residential
+Multifamily - High Rise,Cool Central,Federal Standard 2023 Central Air Conditioner - SEER/EER 14/12 (Split System),2023,2041,1,1,linear,Residential
+Multifamily - High Rise,Cool Room,"Federal Standard 2015 Room AC - CEER 10.9 (8,000-13,999 Btuh)",2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Copier,Standard Office Copier,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,DVD Player,Standard DVD Player,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Dryer,Federal Standard 2015 Dryer - CEF 3.73,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Electric Vehicles,Market Average EV Charger,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Freezer,Federal Standard 2014 Freezer,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Heat Central,Standard Electric Furnace HSPF = 1,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Heat Pump,Federal Standard 2015 Heat Pump - SEER/EER 14/12 and HSPF 8.2 (Split System),2022,2022,1,1,linear,Residential
+Multifamily - High Rise,Heat Pump,Federal Standard 2023 Heat Pump - SEER/EER 15/12.5 and HSPF 8.8 (Split System),2023,2041,1,1,linear,Residential
+Multifamily - High Rise,Heat Room,Standard Baseboard Zonal Heating,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Home Audio System,Standard Home Audio System,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Lighting Exterior Standard,LED,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Lighting Interior Linear Fluorescent,Federal Standard 2018 T8 Linear Fluorescent Lamp,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Lighting Interior Specialty,LED - Specialty,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Lighting Interior Standard,LED,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Microwave,Federal Standard 2016 Microwave,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Monitor,Standard Monitor,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Multifunction Device,Standard Multifunction Device (All-in-one),2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Other,Other Equipment End Use,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Plug Load Other,Plug Load Other Equipment End Use,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Printer,Standard Office Printer,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Refrigerator,Federal Standard 2014 Refrigerator,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Set Top Box,Standard Set Top Box,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Television,Market Average TV,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Ventilation - Air,Federal Standard 2019 ECM Fan Motor,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Waste Water,Waste Water Equipment End Use,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Water Heat GT 55 Gal,Federal Standard 2015 Heat Pump Water Heater,2022,2041,1,1,linear,Residential
+Multifamily - High Rise,Water Heat LE 55 Gal,Federal Standard 2015 Storage Water Heater,2022,2024,1,1,linear,Residential
+Multifamily - High Rise,Water Heat LE 55 Gal,Tier 1 Heat Pump Water Heater,2025,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Air Purifier,Market Average Air Purifier,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Circulation - DHW,Market Average DHW Pump,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Circulation - Hydronic Heating,Market Average Hydronic Heating Pump,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Computer - Desktop,Washington State Code Baseline,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Computer - Laptop,Market Average Laptop Computer,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Cooking Oven,Federal Standard 2012 Cooking Oven,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Cooking Range,Federal Standard 2012 Cooking Range,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Cool Central,Federal Standard 2015 Central Air Conditioner - SEER/EER 13/11.2 (Split System),2022,2022,1,1,linear,Residential
+Multifamily - High Rise Low Income,Cool Central,Federal Standard 2023 Central Air Conditioner - SEER/EER 14/12 (Split System),2023,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Cool Room,"Federal Standard 2015 Room AC - CEER 10.9 (8,000-13,999 Btuh)",2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Copier,Standard Office Copier,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,DVD Player,Standard DVD Player,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Dryer,Federal Standard 2015 Dryer - CEF 3.73,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Electric Vehicles,Market Average EV Charger,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Freezer,Federal Standard 2014 Freezer,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Heat Central,Standard Electric Furnace HSPF = 1,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Heat Pump,Federal Standard 2015 Heat Pump - SEER/EER 14/12 and HSPF 8.2 (Split System),2022,2022,1,1,linear,Residential
+Multifamily - High Rise Low Income,Heat Pump,Federal Standard 2023 Heat Pump - SEER/EER 15/12.5 and HSPF 8.8 (Split System),2023,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Heat Room,Standard Baseboard Zonal Heating,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Home Audio System,Standard Home Audio System,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Lighting Exterior Standard,LED,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Lighting Interior Linear Fluorescent,Federal Standard 2018 T8 Linear Fluorescent Lamp,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Lighting Interior Specialty,EISA 2020 Backstop Interior - Specialty,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Lighting Interior Standard,EISA 2020 Backstop Interior Lamp,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Microwave,Federal Standard 2016 Microwave,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Monitor,Standard Monitor,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Multifunction Device,Standard Multifunction Device (All-in-one),2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Other,Other Equipment End Use,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Plug Load Other,Plug Load Other Equipment End Use,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Printer,Standard Office Printer,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Refrigerator,Federal Standard 2014 Refrigerator,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Set Top Box,Standard Set Top Box,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Television,Market Average TV,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Ventilation - Air,Federal Standard 2019 ECM Fan Motor,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Waste Water,Waste Water Equipment End Use,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Water Heat GT 55 Gal,Federal Standard 2015 Heat Pump Water Heater,2022,2041,1,1,linear,Residential
+Multifamily - High Rise Low Income,Water Heat LE 55 Gal,Federal Standard 2015 Storage Water Heater,2022,2024,1,1,linear,Residential
+Multifamily - High Rise Low Income,Water Heat LE 55 Gal,Tier 1 Heat Pump Water Heater,2025,2041,1,1,linear,Residential
+Multifamily - Low Rise,Air Purifier,Market Average Air Purifier,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Circulation - DHW,Market Average DHW Pump,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Circulation - Hydronic Heating,Market Average Hydronic Heating Pump,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Computer - Desktop,Washington State Code Baseline,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Computer - Laptop,Market Average Laptop Computer,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Cooking Oven,Federal Standard 2012 Cooking Oven,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Cooking Range,Federal Standard 2012 Cooking Range,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Cool Central,Federal Standard 2015 Central Air Conditioner - SEER/EER 13/11.2 (Split System),2022,2022,1,1,linear,Residential
+Multifamily - Low Rise,Cool Central,Federal Standard 2023 Central Air Conditioner - SEER/EER 14/12 (Split System),2023,2041,1,1,linear,Residential
+Multifamily - Low Rise,Cool Room,"Federal Standard 2015 Room AC - CEER 10.9 (8,000-13,999 Btuh)",2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Copier,Standard Office Copier,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,DVD Player,Standard DVD Player,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Dryer,Federal Standard 2015 Dryer - CEF 3.73,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Electric Vehicles,Market Average EV Charger,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Freezer,Federal Standard 2014 Freezer,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Heat Central,Standard Electric Furnace HSPF = 1,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Heat Pump,Federal Standard 2015 Heat Pump - SEER/EER 14/12 and HSPF 8.2 (Split System),2022,2022,1,1,linear,Residential
+Multifamily - Low Rise,Heat Pump,Federal Standard 2023 Heat Pump - SEER/EER 15/12.5 and HSPF 8.8 (Split System),2023,2041,1,1,linear,Residential
+Multifamily - Low Rise,Heat Room,Standard Baseboard Zonal Heating,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Home Audio System,Standard Home Audio System,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Lighting Exterior Standard,LED,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Lighting Interior Linear Fluorescent,Federal Standard 2018 T8 Linear Fluorescent Lamp,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Lighting Interior Specialty,LED - Specialty,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Lighting Interior Standard,LED,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Microwave,Federal Standard 2016 Microwave,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Monitor,Standard Monitor,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Multifunction Device,Standard Multifunction Device (All-in-one),2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Other,Other Equipment End Use,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Plug Load Other,Plug Load Other Equipment End Use,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Printer,Standard Office Printer,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Refrigerator,Federal Standard 2014 Refrigerator,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Set Top Box,Standard Set Top Box,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Television,Market Average TV,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Ventilation - Air,Federal Standard 2019 ECM Fan Motor,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Waste Water,Waste Water Equipment End Use,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Water Heat GT 55 Gal,Federal Standard 2015 Heat Pump Water Heater,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise,Water Heat LE 55 Gal,Federal Standard 2015 Storage Water Heater,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Air Purifier,Market Average Air Purifier,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Circulation - DHW,Market Average DHW Pump,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Circulation - Hydronic Heating,Market Average Hydronic Heating Pump,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Computer - Desktop,Washington State Code Baseline,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Computer - Laptop,Market Average Laptop Computer,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Cooking Oven,Federal Standard 2012 Cooking Oven,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Cooking Range,Federal Standard 2012 Cooking Range,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Cool Central,Federal Standard 2015 Central Air Conditioner - SEER/EER 13/11.2 (Split System),2022,2022,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Cool Central,Federal Standard 2023 Central Air Conditioner - SEER/EER 14/12 (Split System),2023,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Cool Room,"Federal Standard 2015 Room AC - CEER 10.9 (8,000-13,999 Btuh)",2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Copier,Standard Office Copier,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,DVD Player,Standard DVD Player,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Dryer,Federal Standard 2015 Dryer - CEF 3.73,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Electric Vehicles,Market Average EV Charger,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Freezer,Federal Standard 2014 Freezer,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Heat Central,Standard Electric Furnace HSPF = 1,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Heat Pump,Federal Standard 2015 Heat Pump - SEER/EER 14/12 and HSPF 8.2 (Split System),2022,2022,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Heat Pump,Federal Standard 2023 Heat Pump - SEER/EER 15/12.5 and HSPF 8.8 (Split System),2023,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Heat Room,Standard Baseboard Zonal Heating,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Home Audio System,Standard Home Audio System,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Lighting Exterior Standard,LED,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Lighting Interior Linear Fluorescent,Federal Standard 2018 T8 Linear Fluorescent Lamp,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Lighting Interior Specialty,EISA 2020 Backstop Interior - Specialty,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Lighting Interior Standard,EISA 2020 Backstop Interior Lamp,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Microwave,Federal Standard 2016 Microwave,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Monitor,Standard Monitor,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Multifunction Device,Standard Multifunction Device (All-in-one),2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Other,Other Equipment End Use,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Plug Load Other,Plug Load Other Equipment End Use,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Printer,Standard Office Printer,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Refrigerator,Federal Standard 2014 Refrigerator,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Set Top Box,Standard Set Top Box,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Television,Market Average TV,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Ventilation - Air,Federal Standard 2019 ECM Fan Motor,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Waste Water,Waste Water Equipment End Use,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Water Heat GT 55 Gal,Federal Standard 2015 Heat Pump Water Heater,2022,2041,1,1,linear,Residential
+Multifamily - Low Rise Low Income,Water Heat LE 55 Gal,Federal Standard 2015 Storage Water Heater,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Air Purifier,Market Average Air Purifier,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Circulation - DHW,Market Average DHW Pump,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Circulation - Hydronic Heating,Market Average Hydronic Heating Pump,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Computer - Desktop,Washington State Code Baseline,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Computer - Laptop,Market Average Laptop Computer,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Cooking Oven,Federal Standard 2012 Cooking Oven,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Cooking Range,Federal Standard 2012 Cooking Range,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Cool Central,Federal Standard 2015 Central Air Conditioner - SEER/EER 13/11.2 (Split System),2022,2022,1,1,linear,Residential
+Multifamily - Mid Rise,Cool Central,Federal Standard 2023 Central Air Conditioner - SEER/EER 14/12 (Split System),2023,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Cool Room,"Federal Standard 2015 Room AC - CEER 10.9 (8,000-13,999 Btuh)",2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Copier,Standard Office Copier,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,DVD Player,Standard DVD Player,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Dryer,Federal Standard 2015 Dryer - CEF 3.73,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Electric Vehicles,Market Average EV Charger,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Freezer,Federal Standard 2014 Freezer,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Heat Central,Standard Electric Furnace HSPF = 1,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Heat Pump,Federal Standard 2015 Heat Pump - SEER/EER 14/12 and HSPF 8.2 (Split System),2022,2022,1,1,linear,Residential
+Multifamily - Mid Rise,Heat Pump,Federal Standard 2023 Heat Pump - SEER/EER 15/12.5 and HSPF 8.8 (Split System),2023,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Heat Room,Standard Baseboard Zonal Heating,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Home Audio System,Standard Home Audio System,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Lighting Exterior Standard,LED,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Lighting Interior Linear Fluorescent,Federal Standard 2018 T8 Linear Fluorescent Lamp,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Lighting Interior Specialty,LED - Specialty,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Lighting Interior Standard,LED,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Microwave,Federal Standard 2016 Microwave,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Monitor,Standard Monitor,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Multifunction Device,Standard Multifunction Device (All-in-one),2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Other,Other Equipment End Use,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Plug Load Other,Plug Load Other Equipment End Use,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Printer,Standard Office Printer,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Refrigerator,Federal Standard 2014 Refrigerator,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Set Top Box,Standard Set Top Box,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Television,Market Average TV,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Ventilation - Air,Federal Standard 2019 ECM Fan Motor,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Waste Water,Waste Water Equipment End Use,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Water Heat GT 55 Gal,Federal Standard 2015 Heat Pump Water Heater,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise,Water Heat LE 55 Gal,Federal Standard 2015 Storage Water Heater,2022,2024,1,1,linear,Residential
+Multifamily - Mid Rise,Water Heat LE 55 Gal,Tier 1 Heat Pump Water Heater,2025,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Air Purifier,Market Average Air Purifier,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Circulation - DHW,Market Average DHW Pump,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Circulation - Hydronic Heating,Market Average Hydronic Heating Pump,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Computer - Desktop,Washington State Code Baseline,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Computer - Laptop,Market Average Laptop Computer,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Cooking Oven,Federal Standard 2012 Cooking Oven,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Cooking Range,Federal Standard 2012 Cooking Range,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Cool Central,Federal Standard 2015 Central Air Conditioner - SEER/EER 13/11.2 (Split System),2022,2022,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Cool Central,Federal Standard 2023 Central Air Conditioner - SEER/EER 14/12 (Split System),2023,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Cool Room,"Federal Standard 2015 Room AC - CEER 10.9 (8,000-13,999 Btuh)",2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Copier,Standard Office Copier,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,DVD Player,Standard DVD Player,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Dryer,Federal Standard 2015 Dryer - CEF 3.73,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Electric Vehicles,Market Average EV Charger,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Freezer,Federal Standard 2014 Freezer,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Heat Central,Standard Electric Furnace HSPF = 1,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Heat Pump,Federal Standard 2015 Heat Pump - SEER/EER 14/12 and HSPF 8.2 (Split System),2022,2022,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Heat Pump,Federal Standard 2023 Heat Pump - SEER/EER 15/12.5 and HSPF 8.8 (Split System),2023,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Heat Room,Standard Baseboard Zonal Heating,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Home Audio System,Standard Home Audio System,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Lighting Exterior Standard,LED,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Lighting Interior Linear Fluorescent,Federal Standard 2018 T8 Linear Fluorescent Lamp,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Lighting Interior Specialty,EISA 2020 Backstop Interior - Specialty,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Lighting Interior Standard,EISA 2020 Backstop Interior Lamp,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Microwave,Federal Standard 2016 Microwave,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Monitor,Standard Monitor,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Multifunction Device,Standard Multifunction Device (All-in-one),2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Other,Other Equipment End Use,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Plug Load Other,Plug Load Other Equipment End Use,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Printer,Standard Office Printer,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Refrigerator,Federal Standard 2014 Refrigerator,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Set Top Box,Standard Set Top Box,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Television,Market Average TV,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Ventilation - Air,Federal Standard 2019 ECM Fan Motor,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Waste Water,Waste Water Equipment End Use,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Water Heat GT 55 Gal,Federal Standard 2015 Heat Pump Water Heater,2022,2041,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Water Heat LE 55 Gal,Federal Standard 2015 Storage Water Heater,2022,2024,1,1,linear,Residential
+Multifamily - Mid Rise Low Income,Water Heat LE 55 Gal,Tier 1 Heat Pump Water Heater,2025,2041,1,1,linear,Residential
+Single Family,Air Purifier,Market Average Air Purifier,2022,2041,1,1,linear,Residential
+Single Family,Circulation - DHW,Market Average DHW Pump,2022,2041,1,1,linear,Residential
+Single Family,Circulation - Hydronic Heating,Market Average Hydronic Heating Pump,2022,2041,1,1,linear,Residential
+Single Family,Computer - Desktop,Washington State Code Baseline,2022,2041,1,1,linear,Residential
+Single Family,Computer - Laptop,Market Average Laptop Computer,2022,2041,1,1,linear,Residential
+Single Family,Cooking Oven,Federal Standard 2012 Cooking Oven,2022,2041,1,1,linear,Residential
+Single Family,Cooking Range,Federal Standard 2012 Cooking Range,2022,2041,1,1,linear,Residential
+Single Family,Cool Central,Federal Standard 2015 Central Air Conditioner - SEER/EER 13/11.2 (Split System),2022,2022,1,1,linear,Residential
+Single Family,Cool Central,Federal Standard 2023 Central Air Conditioner - SEER/EER 14/12 (Split System),2023,2041,1,1,linear,Residential
+Single Family,Cool Room,"Federal Standard 2015 Room AC - CEER 10.9 (8,000-13,999 Btuh)",2022,2041,1,1,linear,Residential
+Single Family,Copier,Standard Office Copier,2022,2041,1,1,linear,Residential
+Single Family,DVD Player,Standard DVD Player,2022,2041,1,1,linear,Residential
+Single Family,Dryer,Federal Standard 2015 Dryer - CEF 3.73,2022,2041,1,1,linear,Residential
+Single Family,Electric Vehicles,Market Average EV Charger,2022,2041,1,1,linear,Residential
+Single Family,Freezer,Federal Standard 2014 Freezer,2022,2041,1,1,linear,Residential
+Single Family,Heat Central,Standard Electric Furnace HSPF = 1,2022,2041,1,1,linear,Residential
+Single Family,Heat Pump,Federal Standard 2015 Heat Pump - SEER/EER 14/12 and HSPF 8.2 (Split System),2022,2022,1,1,linear,Residential
+Single Family,Heat Pump,Federal Standard 2023 Heat Pump - SEER/EER 15/12.5 and HSPF 8.8 (Split System),2023,2041,1,1,linear,Residential
+Single Family,Heat Room,Standard Baseboard Zonal Heating,2022,2041,1,1,linear,Residential
+Single Family,Home Audio System,Standard Home Audio System,2022,2041,1,1,linear,Residential
+Single Family,Lighting Exterior Standard,LED,2022,2041,1,1,linear,Residential
+Single Family,Lighting Interior Linear Fluorescent,Federal Standard 2018 T8 Linear Fluorescent Lamp,2022,2041,1,1,linear,Residential
+Single Family,Lighting Interior Specialty,LED - Specialty,2022,2041,1,1,linear,Residential
+Single Family,Lighting Interior Standard,LED,2022,2041,1,1,linear,Residential
+Single Family,Microwave,Federal Standard 2016 Microwave,2022,2041,1,1,linear,Residential
+Single Family,Monitor,Standard Monitor,2022,2041,1,1,linear,Residential
+Single Family,Multifunction Device,Standard Multifunction Device (All-in-one),2022,2041,1,1,linear,Residential
+Single Family,Other,Other Equipment End Use,2022,2041,1,1,linear,Residential
+Single Family,Plug Load Other,Plug Load Other Equipment End Use,2022,2041,1,1,linear,Residential
+Single Family,Pool Pump,Seattle Energy Code Pool Pump - Dual Speed,2022,2041,1,1,linear,Residential
+Single Family,Printer,Standard Office Printer,2022,2041,1,1,linear,Residential
+Single Family,Refrigerator,Federal Standard 2014 Refrigerator,2022,2041,1,1,linear,Residential
+Single Family,Set Top Box,Standard Set Top Box,2022,2041,1,1,linear,Residential
+Single Family,Television,Market Average TV,2022,2041,1,1,linear,Residential
+Single Family,Ventilation - Air,Federal Standard 2019 ECM Fan Motor,2022,2041,1,1,linear,Residential
+Single Family,Waste Water,Waste Water Equipment End Use,2022,2041,1,1,linear,Residential
+Single Family,Water Heat GT 55 Gal,Federal Standard 2015 Heat Pump Water Heater,2022,2041,1,1,linear,Residential
+Single Family,Water Heat LE 55 Gal,Federal Standard 2015 Storage Water Heater,2022,2041,1,1,linear,Residential
+Single Family Low Income,Air Purifier,Market Average Air Purifier,2022,2041,1,1,linear,Residential
+Single Family Low Income,Circulation - DHW,Market Average DHW Pump,2022,2041,1,1,linear,Residential
+Single Family Low Income,Circulation - Hydronic Heating,Market Average Hydronic Heating Pump,2022,2041,1,1,linear,Residential
+Single Family Low Income,Computer - Desktop,Washington State Code Baseline,2022,2041,1,1,linear,Residential
+Single Family Low Income,Computer - Laptop,Market Average Laptop Computer,2022,2041,1,1,linear,Residential
+Single Family Low Income,Cooking Oven,Federal Standard 2012 Cooking Oven,2022,2041,1,1,linear,Residential
+Single Family Low Income,Cooking Range,Federal Standard 2012 Cooking Range,2022,2041,1,1,linear,Residential
+Single Family Low Income,Cool Central,Federal Standard 2015 Central Air Conditioner - SEER/EER 13/11.2 (Split System),2022,2022,1,1,linear,Residential
+Single Family Low Income,Cool Central,Federal Standard 2023 Central Air Conditioner - SEER/EER 14/12 (Split System),2023,2041,1,1,linear,Residential
+Single Family Low Income,Cool Room,"Federal Standard 2015 Room AC - CEER 10.9 (8,000-13,999 Btuh)",2022,2041,1,1,linear,Residential
+Single Family Low Income,Copier,Standard Office Copier,2022,2041,1,1,linear,Residential
+Single Family Low Income,DVD Player,Standard DVD Player,2022,2041,1,1,linear,Residential
+Single Family Low Income,Dryer,Federal Standard 2015 Dryer - CEF 3.73,2022,2041,1,1,linear,Residential
+Single Family Low Income,Electric Vehicles,Market Average EV Charger,2022,2041,1,1,linear,Residential
+Single Family Low Income,Freezer,Federal Standard 2014 Freezer,2022,2041,1,1,linear,Residential
+Single Family Low Income,Heat Central,Standard Electric Furnace HSPF = 1,2022,2041,1,1,linear,Residential
+Single Family Low Income,Heat Pump,Federal Standard 2015 Heat Pump - SEER/EER 14/12 and HSPF 8.2 (Split System),2022,2022,1,1,linear,Residential
+Single Family Low Income,Heat Pump,Federal Standard 2023 Heat Pump - SEER/EER 15/12.5 and HSPF 8.8 (Split System),2023,2041,1,1,linear,Residential
+Single Family Low Income,Heat Room,Standard Baseboard Zonal Heating,2022,2041,1,1,linear,Residential
+Single Family Low Income,Home Audio System,Standard Home Audio System,2022,2041,1,1,linear,Residential
+Single Family Low Income,Lighting Exterior Standard,LED,2022,2041,1,1,linear,Residential
+Single Family Low Income,Lighting Interior Linear Fluorescent,Federal Standard 2018 T8 Linear Fluorescent Lamp,2022,2041,1,1,linear,Residential
+Single Family Low Income,Lighting Interior Specialty,EISA 2020 Backstop Interior - Specialty,2022,2041,1,1,linear,Residential
+Single Family Low Income,Lighting Interior Standard,EISA 2020 Backstop Interior Lamp,2022,2041,1,1,linear,Residential
+Single Family Low Income,Microwave,Federal Standard 2016 Microwave,2022,2041,1,1,linear,Residential
+Single Family Low Income,Monitor,Standard Monitor,2022,2041,1,1,linear,Residential
+Single Family Low Income,Multifunction Device,Standard Multifunction Device (All-in-one),2022,2041,1,1,linear,Residential
+Single Family Low Income,Other,Other Equipment End Use,2022,2041,1,1,linear,Residential
+Single Family Low Income,Plug Load Other,Plug Load Other Equipment End Use,2022,2041,1,1,linear,Residential
+Single Family Low Income,Pool Pump,Seattle Energy Code Pool Pump - Dual Speed,2022,2041,1,1,linear,Residential
+Single Family Low Income,Printer,Standard Office Printer,2022,2041,1,1,linear,Residential
+Single Family Low Income,Refrigerator,Federal Standard 2014 Refrigerator,2022,2041,1,1,linear,Residential
+Single Family Low Income,Set Top Box,Standard Set Top Box,2022,2041,1,1,linear,Residential
+Single Family Low Income,Television,Market Average TV,2022,2041,1,1,linear,Residential
+Single Family Low Income,Ventilation - Air,Federal Standard 2019 ECM Fan Motor,2022,2041,1,1,linear,Residential
+Single Family Low Income,Waste Water,Waste Water Equipment End Use,2022,2041,1,1,linear,Residential
+Single Family Low Income,Water Heat GT 55 Gal,Federal Standard 2015 Heat Pump Water Heater,2022,2041,1,1,linear,Residential
+Single Family Low Income,Water Heat LE 55 Gal,Federal Standard 2015 Storage Water Heater,2022,2041,1,1,linear,Residential

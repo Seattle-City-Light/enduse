@@ -1,0 +1,54 @@
+{
+    "saturation": {
+        "label": "Saturation",
+        "file_path": "./inputs/residential/saturation.csv",
+        "time_label": "Year",
+        "interpolation_label": "Interpolate Saturation",
+        "start_variable": "Start Saturation",
+        "end_variable": "End Saturation",
+        "start_time": "Start Year",
+        "end_time": "End Year",
+        "index": [
+            "Customer Class",
+            "Segment",
+            "Construction Vintage",
+            "End Use",
+            "Start Year",
+            "End Year"
+        ],
+        "join_on": [
+            "Customer Class",
+            "Segment",
+            "Construction Vintage",
+            "End Use",
+            "Year"
+        ],
+        "join_order": 1
+    },
+    "fuel_share": {
+        "label": "Fuel Share",
+        "file_path": "./inputs/residential/fuel_share.csv",
+        "time_label": "Year",
+        "interpolation_label": "Interpolate Fuel Share",
+        "start_variable": "Start Fuel Share",
+        "end_variable": "End Fuel Share",
+        "start_time": "Start Year",
+        "end_time": "End Year",
+        "index": [
+            "Customer Class",
+            "Segment",
+            "Construction Vintage",
+            "End Use",
+            "Star Year",
+            "End Year"
+        ],
+        "join_on": [
+            "Customer Class",
+            "Segment",
+            "Construction Vintage",
+            "End Use",
+            "Year"
+        ],
+        "join_order": 0
+    }
+}
