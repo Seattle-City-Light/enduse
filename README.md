@@ -3,11 +3,10 @@
 ### To install and develop enduse package
 - Clone the enduse repo
 - Create conda environment from enduse.yml
-'''cmd
+```cmd
 conda env create -f enduse.yml
-'''
-- Install enduse package in conda environment
-'''
+```
+- Install the enduse package in conda environment
+```cmd
 conda develop .
-'''
- 
+```
