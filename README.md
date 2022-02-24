@@ -1,4 +1,4 @@
-## Enduse model for load forecasting
+## End-Use Model for Electricity Load Forecasting
 
 #### To install and develop enduse package
 - Clone the enduse repo
