@@ -1,6 +1,6 @@
-# Enduse based stock turnover model for load forecasting
+## Enduse model for load forecasting
 
-### To install and develop enduse package
+#### To install and develop enduse package
 - Clone the enduse repo
 - Create conda environment from enduse.yml
 ```cmd
