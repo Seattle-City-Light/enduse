@@ -1,11 +1,7 @@
-import os
 import pytest
 import copy
 
 from pydantic import ValidationError
-
-os.sys.path.append('I:/FINANCE/FPU/LOAD/2021/Model Dev/enduse')
-
 from enduse import stockobjects
 
 ### Build valid stockobject params
@@ -13,57 +9,40 @@ path = "I:/FINANCE/FPU/LOAD/2021/Model Dev/enduse/examples/inputs/residential/"
 
 params = {}
 
-params['buildings'] = {
-    "label": 'Buildings',
+params["buildings"] = {
+    "label": "Buildings",
     "file_path": path + "building_stock.csv",
-    "join_on": [
-        "Customer Class",
-        "Segment",
-        "Construction Vintage",
-        "Year"
-    ],
+    "join_on": ["Customer Class", "Segment", "Construction Vintage", "Year"],
     "join_order": 0,
 }
 
-params['saturation'] = {
+params["saturation"] = {
     "label": "Saturation",
-    "file_path" : path + "saturation.csv",
+    "file_path": path + "saturation.csv",
     "time_label": "Year",
     "interpolation_label": "Interpolate Saturation",
     "start_variable": "Start Saturation",
     "end_variable": "End Saturation",
     "start_time": "Start Year",
     "end_time": "End Year",
-    "join_on": [
-        "Customer Class", 
-        "Segment", 
-        "Construction Vintage", 
-        "End Use", 
-        "Year"
-    ],
+    "join_on": ["Customer Class", "Segment", "Construction Vintage", "End Use", "Year"],
     "join_order": 1,
 }
 
-params['fuel_share'] = {
+params["fuel_share"] = {
     "label": "Fuel Share",
-    "file_path" : path + "fuel_share.csv",
+    "file_path": path + "fuel_share.csv",
     "time_label": "Year",
     "interpolation_label": "Interpolate Fuel Share",
     "start_variable": "Start Fuel Share",
     "end_variable": "End Fuel Share",
     "start_time": "Start Year",
     "end_time": "End Year",
-    "join_on": [
-        "Customer Class",
-        "Segment", 
-        "Construction Vintage", 
-        "End Use", 
-        "Year"
-    ],
-    "join_order": 0
+    "join_on": ["Customer Class", "Segment", "Construction Vintage", "End Use", "Year"],
+    "join_order": 0,
 }
 
-params['efficiency_share'] = {
+params["efficiency_share"] = {
     "label": "Efficiency Share",
     "file_path": path + "efficiency_share.csv",
     "time_label": "Year",
@@ -72,17 +51,11 @@ params['efficiency_share'] = {
     "end_variable": "End Efficiency Share",
     "start_time": "Start Year",
     "end_time": "End Year",
-    "join_on": [
-        "Customer Class",
-        "Segment",
-        "Construction Vintage",
-        "End Use",
-        "Year"
-    ],
+    "join_on": ["Customer Class", "Segment", "Construction Vintage", "End Use", "Year"],
     "join_order": 3,
 }
 
-params['equipment_measures'] = {
+params["equipment_measures"] = {
     "label": "Measure Consumption",
     "file_path": path + "equipment_measures_adjusted.csv",
     "time_label": "Year",
@@ -97,12 +70,12 @@ params['equipment_measures'] = {
         "Construction Vintage",
         "End Use",
         "Efficiency Level",
-        "Year"
+        "Year",
     ],
     "join_order": 4,
 }
 
-params['efficiency_ramp'] = {
+params["ramp_efficiency"] = {
     "label": "Efficiency Ramp",
     "file_path": path + "equipment_standards.csv",
     "time_label": "Year",
@@ -116,23 +89,23 @@ params['efficiency_ramp'] = {
         "Segment",
         "End Use",
         "Ramp Efficiency Level",
-        "Year"
+        "Year",
     ],
-    "join_order": 5
+    "join_order": 5,
 }
 
 bad_params = copy.deepcopy(params)
 
 bad_params["saturation"]["start_time"] = 12
 
-class TestStockObject():
 
+class TestStockObject:
     def test_attributes_loaded(self):
-        '''Check that all children classes are loaded from dict'''
-        stock_object = stockobjects.StockObject.parse_obj(params)      
+        """Check that all children classes are loaded from dict"""
+        stock_object = stockobjects.StockObject.parse_obj(params)
         assert stock_object.dict() == params
 
     def test_bad_attribute(self):
-        '''Check that a bad attribute raises a pydantic error'''
+        """Check that a bad attribute raises a pydantic error"""
         with pytest.raises(ValidationError):
             stockobjects.StockObject.parse_obj(bad_params)
