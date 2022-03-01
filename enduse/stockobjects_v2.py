@@ -5,16 +5,17 @@ from typing import List, Optional
 from pydantic import (
     BaseModel,
     StrictStr,
-    StrictInt,
-    StrictFloat,
+    PositiveInt,
+    PositiveFloat,
+    confloat,
     Field,
     validator,
     root_validator,
 )
 
 # TODO alias on all field names for DF conversion?
-# TODO validate > 0 list fields
-# validate buildings
+# TODO validate childred/parent list lengths
+# TODO move protype code to tests
 
 
 def check_expected_list_length(v: list, values: dict) -> list:
@@ -25,79 +26,114 @@ def check_expected_list_length(v: list, values: dict) -> list:
     return v
 
 
-def check_values_between_zero_one(v: list, values: dict) -> list:
-    label = values.get("label")
-    if not ((np.array(v) >= 0) & (np.array(v) <= 1)).all():
-        raise ValueError(f"{label} has value outside 0 and 1")
-    return v
-
-
 class Equipment(BaseModel):
     label: StrictStr = Field(None, alias="equipment_label")
-    efficiency_level: StrictInt
-    start_year: StrictInt
-    end_year: StrictInt
-    efficiency_share: List[StrictFloat]
-    consumption: List[StrictFloat]
-    useful_life: List[StrictFloat]
+    efficiency_level: PositiveInt
+    start_year: PositiveInt
+    end_year: PositiveInt
+    efficiency_share: List[confloat(ge=0, le=1)]
+    consumption: List[PositiveFloat]
+    useful_life: List[PositiveInt]
 
-    # validators
+    # check efficiency share matches start and end years
     _check_expected_list_length: classmethod = validator(
         "efficiency_share", "consumption", "useful_life", allow_reuse=True
     )(check_expected_list_length)
 
-    _check_values_between_zero_one: classmethod = validator("efficiency_share")(
-        check_values_between_zero_one
-    )
-
 
 class EfficiencyRamp(BaseModel):
     label: StrictStr = Field(None, alias="ramp_label")
-    ramp_start_year: List[StrictInt]
-    ramp_end_year: List[StrictInt]
+    ramp_start_year: List[PositiveInt]
+    ramp_end_year: List[PositiveInt]
     ramp_equipment: List[Equipment]
 
+    # check that ramp inputs are a consistent length
     @root_validator
     def validate_same_list_length(cls, values):
+        label = values.get("label")
         length = len(values.get("ramp_start_year"))
         list_fields = ["ramp_start_year", "ramp_end_year", "ramp_equipment"]
         if any(len(values[i]) != length for i in list_fields):
-            raise ValueError("List fields do not have the same length")
+            raise ValueError(f"{label} list fields do not have the same length")
         return values
 
 
 class EndUse(BaseModel):
     label: StrictStr = Field(None, alias="end_use_label")
-    start_year: StrictInt
-    end_year: StrictInt
-    saturation: List[StrictFloat]
-    fuel_share: List[StrictFloat]
     equipment: List[Equipment]
     efficiency_ramp: List[EfficiencyRamp]
+    start_year: Optional[PositiveInt] = None
+    end_year: Optional[PositiveInt] = None
+    saturation: List[PositiveFloat]
+    fuel_share: List[confloat(ge=0, le=1)]
 
-    _check_expected_list_length: classmethod = validator(
-        "saturation", "fuel_share", allow_reuse=True
-    )(check_expected_list_length)
+    # check that all equipment has same list length
+    @validator("equipment")
+    def validate_equipment_list_length(cls, v, values):
+        label = values.get("label")
+        length = len(getattr(v[0], "efficiency_share"))
+        for i in v:
+            if len(getattr(i, "efficiency_share")) != length:
+                raise ValueError(
+                    f"{label} equipment efficiency_share do not have the same length"
+                )
+        return v
 
-    _check_values_between_zero_one: classmethod = validator("fuel_share")(
-        check_values_between_zero_one
-    )
-
+    # check that equipment allocation each yeah sums to 100%
     @validator("equipment")
     def validate_equipment_allocation(cls, v, values):
-        label = values.get("_label")
+        label = values.get("label")
         allocations = np.array([getattr(i, "efficiency_share") for i in v])
         if np.any(allocations.sum(axis=0) != 1):
             raise ValueError(
                 f"{label} equipment efficiency_share allocations do not sum to 1"
             )
+        return v
+
+    # check that equipment has sequential efficiency levels
+    @validator("equipment")
+    def validate_equipment_efficeincy_levels(cls, v, values):
+        label = values.get("label")
+        levels = [getattr(i, "efficiency_level") for i in v]
+        expected_levels = [*range(min(levels), max(levels) + 1)]
+        if levels != expected_levels:
+            raise ValueError(f"{label} equipment efficiency_levels are not sequential")
+        return v
+
+    @validator("equipment")
+    def validate_equipment_start_end_years(cls, v, values):
+        label = values.get("label")
+        start_year = [getattr(i, "start_year") for i in v]
+        end_year = [getattr(i, "end_year") for i in v]
+        if all(x != start_year[0] for x in start_year):
+            if all(y != end_year[0] for y in end_year):
+                raise ValueError(
+                    f"{label} equipment start_year and end_year values not equal"
+                )
+        return v
+
+    @validator("start_year", always=True)
+    def set_start_year(cls, v, values) -> int:
+        if v is None:
+            return getattr(values.get("equipment")[0], "start_year")
+        else:
+            return v
+
+    @validator("end_year", always=True)
+    def set_end_year(cls, v, values) -> int:
+        if v is None:
+            return getattr(values.get("equipment")[0], "end_year")
+        else:
+            return v
+
+    _check_expected_list_length: classmethod = validator(
+        "saturation", "fuel_share", allow_reuse=True
+    )(check_expected_list_length)
 
 
 class Building(BaseModel):
     label: StrictStr = Field(None, alias="building_label")
-    start_year: StrictInt
-    end_year: StrictInt
-    building_stock: List[StrictFloat]
+    building_stock: List[PositiveFloat]
     end_uses: List[EndUse]
     customer_class: Optional[StrictStr] = None
     construction_vintage: Optional[StrictStr] = None
@@ -141,7 +177,7 @@ equipment.append(
     }
 )
 
-equipment_parsed = {i: Equipment(**x) for i, x in enumerate(equipment)}
+equipment_parsed = [Equipment(**i) for i in equipment]
 
 ramp = []
 
@@ -153,32 +189,32 @@ ramp.append(
     }
 )
 
-ramp_parsed = EfficiencyRamp(**ramp[0])
+ramp_parsed = [EfficiencyRamp(**i) for i in ramp]
 
 end_use = []
 
 end_use.append(
     {
         "end_use_label": "Heat Pump",
-        "start_year": 2022,
-        "end_year": 2031,
         "saturation": np.linspace(0.25, 0.25, 10).tolist(),
         "fuel_share": np.linspace(1, 1, 10).tolist(),
-        "equipment": list(equipment_parsed.values()),
-        "efficiency_ramp": ramp,
+        "equipment": equipment_parsed,
+        "efficiency_ramp": ramp_parsed,
     }
 )
 
-building = []
+end_use_parsed = EndUse(**end_use[0])
 
-building.append(
-    {
-        "customer_class": "Residential",
-        "segment": "Single Family",
-        "construction_vintage": "Existing",
-        "start_year": 2022,
-        "end_year": 2031,
-        "building_stock": np.linspace(1000, 1000, 10).tolist(),
-        "end_uses": end_use,
-    }
-)
+# building = []
+
+# building.append(
+#     {
+#         "customer_class": "Residential",
+#         "segment": "Single Family",
+#         "construction_vintage": "Existing",
+#         "start_year": 2022,
+#         "end_year": 2031,
+#         "building_stock": np.linspace(1000, 1000, 10).tolist(),
+#         "end_uses": end_use,
+#     }
+# )
