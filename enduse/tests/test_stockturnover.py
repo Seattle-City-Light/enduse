@@ -135,7 +135,7 @@ saturation_test = pd.DataFrame(
     }
 )
 
-efficiency_ramp_test = pd.DataFrame(
+ramp_efficiency_test = pd.DataFrame(
     {
         "Segment": ["Single Family", "Single Family"],
         "End Use": ["Heat Pump", "Heat Pump"],
@@ -164,7 +164,7 @@ calc_config = stockobjects.CalcConfig.parse_obj(calc_config_params)
 common_files_test = {}
 
 common_files_test["saturation"] = saturation_test
-common_files_test["ramp_efficiency"] = efficiency_ramp_test
+common_files_test["ramp_efficiency"] = ramp_efficiency_test
 
 # hold common files parsed dataframes
 common_files_parsed = {}
@@ -174,7 +174,7 @@ common_files_parsed["saturation"] = stockturnover.create_common_files_dataframe(
 )
 
 common_files_parsed["ramp_efficiency"] = stockturnover.create_common_files_dataframe(
-    stock_object.ramp_efficiency, efficiency_ramp_test.copy()
+    stock_object.ramp_efficiency, ramp_efficiency_test.copy()
 )
 
 

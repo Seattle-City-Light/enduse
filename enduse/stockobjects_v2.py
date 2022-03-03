@@ -39,7 +39,7 @@ class Equipment(BaseModel):
     )(check_expected_list_length)
 
 
-class EfficiencyRamp(BaseModel):
+class RampEfficiency(BaseModel):
     label: StrictStr = Field(None, alias="ramp_label")
     ramp_equipment: List[Equipment]
     ramp_year: Optional[List[PositiveInt]] = None
@@ -97,7 +97,7 @@ class EfficiencyRamp(BaseModel):
 class EndUse(BaseModel):
     label: StrictStr = Field(None, alias="end_use_label")
     equipment: List[Equipment]
-    efficiency_ramp: List[EfficiencyRamp]
+    ramp_efficiency: RampEfficiency
     start_year: Optional[PositiveInt] = None
     end_year: Optional[PositiveInt] = None
     saturation: List[PositiveFloat]
@@ -164,7 +164,14 @@ class EndUse(BaseModel):
         else:
             return v
 
-    # TODO valdiate efficiency ramp equipment and start/end year ramps
+    @validator("ramp_efficiency")
+    def check_ramp_equipment_valid(cls, v, values):
+        label = values.get("label")
+        ramp_labels = [getattr(i, "label") for i in getattr(v, "ramp_equipment")]
+        equipment_labels = [getattr(i, "label") for i in values.get("equipment")]
+        if not any([i in equipment_labels for i in ramp_labels]):
+            raise ValueError(f"{label} ramp_equipment not in equipment")
+        return v
 
     _check_expected_list_length: classmethod = validator(
         "saturation", "fuel_share", allow_reuse=True

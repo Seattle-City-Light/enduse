@@ -3,7 +3,7 @@ import copy
 import numpy as np
 
 from pydantic import ValidationError
-from enduse.stockobjects_v2 import Equipment, EfficiencyRamp, EndUse, Building
+from enduse.stockobjects_v2 import Equipment, RampEfficiency, EndUse, Building
 
 
 equipment = []
@@ -68,15 +68,11 @@ class TestEquipment:
 # ensure that TestEquipment passes first
 equipment_parsed = [Equipment(**i) for i in equipment]
 
-ramp = []
-
-ramp.append(
-    {
-        "ramp_label": "Upgrade Heat Pump",
-        "ramp_year": [2022, 2025],
-        "ramp_equipment": [equipment_parsed[1], equipment_parsed[2]],
-    }
-)
+valid_ramp = {
+    "ramp_label": "Upgrade Heat Pump",
+    "ramp_year": [2022, 2025],
+    "ramp_equipment": [equipment_parsed[1], equipment_parsed[2]],
+}
 
 ramp_no_ramp_year = {
     "ramp_label": "Upgrade Heat Pump - Bad",
@@ -102,29 +98,29 @@ ramp_fail_list_length = {
 }
 
 
-class TestEfficiencyRamp:
+class TestRampEfficiency:
     def test_valid_ramp(self):
-        assert isinstance(EfficiencyRamp(**ramp[0]), EfficiencyRamp)
+        assert isinstance(RampEfficiency(**ramp[0]), RampEfficiency)
 
     def test_no_ramp_year(self):
-        ramp_year = getattr(EfficiencyRamp(**ramp_no_ramp_year), "ramp_year")[0]
+        ramp_year = getattr(RampEfficiency(**ramp_no_ramp_year), "ramp_year")[0]
         exp_ramp_year = getattr(equipment_parsed[0], "start_year")
         assert ramp_year == exp_ramp_year
 
     def test_ramp_fail_year_range(self):
         with pytest.raises(ValidationError):
-            EfficiencyRamp(**ramp_fail_year_range)
+            RampEfficiency(**ramp_fail_year_range)
 
     def test_ramp_fail_first_year(self):
         with pytest.raises(ValidationError):
-            EfficiencyRamp(**ramp_fail_first_year)
+            RampEfficiency(**ramp_fail_first_year)
 
     def test_ramp_fail_same_list_length(self):
         with pytest.raises(ValidationError):
-            EfficiencyRamp(**ramp_fail_list_length)
+            RampEfficiency(**ramp_fail_list_length)
 
 
-ramp_parsed = [EfficiencyRamp(**i) for i in ramp]
+ramp_parsed = RampEfficiency(**valid_ramp)
 
 end_use = []
 
@@ -136,7 +132,7 @@ end_use.append(
         "saturation": np.linspace(0.25, 0.25, 10).tolist(),
         "fuel_share": np.linspace(1, 1, 10).tolist(),
         "equipment": equipment_parsed,
-        "efficiency_ramp": ramp_parsed,
+        "ramp_efficiency": ramp_parsed,
     }
 )
 
@@ -161,7 +157,7 @@ bad_end_use_1 = {
     "saturation": np.linspace(0.25, 0.25, 10).tolist(),
     "fuel_share": np.linspace(1, 1, 10).tolist(),
     "equipment": [Equipment(**i) for i in equipment_bad_list_length],
-    "efficiency_ramp": ramp_parsed,
+    "ramp_efficiency": ramp_parsed,
 }
 
 equipment_bad_allocation = copy.deepcopy(equipment)
@@ -184,7 +180,7 @@ bad_end_use_2 = {
     "saturation": np.linspace(0.25, 0.25, 10).tolist(),
     "fuel_share": np.linspace(1, 1, 10).tolist(),
     "equipment": [Equipment(**i) for i in equipment_bad_allocation],
-    "efficiency_ramp": ramp_parsed,
+    "ramp_efficiency": ramp_parsed,
 }
 
 equipment_bad_levels = copy.deepcopy(equipment)
@@ -207,7 +203,7 @@ bad_end_use_3 = {
     "saturation": np.linspace(0.25, 0.25, 10).tolist(),
     "fuel_share": np.linspace(1, 1, 10).tolist(),
     "equipment": [Equipment(**i) for i in equipment_bad_levels],
-    "efficiency_ramp": ramp_parsed,
+    "ramp_efficiency": ramp_parsed,
 }
 
 equipment_bad_start_end_year = copy.deepcopy(equipment)
@@ -230,7 +226,7 @@ bad_end_use_4 = {
     "saturation": np.linspace(0.25, 0.25, 10).tolist(),
     "fuel_share": np.linspace(1, 1, 10).tolist(),
     "equipment": [Equipment(**i) for i in equipment_bad_start_end_year],
-    "efficiency_ramp": ramp_parsed,
+    "ramp_efficiency": ramp_parsed,
 }
 
 end_use.append(
@@ -239,7 +235,7 @@ end_use.append(
         "saturation": np.linspace(0.25, 0.25, 10).tolist(),
         "fuel_share": np.linspace(1, 1, 10).tolist(),
         "equipment": equipment_parsed,
-        "efficiency_ramp": ramp_parsed,
+        "ramp_efficiency": ramp_parsed,
     }
 )
 
@@ -250,7 +246,29 @@ bad_end_use_5 = {
     "saturation": np.linspace(0.25, 0.25, 20).tolist(),
     "fuel_share": np.linspace(1, 1, 20).tolist(),
     "equipment": [Equipment(**i) for i in equipment],
-    "efficiency_ramp": ramp_parsed,
+    "ramp_efficiency": ramp_parsed,
+}
+
+wrong_equipment = {
+    "equipment_label": "Wrong Equipment",
+    "efficiency_level": 2,
+    "start_year": 2022,
+    "end_year": 2031,
+    "efficiency_share": np.linspace(0.75, 0.75, 10).tolist(),
+    "consumption": np.linspace(8742, 8742, 10).tolist(),
+    "useful_life": np.linspace(9, 9, 10).tolist(),
+}
+
+wrong_ramp = {"label": "Wrong Ramp", "ramp_equipment": [Equipment(**wrong_equipment)]}
+
+bad_end_use_6 = {
+    "end_use_label": "Heat Pump",
+    "start_year": 2022,
+    "end_year": 2031,
+    "saturation": np.linspace(0.25, 0.25, 10).tolist(),
+    "fuel_share": np.linspace(1, 1, 10).tolist(),
+    "equipment": [Equipment(**i) for i in equipment],
+    "ramp_efficiency": RampEfficiency(**wrong_ramp),
 }
 
 
@@ -286,6 +304,10 @@ class TestEndUse:
     def test_end_use_fail_expected_list_length(self):
         with pytest.raises(ValidationError):
             EndUse(**bad_end_use_5)
+
+    def test_end_use_fail_ramp(self):
+        with pytest.raises(ValidationError):
+            EndUse(**bad_end_use_6)
 
 
 end_use_parsed = [EndUse(**i) for i in end_use]
