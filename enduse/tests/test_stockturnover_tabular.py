@@ -3,7 +3,8 @@ import pytest
 import pandas as pd
 import numpy as np
 
-from enduse import stockobjects, stockturnover
+from enduse import stockobjects_tabular as stockobjects
+from enduse import stockturnover_tabular as stockturnover
 
 ### Build valid stockobject params
 path = "I:/FINANCE/FPU/LOAD/2021/Model Dev/enduse/examples/inputs/residential/"
