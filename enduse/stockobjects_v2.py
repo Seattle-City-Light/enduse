@@ -14,8 +14,6 @@ from pydantic import (
 )
 
 # TODO alias on all field names for DF conversion?
-# TODO validate childred/parent list lengths
-# TODO move protype code to tests
 
 
 def check_expected_list_length(v: list, values: dict) -> list:
@@ -35,7 +33,7 @@ class Equipment(BaseModel):
     consumption: List[PositiveFloat]
     useful_life: List[PositiveInt]
 
-    # check efficiency share matches start and end years
+    # check list lengths match expected
     _check_expected_list_length: classmethod = validator(
         "efficiency_share", "consumption", "useful_life", allow_reuse=True
     )(check_expected_list_length)
@@ -43,16 +41,54 @@ class Equipment(BaseModel):
 
 class EfficiencyRamp(BaseModel):
     label: StrictStr = Field(None, alias="ramp_label")
-    ramp_start_year: List[PositiveInt]
-    ramp_end_year: List[PositiveInt]
     ramp_equipment: List[Equipment]
+    ramp_year: Optional[List[PositiveInt]] = None
+
+    # inherit ramp_year if not provided
+    @validator("ramp_year", always=True)
+    def set_ramp_year(cls, v, values) -> int:
+        if v is None:
+            return [(getattr(values.get("ramp_equipment")[0], "start_year"))]
+        else:
+            return v
+
+    # check that ramp year fall within equipment year range
+    @validator("ramp_year")
+    def validate_ramp_year_in_range(cls, v, values):
+        label = values.get("label")
+        for i, x in zip(v, values.get("ramp_equipment")):
+            if i < getattr(x, "start_year") or i > getattr(x, "end_year"):
+                raise ValueError(f"{label} ramp_year outside of equipment year range")
+        return v
+
+    # if ramp year is provided check that first ramp equals first year in equipment
+    @validator("ramp_year")
+    def validate_first_ramp_year(cls, v, values):
+        label = values.get("label")
+        exp_min_ramp_year = getattr(values.get("ramp_equipment")[0], "start_year")
+        if min(v) > exp_min_ramp_year:
+            raise ValueError(
+                f"{label} has min ramp_year of {v} but expected {exp_min_ramp_year}"
+            )
+        return v
+
+    # validate that multiple ramp years are sequential
+    @validator("ramp_year")
+    def validate_sequential_ramp_year(cls, v, values):
+        label = values.get("label")
+        if len(v) > 1:
+            for i, x in enumerate(v):
+                if i > 0:
+                    if v[i] <= v[i - 1]:
+                        raise ValueError(f"{label} invalid ramp_year order")
+        return v
 
     # check that ramp inputs are a consistent length
     @root_validator
     def validate_same_list_length(cls, values):
         label = values.get("label")
-        length = len(values.get("ramp_start_year"))
-        list_fields = ["ramp_start_year", "ramp_end_year", "ramp_equipment"]
+        length = len(values.get("ramp_year"))
+        list_fields = ["ramp_year", "ramp_equipment"]
         if any(len(values[i]) != length for i in list_fields):
             raise ValueError(f"{label} list fields do not have the same length")
         return values
@@ -100,18 +136,19 @@ class EndUse(BaseModel):
             raise ValueError(f"{label} equipment efficiency_levels are not sequential")
         return v
 
+    # check equipment has consistent start and end years
     @validator("equipment")
     def validate_equipment_start_end_years(cls, v, values):
         label = values.get("label")
         start_year = [getattr(i, "start_year") for i in v]
         end_year = [getattr(i, "end_year") for i in v]
         if all(x != start_year[0] for x in start_year):
-            if all(y != end_year[0] for y in end_year):
-                raise ValueError(
-                    f"{label} equipment start_year and end_year values not equal"
-                )
+            raise ValueError(f"{label} equipment start_year values not equal")
+        if all(y != end_year[0] for y in end_year):
+            raise ValueError(f"{label} equipment end_year values not equal")
         return v
 
+    # set start year if not provided
     @validator("start_year", always=True)
     def set_start_year(cls, v, values) -> int:
         if v is None:
@@ -119,12 +156,15 @@ class EndUse(BaseModel):
         else:
             return v
 
+    # set end year if not provided
     @validator("end_year", always=True)
     def set_end_year(cls, v, values) -> int:
         if v is None:
             return getattr(values.get("equipment")[0], "end_year")
         else:
             return v
+
+    # TODO valdiate efficiency ramp equipment and start/end year ramps
 
     _check_expected_list_length: classmethod = validator(
         "saturation", "fuel_share", allow_reuse=True
@@ -133,88 +173,54 @@ class EndUse(BaseModel):
 
 class Building(BaseModel):
     label: StrictStr = Field(None, alias="building_label")
-    building_stock: List[PositiveFloat]
     end_uses: List[EndUse]
-    customer_class: Optional[StrictStr] = None
+    start_year: Optional[PositiveInt]
+    end_year: Optional[PositiveInt]
+    building_stock: List[PositiveFloat]
+    segment: Optional[StrictStr] = None
     construction_vintage: Optional[StrictStr] = None
 
+    @validator("end_uses")
+    def validate_end_use_list_length(cls, v, values):
+        label = values.get("label")
+        saturation_length = len(getattr(v[0], "saturation"))
+        fuel_share_length = len(getattr(v[0], "fuel_share"))
+        for i in v:
+            if len(getattr(i, "saturation")) != saturation_length:
+                raise ValueError(
+                    f"{label} end_use saturations do not have the same length"
+                )
+            if len(getattr(i, "fuel_share")) != fuel_share_length:
+                raise ValueError(
+                    f"{label} end_use fuel_shares not have the same length"
+                )
+        return v
 
-equipment = []
+    @validator("end_uses")
+    def validate_end_use_start_end_years(cls, v, values):
+        label = values.get("label")
+        start_year = [getattr(i, "start_year") for i in v]
+        end_year = [getattr(i, "end_year") for i in v]
+        if all(x != start_year[0] for x in start_year):
+            raise ValueError(f"{label} end_use start_year values not equal")
+        if all(y != end_year[0] for y in end_year):
+            raise ValueError(f"{label} end_use end_year values not equal")
+        return v
 
-equipment.append(
-    {
-        "equipment_label": "Below Standard Heat Pump - SEER/EER 10/9.2 and HSPF 7.2 (Split System)",
-        "efficiency_level": 1,
-        "start_year": 2022,
-        "end_year": 2031,
-        "efficiency_share": np.linspace(0.75, 0.75, 10).tolist(),
-        "consumption": np.linspace(8742, 8742, 10).tolist(),
-        "useful_life": np.linspace(9, 9, 10).tolist(),
-    }
-)
+    @validator("start_year", always=True)
+    def set_start_year(cls, v, values) -> int:
+        if v is None:
+            return getattr(values.get("end_uses")[0], "start_year")
+        else:
+            return v
 
-equipment.append(
-    {
-        "equipment_label": "Federal Standard 2015 Heat Pump - SEER/EER 14/12 and HSPF 8.2 (Split System)",
-        "efficiency_level": 2,
-        "start_year": 2022,
-        "end_year": 2031,
-        "efficiency_share": np.linspace(0.20, 0.20, 10).tolist(),
-        "consumption": np.linspace(7442, 7442, 10).tolist(),
-        "useful_life": np.linspace(18, 18, 10).tolist(),
-    }
-)
+    @validator("end_year", always=True)
+    def set_end_year(cls, v, values) -> int:
+        if v is None:
+            return getattr(values.get("end_uses")[0], "end_year")
+        else:
+            return v
 
-equipment.append(
-    {
-        "equipment_label": "HVAC Upgrade - Heat Pump Upgrade to 9.5 HSPF/15.5 SEER + HZ1CZ1",
-        "efficiency_level": 3,
-        "start_year": 2022,
-        "end_year": 2031,
-        "efficiency_share": np.linspace(0.05, 0.05, 10).tolist(),
-        "consumption": np.linspace(6442, 6442, 10).tolist(),
-        "useful_life": np.linspace(18, 18, 10).tolist(),
-    }
-)
-
-equipment_parsed = [Equipment(**i) for i in equipment]
-
-ramp = []
-
-ramp.append(
-    {
-        "ramp_start_year": [2022, 2025],
-        "ramp_end_year": [2024, 2031],
-        "ramp_equipment": [equipment_parsed[1], equipment_parsed[2]],
-    }
-)
-
-ramp_parsed = [EfficiencyRamp(**i) for i in ramp]
-
-end_use = []
-
-end_use.append(
-    {
-        "end_use_label": "Heat Pump",
-        "saturation": np.linspace(0.25, 0.25, 10).tolist(),
-        "fuel_share": np.linspace(1, 1, 10).tolist(),
-        "equipment": equipment_parsed,
-        "efficiency_ramp": ramp_parsed,
-    }
-)
-
-end_use_parsed = EndUse(**end_use[0])
-
-# building = []
-
-# building.append(
-#     {
-#         "customer_class": "Residential",
-#         "segment": "Single Family",
-#         "construction_vintage": "Existing",
-#         "start_year": 2022,
-#         "end_year": 2031,
-#         "building_stock": np.linspace(1000, 1000, 10).tolist(),
-#         "end_uses": end_use,
-#     }
-# )
+    _check_expected_list_length: classmethod = validator(
+        "building_stock", allow_reuse=True
+    )(check_expected_list_length)

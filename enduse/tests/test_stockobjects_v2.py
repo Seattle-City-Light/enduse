@@ -72,15 +72,32 @@ ramp = []
 
 ramp.append(
     {
-        "ramp_start_year": [2022, 2025],
-        "ramp_end_year": [2024, 2031],
+        "ramp_label": "Upgrade Heat Pump",
+        "ramp_year": [2022, 2025],
         "ramp_equipment": [equipment_parsed[1], equipment_parsed[2]],
     }
 )
 
-bad_ramp = {
-    "ramp_start_year": [2022, 2025],
-    "ramp_end_year": [2024, 2031],
+ramp_no_ramp_year = {
+    "ramp_label": "Upgrade Heat Pump - Bad",
+    "ramp_equipment": [equipment_parsed[0]],
+}
+
+ramp_fail_year_range = {
+    "ramp_label": "Upgrade Heat Pump - Bad",
+    "ramp_year": [2020, 2040],
+    "ramp_equipment": [equipment_parsed[0], equipment_parsed[1]],
+}
+
+ramp_fail_first_year = {
+    "ramp_label": "Upgrade Heat Pump - Bad",
+    "ramp_year": [2025],
+    "ramp_equipment": [equipment_parsed[0]],
+}
+
+ramp_fail_list_length = {
+    "ramp_label": "Upgrade Heat Pump - Bad",
+    "ramp_year": [2022, 2025],
     "ramp_equipment": [equipment_parsed[0], equipment_parsed[1], equipment_parsed[2]],
 }
 
@@ -89,9 +106,22 @@ class TestEfficiencyRamp:
     def test_valid_ramp(self):
         assert isinstance(EfficiencyRamp(**ramp[0]), EfficiencyRamp)
 
+    def test_no_ramp_year(self):
+        ramp_year = getattr(EfficiencyRamp(**ramp_no_ramp_year), "ramp_year")[0]
+        exp_ramp_year = getattr(equipment_parsed[0], "start_year")
+        assert ramp_year == exp_ramp_year
+
+    def test_ramp_fail_year_range(self):
+        with pytest.raises(ValidationError):
+            EfficiencyRamp(**ramp_fail_year_range)
+
+    def test_ramp_fail_first_year(self):
+        with pytest.raises(ValidationError):
+            EfficiencyRamp(**ramp_fail_first_year)
+
     def test_ramp_fail_same_list_length(self):
         with pytest.raises(ValidationError):
-            EfficiencyRamp(**bad_ramp)
+            EfficiencyRamp(**ramp_fail_list_length)
 
 
 ramp_parsed = [EfficiencyRamp(**i) for i in ramp]
@@ -256,3 +286,19 @@ class TestEndUse:
     def test_end_use_fail_expected_list_length(self):
         with pytest.raises(ValidationError):
             EndUse(**bad_end_use_5)
+
+
+end_use_parsed = [EndUse(**i) for i in end_use]
+
+buildings = []
+buildings.append(
+    {
+        "building_label": "Single Family",
+        "end_uses": end_use_parsed,
+        "building_stock": np.linspace(1000, 1000, 10).tolist(),
+        "segment": "Residential",
+        "construction_vintage": "Existing",
+    }
+)
+
+building_parsed = [Building(**i) for i in buildings]
