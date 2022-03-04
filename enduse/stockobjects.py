@@ -16,7 +16,7 @@ from pydantic import (
 # TODO alias on all field names for DF conversion?
 
 
-def check_expected_list_length(v: list, values: dict) -> list:
+def check_expected_list_length(v: list, values: dict):
     label = values.get("label")
     exp_len = values.get("end_year") - values.get("start_year") + 1
     if len(v) != exp_len:
@@ -46,7 +46,7 @@ class RampEfficiency(BaseModel):
 
     # inherit ramp_year if not provided
     @validator("ramp_year", always=True)
-    def set_ramp_year(cls, v, values) -> int:
+    def set_ramp_year(cls, v, values):
         if v is None:
             return [(getattr(values.get("ramp_equipment")[0], "start_year"))]
         else:
@@ -150,7 +150,7 @@ class EndUse(BaseModel):
 
     # set start year if not provided
     @validator("start_year", always=True)
-    def set_start_year(cls, v, values) -> int:
+    def set_start_year(cls, v, values):
         if v is None:
             return getattr(values.get("equipment")[0], "start_year")
         else:
@@ -158,7 +158,7 @@ class EndUse(BaseModel):
 
     # set end year if not provided
     @validator("end_year", always=True)
-    def set_end_year(cls, v, values) -> int:
+    def set_end_year(cls, v, values):
         if v is None:
             return getattr(values.get("equipment")[0], "end_year")
         else:
@@ -215,14 +215,14 @@ class Building(BaseModel):
         return v
 
     @validator("start_year", always=True)
-    def set_start_year(cls, v, values) -> int:
+    def set_start_year(cls, v, values):
         if v is None:
             return getattr(values.get("end_uses")[0], "start_year")
         else:
             return v
 
     @validator("end_year", always=True)
-    def set_end_year(cls, v, values) -> int:
+    def set_end_year(cls, v, values):
         if v is None:
             return getattr(values.get("end_uses")[0], "end_year")
         else:
