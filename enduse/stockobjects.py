@@ -97,7 +97,7 @@ class RampEfficiency(BaseModel):
 class EndUse(BaseModel):
     label: StrictStr = Field(None, alias="end_use_label")
     equipment: List[Equipment]
-    ramp_efficiency: RampEfficiency
+    ramp_efficiency: Optional[RampEfficiency]
     start_year: Optional[PositiveInt] = None
     end_year: Optional[PositiveInt] = None
     saturation: List[PositiveFloat]
