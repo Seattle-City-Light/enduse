@@ -323,4 +323,73 @@ buildings.append(
     }
 )
 
+equipment_fail_end_use_list_len = []
+
+equipment_fail_end_use_list_len.append(
+    {
+        "equipment_label": "Below Standard Heat Pump - SEER/EER 10/9.2 and HSPF 7.2 (Split System)",
+        "efficiency_level": 1,
+        "start_year": 2022,
+        "end_year": 2041,
+        "efficiency_share": np.linspace(0.5, 0.5, 20).tolist(),
+        "consumption": np.linspace(8742, 8742, 20).tolist(),
+        "useful_life": np.linspace(9, 9, 20).tolist(),
+    }
+)
+
+equipment_fail_end_use_list_len.append(
+    {
+        "equipment_label": "Federal Standard 2015 Heat Pump - SEER/EER 14/12 and HSPF 8.2 (Split System)",
+        "efficiency_level": 2,
+        "start_year": 2022,
+        "end_year": 2041,
+        "efficiency_share": np.linspace(0.5, 0.5, 20).tolist(),
+        "consumption": np.linspace(7442, 7442, 20).tolist(),
+        "useful_life": np.linspace(18, 18, 20).tolist(),
+    }
+)
+
+equipment_fail_end_use_list_len_parsed = [
+    Equipment(**i) for i in equipment_fail_end_use_list_len
+]
+
+ramp_fail_end_use_list_len = {
+    "ramp_label": "Upgrade Heat Pump - Fail List Len",
+    "ramp_year": [2022, 2025],
+    "ramp_equipment": [
+        equipment_fail_end_use_list_len_parsed[0],
+        equipment_fail_end_use_list_len_parsed[1],
+    ],
+}
+
+end_use_fail_list_length = copy.deepcopy(end_use)
+
+end_use_fail_list_length.append(
+    {
+        "end_use_label": "Heat Pump",
+        "saturation": np.linspace(0.25, 0.25, 20).tolist(),
+        "fuel_share": np.linspace(1, 1, 20).tolist(),
+        "equipment": equipment_fail_end_use_list_len_parsed,
+        "ramp_efficiency": ramp_fail_end_use_list_len,
+    }
+)
+
+building_fail_list_length = {
+    "building_label": "Single Family",
+    "end_uses": [EndUse(**i) for i in end_use_fail_list_length],
+    "building_stock": np.linspace(1000, 1000, 10).tolist(),
+    "segment": "Residential",
+    "construction_vintage": "Existing",
+}
+
+
+class TestBuilding:
+    def test_valid_building(self):
+        assert isinstance(Building(**buildings[0]), Building)
+
+    def test_building_fail_end_use_list_length(self):
+        with pytest.raises(ValidationError):
+            Building(**building_fail_list_length)
+
+
 building_parsed = [Building(**i) for i in buildings]
