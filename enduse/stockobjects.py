@@ -14,6 +14,7 @@ from pydantic import (
 )
 
 # TODO alias on all field names for DF conversion?
+# TODO modify ramp to handle multiple efficiency ramp levels
 
 
 def check_expected_list_length(v: list, values: dict):
@@ -97,7 +98,7 @@ class RampEfficiency(BaseModel):
 class EndUse(BaseModel):
     label: StrictStr = Field(None, alias="end_use_label")
     equipment: List[Equipment]
-    ramp_efficiency: Optional[RampEfficiency]
+    ramp_efficiency: Optional[RampEfficiency] = None
     start_year: Optional[PositiveInt] = None
     end_year: Optional[PositiveInt] = None
     saturation: List[PositiveFloat]
