@@ -51,7 +51,7 @@ def stock_turnover_calculation(
     """
     Create an n x d matrix equal to dim(equip_mat)
     Stockturnover calculation is based on a expotential decay function
-    Which is executed as an interative calcution based on
+    Which is executed as an iterative calcution based on
         stock_turnover[i, t + 1] = equip_mat[i, t] / ul_mat[i, t]
         where stock_turnover[i, t + 1] is based on ramp_mat[i, t]
     """
@@ -60,8 +60,6 @@ def stock_turnover_calculation(
     # from building_stock, saturaiton, fuel_share or efficiency_share
     prepend = np.reshape(equip_mat[:, 0], (equip_mat.shape[0], -1))
     equip_diff_mat = np.diff(equip_mat, prepend=prepend)
-    equip_add_mat = np.cumsum(np.where(equip_diff_mat > 0, equip_diff_mat, 0), axis=1)
-    equip_sub_mat = np.cumsum(np.where(equip_diff_mat < 0, equip_diff_mat, 0), axis=1)
 
     # container to hold stock turnover calculation
     # if no efficiency ramp or equipment is 1d vector then
@@ -73,18 +71,12 @@ def stock_turnover_calculation(
     # stock turnover calculation is an expotential decay function : E_t = E_0 * e^(-k * t)
     # but unable to vectorize since E_0 can change
     # and replaced equipment (E_0 - E_t) will also follow a decay function
-    # possible TODO improve vectorization or use NUMBA/Cython if speed is a problem
+    # possible TODO improve vectorization or use Numba/Cython if speed is a problem
     if not np.all(ramp_mat == 1):
-        # normalize equipment counts for exogenous additions or subtractions
-        # equip_turn_cum_mat = equip_mat - equip_add_mat + np.absolute(equip_sub_mat)
-
-        # iterate over each forecast year
         for i in range(equip_mat.shape[1]):
-            # stock turnover calc starts in first forecast year
             if i > 0:
-                # equipment efficiency index
+                # identify minimum ramp efficiency index
                 ramp_loc = np.where(ramp_mat == 1)[0][i]
-
                 # calculate equipment turnover for all equipment below minimum ramp level
                 # this needs to reference equipment_turn_cum mat
                 equip_turn = (
@@ -92,19 +84,17 @@ def stock_turnover_calculation(
                     / ul_mat[: ramp_loc + 1, i - 1]
                     * (1 - ramp_mat[: ramp_loc + 1, i])
                 )
-
                 # allocate turned over equipment to minumum ramp level
                 equip_turn_mat[ramp_loc, i] = np.sum(equip_turn)
-
                 # calculate total equipment for each efficiency level
                 equip_turn_cum_mat[:, i] = (
-                    # prior years value
+                    # prior years total equipment stock
                     equip_turn_cum_mat[:, i - 1]
-                    # add stock converted to minimum efficiency share
+                    # add equipment stock converted to minimum efficiency share
                     + equip_turn_mat[:, i]
-                    # subtract converted stock from original efficiency levels
+                    # subtract converted equipment stock from original efficiency levels
                     - equip_turn
-                    # account for any exogenous additions or substractions
+                    # account for any exogenous equiment additions or substractions
                     + equip_diff_mat[:, i]
                 )
 

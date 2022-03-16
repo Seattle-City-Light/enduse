@@ -2,7 +2,11 @@ import numpy as np
 import pytest
 
 from enduse.stockobjects import Equipment, RampEfficiency, EndUse, Building
-from enduse.stockturnover import get_building_arrays, stock_turnover_calculation
+from enduse.stockturnover import (
+    get_building_arrays,
+    stock_turnover_calculation,
+    create_ramp_matrix,
+)
 
 
 # define valid test case for stock turnover
@@ -68,13 +72,12 @@ class TestStockTurnoverCalculation:
         )
 
 
-# for testing xarray creation
+# need to create Equipment and RampEfficiency objects to test ramp
+valid_equipment = []
 
-equipment = []
-
-equipment.append(
+valid_equipment.append(
     {
-        "equipment_label": "Below Standard Heat Pump - SEER/EER 10/9.2 and HSPF 7.2 (Split System)",
+        "equipment_label": "Below Standard Heat Pump",
         "efficiency_level": 1,
         "start_year": 2022,
         "end_year": 2031,
@@ -84,9 +87,9 @@ equipment.append(
     }
 )
 
-equipment.append(
+valid_equipment.append(
     {
-        "equipment_label": "Federal Standard 2015 Heat Pump - SEER/EER 14/12 and HSPF 8.2 (Split System)",
+        "equipment_label": "Standard Heat Pump",
         "efficiency_level": 2,
         "start_year": 2022,
         "end_year": 2031,
@@ -96,163 +99,39 @@ equipment.append(
     }
 )
 
-equipment.append(
+valid_equipment.append(
     {
-        "equipment_label": "HVAC Upgrade - Heat Pump Upgrade to 9.5 HSPF/15.5 SEER + HZ1CZ1",
+        "equipment_label": "Above Standard Heat Pump",
         "efficiency_level": 3,
         "start_year": 2022,
         "end_year": 2031,
         "efficiency_share": np.linspace(0.05, 0.05, 10).tolist(),
-        "consumption": np.linspace(6442, 6442, 10).tolist(),
-        "useful_life": np.linspace(18, 18, 10).tolist(),
+        "consumption": np.linspace(5000, 5000, 10).tolist(),
+        "useful_life": np.linspace(20, 20, 10).tolist(),
     }
 )
 
-single_equipment = {
-    "equipment_label": "HVAC Upgrade - Heat Pump Upgrade to 9.5 HSPF/15.5 SEER + HZ1CZ1",
-    "efficiency_level": 1,
-    "start_year": 2022,
-    "end_year": 2031,
-    "efficiency_share": np.linspace(1, 1, 10).tolist(),
-    "consumption": np.linspace(6442, 6442, 10).tolist(),
-    "useful_life": np.linspace(18, 18, 10).tolist(),
-}
 
-single_equipment_parsed = Equipment(**single_equipment)
+valid_equipment_parsed = [Equipment(**i) for i in valid_equipment]
 
-equipment_parsed = [Equipment(**i) for i in equipment]
-
-ramp = {
+valid_ramp = {
     "ramp_label": "Upgrade Heat Pump",
     "ramp_year": [2022, 2025],
-    "ramp_equipment": [equipment_parsed[1], equipment_parsed[2]],
+    "ramp_equipment": [valid_equipment_parsed[1], valid_equipment_parsed[2]],
 }
 
-ramp_single_equipment = {
-    "ramp_label": "Upgrade Heat Pump",
-    "ramp_equipment": [single_equipment_parsed],
-}
+valid_ramp_parsed = RampEfficiency(**valid_ramp)
 
-ramp_parsed = RampEfficiency(**ramp)
-ramp_single_parsed = RampEfficiency(**ramp_single_equipment)
-
-end_use = []
-
-end_use.append(
-    {
-        "end_use_label": "Heat Pump",
-        "start_year": 2022,
-        "end_year": 2031,
-        "saturation": np.linspace(0.25, 0.25, 10).tolist(),
-        "fuel_share": np.linspace(1, 1, 10).tolist(),
-        "equipment": equipment_parsed,
-        "ramp_efficiency": ramp_parsed,
-    }
+expected_ramp_matrix = np.array(
+    [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    ]
 )
 
-end_use.append(
-    {
-        "end_use_label": "Heat Pump - Exogenous Additions",
-        "start_year": 2022,
-        "end_year": 2031,
-        "saturation": np.linspace(0.25, 0.50, 10).tolist(),
-        "fuel_share": np.linspace(1, 1, 10).tolist(),
-        "equipment": equipment_parsed,
-        "ramp_efficiency": ramp_parsed,
-    }
-)
 
-end_use.append(
-    {
-        "end_use_label": "Heat Pump - Exogenous Subtractions",
-        "start_year": 2022,
-        "end_year": 2031,
-        "saturation": np.linspace(0.50, 0.25, 10).tolist(),
-        "fuel_share": np.linspace(1, 1, 10).tolist(),
-        "equipment": equipment_parsed,
-        "ramp_efficiency": ramp_parsed,
-    }
-)
-
-end_use.append(
-    {
-        "end_use_label": "Heat Pump - Single Equipment",
-        "start_year": 2022,
-        "end_year": 2031,
-        "saturation": np.linspace(0.25, 0.25, 10).tolist(),
-        "fuel_share": np.linspace(1, 1, 10).tolist(),
-        "equipment": [single_equipment_parsed],
-        "ramp_efficiency": ramp_single_equipment,
-    }
-)
-
-end_use.append(
-    {
-        "end_use_label": "Heat Pump - Single Equipment Exogenous Additions",
-        "start_year": 2022,
-        "end_year": 2031,
-        "saturation": np.linspace(0.25, 0.50, 10).tolist(),
-        "fuel_share": np.linspace(1, 1, 10).tolist(),
-        "equipment": [single_equipment_parsed],
-        "ramp_efficiency": ramp_single_equipment,
-    }
-)
-
-end_use.append(
-    {
-        "end_use_label": "Heat Pump - Single Equipment Exogenous Subtractions",
-        "start_year": 2022,
-        "end_year": 2031,
-        "saturation": np.linspace(0.50, 0.25, 10).tolist(),
-        "fuel_share": np.linspace(1, 1, 10).tolist(),
-        "equipment": [single_equipment_parsed],
-        "ramp_efficiency": ramp_single_equipment,
-    }
-)
-
-end_use.append(
-    {
-        "end_use_label": "Heat Pump - No Ramp",
-        "start_year": 2022,
-        "end_year": 2031,
-        "saturation": np.linspace(0.50, 0.50, 10).tolist(),
-        "fuel_share": np.linspace(1, 1, 10).tolist(),
-        "equipment": equipment_parsed,
-    }
-)
-
-end_use.append(
-    {
-        "end_use_label": "Heat Pump - No Ramp Exogenous Additions",
-        "start_year": 2022,
-        "end_year": 2031,
-        "saturation": np.linspace(0.25, 0.50, 10).tolist(),
-        "fuel_share": np.linspace(1, 1, 10).tolist(),
-        "equipment": equipment_parsed,
-    }
-)
-
-end_use.append(
-    {
-        "end_use_label": "Heat Pump - No Ramp Exogenous Subtractions",
-        "start_year": 2022,
-        "end_year": 2031,
-        "saturation": np.linspace(0.50, 0.25, 10).tolist(),
-        "fuel_share": np.linspace(1, 1, 10).tolist(),
-        "equipment": equipment_parsed,
-    }
-)
-
-end_use_parsed = [EndUse(**i) for i in end_use]
-
-building = {
-    "building_label": "Single Family",
-    "end_uses": end_use_parsed,
-    "building_stock": np.linspace(1000, 1000, 10).tolist(),
-    "segment": "Residential",
-    "construction_vintage": "Existing",
-}
-
-building_parsed = Building(**building)
-
-test = get_building_arrays(building_parsed)
+def test_valid_create_ramp_matrix(self):
+    equip_mat = np.tile(np.linspace(100, 100, 10), (3, 1))
+    ramp_matrix = create_ramp_matrix(self.equip_mat, valid_ramp_parsed)
+    assert np.array_equal(ramp_matrix, expected_ramp_matrix)
