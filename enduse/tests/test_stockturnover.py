@@ -131,7 +131,7 @@ expected_ramp_matrix = np.array(
 )
 
 
-def test_valid_create_ramp_matrix(self):
+def test_valid_create_ramp_matrix():
     equip_mat = np.tile(np.linspace(100, 100, 10), (3, 1))
-    ramp_matrix = create_ramp_matrix(self.equip_mat, valid_ramp_parsed)
+    ramp_matrix = create_ramp_matrix(equip_mat, valid_ramp_parsed)
     assert np.array_equal(ramp_matrix, expected_ramp_matrix)
