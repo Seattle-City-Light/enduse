@@ -1,4 +1,5 @@
 import os
+import shutil
 import numpy as np
 import pandas as pd
 import xarray as xr
@@ -168,12 +169,10 @@ def _create_xarray_from_end_use(building: Building, end_use: EndUse) -> xr.Datas
     return dataset_xr
 
 
-def _create_xarray_list_from_building(building: Building) -> Dict[str, xr.Dataset]:
+def _create_dataset_from_building(building: Building) -> xr.Dataset:
     """Dispatcher to create xarray DataSet from building end-use objects"""
-    xr_datasets = {}
-    for i in building.end_uses:
-        xr_datasets[i.label] = _create_xarray_from_end_use(building, i)
-    return xr_datasets
+    xr_datasets = [_create_xarray_from_end_use(building, i) for i in building.end_uses]
+    return xr.combine_nested(xr_datasets, concat_dim="end_use_label")
 
 
 class BuildingModel:
@@ -182,7 +181,7 @@ class BuildingModel:
         self.model = self._create_model(building)
 
     def _create_model(self, building: Building) -> xr.DataArray:
-        return _create_xarray_list_from_building(building)
+        return _create_dataset_from_building(building)
 
     def to_dataframe(self) -> pd.DataFrame:
         """Concatenate list of xarray datasets into a single dataframe"""
@@ -197,7 +196,7 @@ class BuildingModel:
         Required params:
             path: folder path ex: "./some_dir/"
         Optional params:
-            file_name: overrides default file name (not recommended)
+            dir_name: overrides default dir name (not recommended)
         """
         # build file path
         if file_name is not None:
@@ -209,11 +208,5 @@ class BuildingModel:
         if os.path.exists(path):
             os.remove(path)
 
-        # will append xarray datasets to file
-        # file has must exist for append mode to work
-        for n, (i, x) in enumerate(self.model.items()):
-            # write first file without append
-            if n == 0:
-                x.to_netcdf(path, group=i)
-            else:
-                x.to_netcdf(path, group=i, mode="a")
+        # dump dataset to file
+        self.model.to_netcdf(path)
