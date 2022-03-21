@@ -1,4 +1,3 @@
-from pickle import TRUE
 from attr import validate
 import pandas as pd
 import warnings
@@ -104,7 +103,7 @@ def pull_nrel_load_shapes(
 
     # checking if file exists
     try:
-        bldg = pd.read_csv(url)
+        bldg = pd.read_csv(url, infer_datetime_format=True, parse_dates=["timestamp"])
 
     except:
         pass
