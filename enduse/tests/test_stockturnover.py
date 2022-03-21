@@ -3,11 +3,13 @@ import pytest
 
 from enduse.stockobjects import Equipment, RampEfficiency, EndUse, Building
 from enduse.stockturnover import (
-    get_building_arrays,
-    stock_turnover_calculation,
-    create_ramp_matrix,
+    BuildingModel,
+    _create_stock_turnover,
+    _create_ramp_matrix,
 )
 
+# hotkey for vscode find/replace
+# ctrl + f on selected word then alt + enter to put cursor on all results
 
 # define valid test case for stock turnover
 # note st_mats are calculated by hand
@@ -34,7 +36,7 @@ exp_valid_st_mat_subs = np.array(
 
 class TestStockTurnoverCalculation:
     def test_valid_stock_turnover_with_ramp(self):
-        calc_stock_turn = stock_turnover_calculation(
+        calc_stock_turn = _create_stock_turnover(
             valid_equip_mat, valid_ul_mat, valid_ramp_mat
         )
         # check to make sure that calculated match expected
@@ -45,7 +47,7 @@ class TestStockTurnoverCalculation:
         )
 
     def test_valid_ramp_mat_ones(self):
-        calc_stock_turn = stock_turnover_calculation(
+        calc_stock_turn = _create_stock_turnover(
             valid_equip_mat, valid_ul_mat, valid_ramp_mat_ones
         )
         assert np.array_equal(calc_stock_turn, valid_equip_mat)
@@ -54,7 +56,7 @@ class TestStockTurnoverCalculation:
         )
 
     def test_valid_st_mat_adds(self):
-        calc_stock_turn = stock_turnover_calculation(
+        calc_stock_turn = _create_stock_turnover(
             valid_equip_mat_adds, valid_ul_mat, valid_ramp_mat
         )
         assert np.array_equal(calc_stock_turn, exp_valid_st_mat_adds)
@@ -63,7 +65,7 @@ class TestStockTurnoverCalculation:
         )
 
     def test_valid_st_mat_subs(self):
-        calc_stock_turn = stock_turnover_calculation(
+        calc_stock_turn = _create_stock_turnover(
             valid_equip_mat_subs, valid_ul_mat, valid_ramp_mat
         )
         assert np.array_equal(calc_stock_turn, exp_valid_st_mat_subs)
@@ -133,5 +135,77 @@ expected_ramp_matrix = np.array(
 
 def test_valid_create_ramp_matrix():
     equip_mat = np.tile(np.linspace(100, 100, 10), (3, 1))
-    ramp_matrix = create_ramp_matrix(equip_mat, valid_ramp_parsed)
+    ramp_matrix = _create_ramp_matrix(equip_mat, valid_ramp_parsed)
     assert np.array_equal(ramp_matrix, expected_ramp_matrix)
+
+
+valid_end_uses = []
+for i in [f"Heat Pump 1 {i}" for i in range(10)]:
+    valid_end_uses.append(
+        {
+            "end_use_label": i,
+            "equipment": valid_equipment_parsed,
+            "ramp_efficiency": valid_ramp_parsed,
+            "saturation": np.linspace(0.10, 0.25, 10).tolist(),
+            "fuel_share": np.linspace(0.90, 0.90, 10).tolist(),
+        }
+    )
+
+valid_equipment_2 = []
+valid_equipment_2.append(
+    {
+        "equipment_label": "Below Standard Heat Pump",
+        "efficiency_level": 1,
+        "start_year": 2022,
+        "end_year": 2031,
+        "efficiency_share": np.linspace(0.50, 0.50, 10).tolist(),
+        "consumption": np.linspace(8742, 8742, 10).tolist(),
+        "useful_life": np.linspace(5, 15, 10).tolist(),
+    }
+)
+
+valid_equipment_2.append(
+    {
+        "equipment_label": "Standard Heat Pump",
+        "efficiency_level": 2,
+        "start_year": 2022,
+        "end_year": 2031,
+        "efficiency_share": np.linspace(0.50, 0.50, 10).tolist(),
+        "consumption": np.linspace(7442, 7442, 10).tolist(),
+        "useful_life": np.linspace(18, 18, 10).tolist(),
+    }
+)
+
+valid_end_uses.append(
+    {
+        "end_use_label": "Heat Pump 2",
+        "equipment": valid_equipment_2,
+        "saturation": np.linspace(0.10, 0.25, 10).tolist(),
+        "fuel_share": np.linspace(0.90, 0.90, 10).tolist(),
+    }
+)
+
+valid_end_use_parsed = [EndUse(**i) for i in valid_end_uses]
+
+valid_buildings = []
+
+for i in [f"Building_{i}" for i in range(10)]:
+    valid_buildings.append(
+        {
+            "building_label": i,
+            "end_uses": valid_end_use_parsed,
+            "building_stock": np.linspace(1000, 1000, 10).tolist(),
+        }
+    )
+
+valid_building_parsed = [Building(**i) for i in valid_buildings]
+
+# test_building_model = BuildingModel(valid_building_parsed)
+
+test_xarray = BuildingModel(valid_building_parsed[0])
+
+netcdf_path = "I:/FINANCE/FPU/LOAD/Model Development/enduse/outputs/netcdf/"
+test_xarray.to_netcdf(netcdf_path)
+
+# xarray will not show groups in file
+# need to use https://github.com/pydata/xarray/issues/6174

@@ -1,11 +1,15 @@
+import os
 import numpy as np
 import pandas as pd
 import xarray as xr
 
+from typing import List, Dict, Optional
+from datetime import datetime
+
 from enduse.stockobjects import Building, EndUse, RampEfficiency
 
 
-def create_ramp_matrix(
+def _create_ramp_matrix(
     equip_mat: np.ndarray, ramp_efficiency: RampEfficiency
 ) -> np.array:
     """
@@ -45,7 +49,7 @@ def create_ramp_matrix(
     return ramp_mat
 
 
-def stock_turnover_calculation(
+def _create_stock_turnover(
     equip_mat: np.ndarray, ul_mat: np.ndarray, ramp_mat: np.array
 ) -> np.ndarray:
     """
@@ -78,8 +82,9 @@ def stock_turnover_calculation(
                 # identify minimum ramp efficiency index
                 ramp_loc = np.where(ramp_mat == 1)[0][i]
                 # calculate equipment turnover for all equipment below minimum ramp level
+                equip_turn = np.zeros(equip_mat.shape[0])
                 # this needs to reference equipment_turn_cum mat
-                equip_turn = (
+                equip_turn[: ramp_loc + 1] = (
                     equip_turn_cum_mat[: ramp_loc + 1, i - 1]
                     / ul_mat[: ramp_loc + 1, i - 1]
                     * (1 - ramp_mat[: ramp_loc + 1, i])
@@ -101,15 +106,18 @@ def stock_turnover_calculation(
     return equip_turn_cum_mat
 
 
-def create_end_use_xarray(end_use: EndUse, building_stock: np.array) -> xr.Dataset:
-    """Create arrays for stockturnover calc and load into xarray"""
+def _create_xarray_from_end_use(building: Building, end_use: EndUse) -> xr.Dataset:
+    """
+    Extract params from EndUse object and convert to numpy arrarys
+    pass numpy arrays to stock turnover calc
+    return xarray dataset with detailed stock turnover calculation details
+    """
     # 1d arrays
-    bld_arr = np.array(building_stock)
+    bld_arr = np.array(building.building_stock)
     sat_arr = np.array(end_use.saturation)
     fs_arr = np.array(end_use.fuel_share)
-    years_arr = np.arange(end_use.start_year, end_use.end_year + 1)
     level_arr = np.array([x.efficiency_level for x in end_use.equipment])
-    label_arr = np.array([x.label for x in end_use.equipment])
+    el_label_arr = np.array([x.label for x in end_use.equipment])
 
     # 2d arrays
     eff_mat = np.array([np.array(x.efficiency_share) for x in end_use.equipment])
@@ -122,39 +130,90 @@ def create_end_use_xarray(end_use: EndUse, building_stock: np.array) -> xr.Datas
     # handle efficiency ramp if it exists
     ramp_mat = np.ones(equip_mat.shape)
     if end_use.ramp_efficiency:
-        ramp_mat = create_ramp_matrix(equip_mat, end_use.ramp_efficiency)
+        ramp_mat = _create_ramp_matrix(equip_mat, end_use.ramp_efficiency)
 
-    st_mat = stock_turnover_calculation(equip_mat, ul_mat, ramp_mat)
+    st_mat = _create_stock_turnover(equip_mat, ul_mat, ramp_mat)
 
-    # TODO xarray supports no leap year method for datetimes
-    # add noleap datetimes as a coordinate when load shapes are added
+    # build the xarray
     data_xr = {
-        "building_stock": (["years"], bld_arr),
-        "saturation": (["years"], sat_arr),
-        "fuel_share": (["years"], fs_arr),
-        "ramp": (["efficeincy_level", "years"], ramp_mat),
-        "efficiency_share": (["efficiency_level", "years"], eff_mat),
-        "consumption": (["efficiency_level", "years"], con_mat),
-        "useful_life": (["efficiency_level", "years"], ul_mat),
-        "equipment_stock": (["efficiency_level", "years"], equip_mat),
-        "st_mat": (["efficiency_level", "year"], st_mat),
+        "building_stock": (["year"], bld_arr),
+        "saturation": (["year"], sat_arr),
+        "fuel_share": (["year"], fs_arr),
+        "ramp_matrix": (["efficiency_level", "year"], ramp_mat),
+        "efficiency_share": (["efficiency_level", "year"], eff_mat),
+        "unit_consumption": (["efficiency_level", "year"], con_mat),
+        "useful_life": (["efficiency_level", "year"], ul_mat),
+        "init_equipment_stock": (["efficiency_level", "year"], equip_mat),
+        "equipment_stock": (["efficiency_level", "year"], st_mat),
+        "consumption": (["efficiency_level", "year"], st_mat * con_mat),
     }
 
-    coords_xr = {
-        "efficiency_level": (level_arr),
-        "years": (years_arr),
-        "label": ("efficiency_share", label_arr),
+    coors_xr = {
+        "efficiency_level": level_arr,
+        "efficiency_label": ("efficiency_level", el_label_arr),
+        "year": np.arange(end_use.start_year, end_use.end_year + 1),
+        "end_use_label": end_use.label,
+        "building_label": building.label,
     }
 
-    end_use_xr = xr.Dataset(data_vars=data_xr, coords=coords_xr)
+    attrs_xr = {"datetime_created": datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
 
-    return end_use_xr
+    # create xarray dataset and check if redim required
+    # xarray requires equal dims for netcdf export
+    dataset_xr = xr.Dataset(data_vars=data_xr, coords=coors_xr, attrs=attrs_xr)
+    if dataset_xr.dims["efficiency_level"] < building._end_use_len:
+        dataset_xr = dataset_xr.reindex(
+            {"efficiency_level": np.arange(1, building._end_use_len + 1)}
+        )
+    return dataset_xr
 
 
-def get_building_arrays(building: Building):
-
-    end_uses = []
+def _create_xarray_list_from_building(building: Building) -> Dict[str, xr.Dataset]:
+    """Dispatcher to create xarray DataSet from building end-use objects"""
+    xr_datasets = {}
     for i in building.end_uses:
-        end_uses.append(create_end_use_xarray(i, building.building_stock))
+        xr_datasets[i.label] = _create_xarray_from_end_use(building, i)
+    return xr_datasets
 
-    return end_uses
+
+class BuildingModel:
+    def __init__(self, building: Building):
+        self.building_label = building.label
+        self.model = self._create_model(building)
+
+    def _create_model(self, building: Building) -> xr.DataArray:
+        return _create_xarray_list_from_building(building)
+
+    def to_dataframe(self) -> pd.DataFrame:
+        """Concatenate list of xarray datasets into a single dataframe"""
+        # xarray datasets may contain nans to keep consistent dims
+        # need to drop nan rows before converting to pd.DataFrame
+        dataframe = pd.concat([i.to_dataframe() for i in self.model.values()])
+        return dataframe.dropna(axis=0).reset_index()
+
+    def to_netcdf(self, path: str, file_name: Optional[str] = None) -> None:
+        """
+        Export xarrays to netcdf file structure
+        Required params:
+            path: folder path ex: "./some_dir/"
+        Optional params:
+            file_name: overrides default file name (not recommended)
+        """
+        # build file path
+        if file_name is not None:
+            path += file_name
+        else:
+            path += self.building_label + ".nc"
+
+        # if file alread exists then remove
+        if os.path.exists(path):
+            os.remove(path)
+
+        # will append xarray datasets to file
+        # file has must exist for append mode to work
+        for n, (i, x) in enumerate(self.model.items()):
+            # write first file without append
+            if n == 0:
+                x.to_netcdf(path, group=i)
+            else:
+                x.to_netcdf(path, group=i, mode="a")
