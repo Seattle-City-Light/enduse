@@ -11,10 +11,13 @@ from pydantic import (
     Field,
     validator,
     root_validator,
+    PrivateAttr,
 )
 
 # TODO alias on all field names for DF conversion?
 # TODO modify ramp to handle multiple efficiency ramp levels
+# TODO transition matrix could be used to handle multiple efficiency levels
+# TODO modify stock objects to handle different adoption logic: type='decay', type='logit', type='markov chain'
 
 
 def check_expected_list_length(v: list, values: dict):
@@ -25,6 +28,7 @@ def check_expected_list_length(v: list, values: dict):
     return v
 
 
+# TODO change label consumption -> unit_consumption
 class Equipment(BaseModel):
     label: StrictStr = Field(None, alias="equipment_label")
     efficiency_level: PositiveInt
@@ -187,6 +191,15 @@ class Building(BaseModel):
     building_stock: List[PositiveFloat]
     segment: Optional[StrictStr] = None
     construction_vintage: Optional[StrictStr] = None
+
+    # private attribute to track max # of efficiency shares
+    # need this dimension to ensure all numpy arrays in enduse -> stockturnover have same dims
+    # xarray requires DataSets to have same dims for most opertations
+    _end_use_len: int = PrivateAttr()
+
+    def __init__(self, **data):
+        super().__init__(**data)
+        self._end_use_len = max([len(getattr(i, "equipment")) for i in self.end_uses])
 
     @validator("end_uses")
     def validate_end_use_list_length(cls, v, values):
