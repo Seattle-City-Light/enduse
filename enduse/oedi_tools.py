@@ -82,10 +82,12 @@ com_building_types = [
 ]
 
 
-def pull_nrel_load_shapes(
+def pull_nrel_load_profiles(
     segment: str, weather_type: str, bldg_type: str, state: str, puma_code: str,
 ) -> pd.DataFrame:
-
+    """
+    Function that makes the request to NREL data lake to download aggregate load profile .csv
+    """
     # URL to the NREL data lake csv
     url = (
         "https://oedi-data-lake.s3.amazonaws.com/nrel-pds-building-stock/end-use-load-profiles-for-us-building-stock/2021/"
@@ -113,7 +115,11 @@ def pull_nrel_load_shapes(
     return bldg
 
 
-class PullLoadShape(BaseModel):
+class PullLoadProfiles(BaseModel):
+    """
+    Class to validate url inputs to pull NREL aggregate load profiles
+    """
+
     segment: StrictStr
     weather_type: StrictStr
     bldg_type: StrictStr
