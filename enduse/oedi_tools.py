@@ -1,6 +1,8 @@
-from attr import validate
 import pandas as pd
 import warnings
+import dask
+
+from typing import List, Tuple, Optional
 from pydantic import BaseModel, StrictStr, validator
 
 state_abb = [
@@ -82,13 +84,9 @@ com_building_types = [
 ]
 
 
-def pull_nrel_load_profiles(
-    segment: str, weather_type: str, bldg_type: str, state: str, puma_code: str,
-) -> pd.DataFrame:
-    """
-    Function that makes the request to NREL data lake to download aggregate load profile .csv
-    """
-    # URL to the NREL data lake csv
+def _generate_url_from_path_params(
+    segment: str, weather_type: str, state: str, puma_code: str, bldg_type: str
+) -> str:
     url = (
         "https://oedi-data-lake.s3.amazonaws.com/nrel-pds-building-stock/end-use-load-profiles-for-us-building-stock/2021/"
         + segment
@@ -102,33 +100,28 @@ def pull_nrel_load_profiles(
         + bldg_type
         + ".csv"
     )
+    return url
 
-    # checking if file exists
+
+def _pull_nrel_load_profiles(label: str, url: str) -> Tuple[str, pd.DataFrame]:
+    """
+    Function that makes the request to NREL data lake to download aggregate load profile .csv
+    """
     try:
         bldg = pd.read_csv(url, infer_datetime_format=True, parse_dates=["timestamp"])
-
     except:
         pass
         warnings.warn(f"{url} csv file does not exist.")
         bldg = None
+    return (label, bldg)
 
-    return bldg
 
-
-class PullLoadProfiles(BaseModel):
-    """
-    Class to validate url inputs to pull NREL aggregate load profiles
-    """
-
+class LoadProfilePathValidator(BaseModel):
     segment: StrictStr
     weather_type: StrictStr
-    bldg_type: StrictStr
     state: StrictStr
     puma_code: StrictStr
-
-    def __init__(self, **data):
-        super().__init__(**data)
-        object.__setattr__(self, "load_shapes", self.get_load_shapes())
+    bldg_type: StrictStr
 
     @validator("segment")
     def check_valid_segment(cls, v):
@@ -144,9 +137,7 @@ class PullLoadProfiles(BaseModel):
 
     @validator("bldg_type")
     def check_valid_building_type(cls, v, values):
-
-        if "segment" in values.keys():
-
+        if "segment" in values.keys() and v is not None:
             if values["segment"] == "resstock" and v not in rs_building_types:
                 raise ValueError(
                     f"{v} is not a valid building type for {values['segment']}. Please select a vaild building type from this list: \n {rs_building_types}"
@@ -175,10 +166,90 @@ class PullLoadProfiles(BaseModel):
             )
         return v
 
-    def get_load_shapes(self):
-        load_shapes = pull_nrel_load_shapes(
-            self.segment, self.weather_type, self.bldg_type, self.state, self.puma_code
+
+class LoadProfiles:
+    def __init__(
+        self,
+        segment: str,
+        weather_type: str,
+        state: str,
+        puma_code: str,
+        bldg_types: List[str],
+        validate_paths: bool = True,
+        pull_load_profiles: bool = True,
+        use_dask: bool = True,
+    ):
+        self.segment = segment
+        self.weather_type = weather_type
+        self.state = state
+        self.puma_code = puma_code
+        self.bldg_types = bldg_types
+        self.validate_paths = validate_paths
+
+        # url validation is optional
+        if validate_paths:
+            self._validate_load_profile_paths()
+
+        self.urls = self._generate_urls()
+
+        # pulling load profiles on instantion is optional
+        self.load_profiles = None
+
+        if pull_load_profiles:
+            # default behavior is to use dask to pull in parallel
+            self.pull_load_profiles(use_dask)
+
+    def _validate_load_profile_paths(self) -> None:
+        for i in self.bldg_types:
+            LoadProfilePathValidator(
+                segment=self.segment,
+                weather_type=self.weather_type,
+                state=self.state,
+                puma_code=self.puma_code,
+                bldg_type=i,
+            )
+
+    def _generate_urls(self) -> List[str]:
+        urls = []
+        for i in self.bldg_types:
+            urls.append(
+                _generate_url_from_path_params(
+                    self.segment, self.weather_type, self.state, self.puma_code, i
+                )
+            )
+        return urls
+
+    def pull_load_profiles(self, use_dask: bool = True) -> None:
+        load_profiles = []
+
+        if use_dask:
+            for i, x in zip(self.bldg_types, self.urls):
+                load_profiles.append(dask.delayed(_pull_nrel_load_profiles)(i, x))
+            load_profiles = dask.compute(*load_profiles)
+        else:
+            for i in self.urls:
+                load_profiles.append(_pull_nrel_load_profiles(i, x))
+
+        setattr(self, "load_profiles", dict(load_profiles))
+
+    def load_profiles_to_csv(
+        self, path: str, use_dask: bool = True, file_names: Optional[str] = None
+    ) -> None:
+        base_path = (
+            f"{path}/{self.segment}_{self.weather_type}_{self.state}_{self.puma_code}_"
         )
 
-        return load_shapes
+        outputs = []
 
+        if use_dask:
+            for i, x in self.load_profiles.items():
+                # avoid trying to export None types for invalid urls
+                if x is not None:
+                    path = base_path + i + ".csv"
+                    outputs.append(dask.delayed(x.to_csv)(path, index=False))
+            dask.compute(*outputs)
+        else:
+            for i, x in self.load_profiles.items():
+                if x is not None:
+                    path = base_path + i + ".csv"
+                    x.to_csv(path, index=False)
