@@ -5,7 +5,8 @@ import xarray as xr
 import dask
 
 from typing import Optional, List
-from glob import glob
+
+# from glob import glob
 
 
 def read_load_profiles_from_csvs(
@@ -70,3 +71,7 @@ def load_shape_xarray_from_nrel_load_profile(
     )
 
     return load_shape_xr
+
+
+def test():
+    return None
