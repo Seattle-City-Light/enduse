@@ -1,5 +1,4 @@
 import os
-import shutil
 import numpy as np
 import pandas as pd
 import xarray as xr
@@ -129,9 +128,10 @@ def _create_xarray_from_end_use(building: Building, end_use: EndUse) -> xr.Datas
     equip_mat = bld_arr * sat_arr * fs_arr * eff_mat
 
     # handle efficiency ramp if it exists
-    ramp_mat = np.ones(equip_mat.shape)
     if end_use.ramp_efficiency:
         ramp_mat = _create_ramp_matrix(equip_mat, end_use.ramp_efficiency)
+    else:
+        ramp_mat = np.ones(equip_mat.shape)
 
     st_mat = _create_stock_turnover(equip_mat, ul_mat, ramp_mat)
 
@@ -187,8 +187,7 @@ class BuildingModel:
         """Concatenate list of xarray datasets into a single dataframe"""
         # xarray datasets may contain nans to keep consistent dims
         # need to drop nan rows before converting to pd.DataFrame
-        dataframe = pd.concat([i.to_dataframe() for i in self.model.values()])
-        return dataframe.dropna(axis=0).reset_index()
+        return self.model.to_dataframe().dropna(axis=0).reset_index()
 
     def to_netcdf(self, path: str, file_name: Optional[str] = None) -> None:
         """
