@@ -7,18 +7,20 @@ from matplotlib import pyplot as plt
 
 from enduse.stockobjects import Equipment, RampEfficiency, EndUse, Building
 from enduse.stockturnover import BuildingModel
-from enduse.oedi_tools import PullLoadProfiles
+from enduse.oedi_tools import LoadProfiles
 
-oedi_sf_scl_parms = {
+res_oedi_puma = {
     "segment": "resstock",
     "weather_type": "tmy3",
-    "bldg_type": "single-family_attached",
     "state": "WA",
     "puma_code": "g53011606",
+    "bldg_types": ["single-family_detached"],
 }
 
-oedi_sf_scl = PullLoadProfiles(**oedi_sf_scl_parms)
-oedi_sf_scl_df = oedi_sf_scl.get_load_shapes()
+print("Pulling resstock")
+
+oedi_sf_scl = LoadProfiles(**res_oedi_puma)
+oedi_sf_scl_df = oedi_sf_scl.load_profiles["single-family_detached"]
 
 agg_cols = [
     "out.electricity.cooling.energy_consumption",
@@ -117,6 +119,113 @@ cons_shaped_df = cons_shaped_df.set_index(
 
 cons_shaped_df = cons_shaped_df.rename(columns={0: "Electric Furnance", 1: "Heat Pump"})
 
+stock_turnover_df = stock_turnover.to_dataframe().pivot(
+    index="year", columns="efficiency_label", values=["equipment_stock", "consumption"]
+)
+
+stock_turnover_df.index = pd.to_datetime(stock_turnover_df.index, format="%Y")
+
+# stock turnover graphic
+fig, axs = plt.subplots(ncols=2, figsize=(14, 4), sharey=False)
+# equipment count subplot
+axs[0].plot(
+    stock_turnover_df["equipment_stock"].sum(axis=1),
+    color="#FFBE0B",
+    lw=2,
+    label="Electric Resistence Space Heat",
+)
+
+axs[0].fill_between(
+    stock_turnover_df.index,
+    stock_turnover_df["equipment_stock"][
+        "Install Ductless Heat Pump in House with Existing FAF - HZ1"
+    ],
+    stock_turnover_df["equipment_stock"].sum(axis=1),
+    color="#FFBE0B",
+    alpha=0.10,
+)
+
+axs[0].plot(
+    stock_turnover_df["equipment_stock"][
+        "Install Ductless Heat Pump in House with Existing FAF - HZ1"
+    ],
+    color="#3A86FF",
+    lw=2,
+    label="Heat Pump",
+)
+
+axs[0].fill_between(
+    stock_turnover_df.index,
+    stock_turnover_df["equipment_stock"][
+        "Install Ductless Heat Pump in House with Existing FAF - HZ1"
+    ],
+    color="#3A86FF",
+    alpha=0.10,
+)
+
+# annual consumption subplot
+axs[1].plot(
+    stock_turnover_df["consumption"].sum(axis=1) / 1000 / 8760,
+    color="#FFBE0B",
+    lw=2,
+    label="Electric Resistence Space Heat",
+)
+
+axs[1].fill_between(
+    stock_turnover_df.index,
+    stock_turnover_df["consumption"][
+        "Install Ductless Heat Pump in House with Existing FAF - HZ1"
+    ]
+    / 1000
+    / 8760,
+    stock_turnover_df["consumption"].sum(axis=1) / 1000 / 8760,
+    color="#FFBE0B",
+    alpha=0.10,
+)
+
+axs[1].plot(
+    stock_turnover_df["consumption"][
+        "Install Ductless Heat Pump in House with Existing FAF - HZ1"
+    ]
+    / 1000
+    / 8760,
+    color="#3A86FF",
+    lw=2,
+    label="Heat Pump",
+)
+
+axs[1].fill_between(
+    stock_turnover_df.index,
+    stock_turnover_df["consumption"][
+        "Install Ductless Heat Pump in House with Existing FAF - HZ1"
+    ]
+    / 1000
+    / 8760,
+    color="#3A86FF",
+    alpha=0.10,
+)
+
+for ax in axs:
+    # axis formatting
+    ax.tick_params(color="grey", labelcolor="grey")
+    ax.yaxis.set_ticks_position("none")
+    ax.spines["top"].set_edgecolor("lightgrey")
+    ax.spines["bottom"].set_edgecolor("lightgrey")
+    ax.spines["left"].set_edgecolor("lightgrey")
+    ax.spines["right"].set_edgecolor("lightgrey")
+
+axs[0].set_ylabel("Equipment Counts", size=10, color="grey")
+axs[1].set_ylabel("Annual Consumption (aMW)", size=10, color="grey")
+
+legend = axs[1].legend(loc="upper right", frameon=False)
+
+for text in legend.get_texts():
+    text.set_color("grey")
+    text.set_size(10)
+
+fig.tight_layout()
+
+# create load shape graphic
 fig, axs = plt.subplots(ncols=3, figsize=(14, 4), sharey=True)
 
 for ax, year in zip(axs, ["2022", "2030", "2040"]):
@@ -157,4 +266,6 @@ for text in legend.get_texts():
 
 fig.tight_layout()
 
-fig.savefig("I:/FINANCE/FPU/LOAD/2022/Requests/NREL/load_shape_graphic.png", dpi=300)
+
+# to save fig with high dpi
+# fig.savefig("./some/dir/graphic_name.png", dpi=300)
