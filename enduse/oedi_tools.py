@@ -190,14 +190,22 @@ class LoadProfiles:
         if validate_paths:
             self._validate_load_profile_paths()
 
-        self.urls = self._generate_urls()
+        self._urls = self._generate_urls()
 
         # pulling load profiles on instantion is optional
-        self.load_profiles = None
-
         if pull_load_profiles:
             # default behavior is to use dask to pull in parallel
-            self.pull_load_profiles(use_dask)
+            self._load_profiles = self.pull_load_profiles(use_dask)
+        else:
+            self._load_profiles - None
+
+    @property
+    def urls(self):
+        return self._urls
+
+    @property
+    def load_profiles(self):
+        return self._load_profiles
 
     def _validate_load_profile_paths(self) -> None:
         for i in self.bldg_types:
@@ -219,6 +227,7 @@ class LoadProfiles:
             )
         return urls
 
+    # not a protected method since user may want to review urls manually before pulling .csv files
     def pull_load_profiles(self, use_dask: bool = True) -> None:
         load_profiles = []
 
@@ -230,7 +239,7 @@ class LoadProfiles:
             for i in self.urls:
                 load_profiles.append(_pull_nrel_load_profiles(i, x))
 
-        setattr(self, "load_profiles", dict(load_profiles))
+        return dict(load_profiles)
 
     def load_profiles_to_csv(
         self, path: str, use_dask: bool = True, file_names: Optional[str] = None
