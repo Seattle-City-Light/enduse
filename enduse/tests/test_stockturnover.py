@@ -200,12 +200,8 @@ for i in [f"Building_{i}" for i in range(10)]:
 
 valid_building_parsed = [Building(**i) for i in valid_buildings]
 
-# test_building_model = BuildingModel(valid_building_parsed)
+# TODO need to build out test framework for xarray functionality
+# test_xarray = BuildingModel(valid_building_parsed[0])
 
-test_xarray = BuildingModel(valid_building_parsed[0])
-
-netcdf_path = "I:/FINANCE/FPU/LOAD/Model Development/enduse/outputs/netcdf/"
-test_xarray.to_netcdf(netcdf_path)
-
-# xarray will not show groups in file
-# need to use https://github.com/pydata/xarray/issues/6174
+# netcdf_path = "I:/FINANCE/FPU/LOAD/Model Development/enduse/outputs/netcdf/"
+# test_xarray.to_netcdf(netcdf_path)
