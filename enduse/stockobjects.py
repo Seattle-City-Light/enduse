@@ -89,7 +89,7 @@ class RampEfficiency(BaseModel):
         return v
 
     # check that ramp inputs are a consistent length
-    @root_validator(pre=True)
+    @root_validator
     def validate_same_list_length(cls, values):
         label = values.get("label")
         length = len(values.get("ramp_year"))
