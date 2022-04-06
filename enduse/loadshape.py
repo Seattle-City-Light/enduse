@@ -1,5 +1,4 @@
 # need to create Equipment and RampEfficiency objects to test ramp
-from matplotlib.style import use
 from nbformat import ValidationError
 import numpy as np
 import pandas as pd
@@ -10,38 +9,19 @@ from typing import Optional, Tuple, Dict, List, Union
 from glob import glob
 
 
-def read_load_profiles_from_csvs(
-    path: str, use_dask: bool = False
-) -> Dict[str, pd.DataFrame]:
+def read_load_profiles_from_csvs(path: str) -> Dict[str, pd.DataFrame]:
     """
-    Read in a single NREL load profile .csv
+    Read in single or multiple NREL load profile .csv(s)
     Note that dask will only provide a performance boost when there are many large .csv files
     Since dask requires some overheard for scheduling
     Required params:
         path: path/to/dir/
-        use_dask: use dask to parallelize operations (default False)
     """
     csv_paths = glob(f"{path}/*.csv")
-    if use_dask:
-        df_dict = []
-        for i in csv_paths:
-            # append a tuple (label, dataframe)
-            df_dict.append(
-                (
-                    i,
-                    dask.delayed(
-                        pd.read_csv(
-                            i, parse_dates=["timestamp"], infer_datetime_format=True
-                        )
-                    ),
-                )
-            )
-        df_dict = dict(dask.compute(*df_dict))
-    else:
-        df_dict = {
-            i: pd.read_csv(i, parse_dates=["timestamp"], infer_datetime_format=True)
-            for i in csv_paths
-        }
+    df_dict = {
+        i: pd.read_csv(i, parse_dates=["timestamp"], infer_datetime_format=True)
+        for i in csv_paths
+    }
     return df_dict
 
 
@@ -97,7 +77,6 @@ def load_shape_from_multiple_load_profiles(
     values_filt: List[str] = ["out.electricity"],
     freq: str = "H",
     concat: bool = True,
-    use_dask: bool = False,
 ) -> Union[xr.Dataset, Dict[str, xr.Dataset]]:
     """
     Wrapper function to handle multiple load profiles returned from read_profiles_from_csvs
@@ -105,21 +84,12 @@ def load_shape_from_multiple_load_profiles(
     ...
     """
     xarrays = []
-    if use_dask:
-        for i, x in load_profiles.items():
-            xarrays.append(
-                dask.delayed(load_shape_from_load_profile)(
-                    i, x, timestamp_offset, meta_filt, values_filt, freq
-                )
+    for i, x in load_profiles.items():
+        xarrays.append(
+            load_shape_from_load_profile(
+                i, x, timestamp_offset, meta_filt, values_filt, freq
             )
-        xarrays = dask.compute(*xarrays)
-    else:
-        for i, x in load_profiles.items():
-            xarrays.append(
-                load_shape_from_load_profile(
-                    i, x, timestamp_offset, meta_filt, values_filt, freq
-                )
-            )
+        )
     xarrays = dict(xarrays)
     # merge into single xarray
     if concat:
@@ -140,7 +110,6 @@ class LoadShapesFromLoadProfiles:
         meta_filt: List[str] = ["puma", "building_type"],
         values_filt: List[str] = ["out.electricity"],
         freq: str = "H",
-        use_dask: bool = False,
         dir: Optional[str] = None,
     ):
         # initialize params
@@ -149,7 +118,6 @@ class LoadShapesFromLoadProfiles:
         self.meta_filt = meta_filt
         self.values_filt = values_filt
         self.freq = freq
-        self.use_dask = use_dask
 
         self._validate_load_profile_params(load_profiles, dir)
 
@@ -181,7 +149,6 @@ class LoadShapesFromLoadProfiles:
             meta_filt=self.meta_filt,
             values_filt=self.values_filt,
             freq=self.freq,
-            use_dask=self.use_dask,
         )
         return load_shapes
 
