@@ -1,8 +1,6 @@
 import numpy as np
 import pandas as pd
 
-from typing import List
-
 from matplotlib import pyplot as plt
 
 from enduse.stockobjects import Equipment, RampEfficiency, EndUse, Building

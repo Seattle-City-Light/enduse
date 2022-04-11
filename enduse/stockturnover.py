@@ -6,7 +6,7 @@ import xarray as xr
 from typing import List, Dict, Optional
 from datetime import datetime
 
-from enduse.stockobjects import Building, EndUse, RampEfficiency
+from enduse.stockobjects import Building, EndUse, LoadShape, RampEfficiency
 
 
 def _create_ramp_matrix(
@@ -106,36 +106,22 @@ def _create_stock_turnover(
     return equip_turn_cum_mat
 
 
-def _create_xarray_from_end_use(building: Building, end_use: EndUse) -> xr.Dataset:
-    """
-    Extract params from EndUse object and convert to numpy arrarys
-    pass numpy arrays to stock turnover calc
-    return xarray dataset with detailed stock turnover calculation details
-    """
-    # 1d arrays
-    bld_arr = np.array(building.building_stock)
-    sat_arr = np.array(end_use.saturation)
-    fs_arr = np.array(end_use.fuel_share)
-    level_arr = np.array([x.efficiency_level for x in end_use.equipment])
-    el_label_arr = np.array([x.label for x in end_use.equipment])
+def _build_xarray(
+    bld_arr: np.ndarray,
+    sat_arr: np.ndarray,
+    fs_arr: np.ndarray,
+    ramp_mat: np.ndarray,
+    eff_mat: np.ndarray,
+    con_mat: np.ndarray,
+    ul_mat: np.ndarray,
+    equip_mat: np.ndarray,
+    st_mat: np.ndarray,
+    level_arr: np.ndarray,
+    el_label_arr: np.ndarray,
+    end_use: EndUse,
+    building: Building,
+) -> xr.Dataset:
 
-    # 2d arrays
-    eff_mat = np.array([np.array(x.efficiency_share) for x in end_use.equipment])
-    con_mat = np.array([np.array(x.consumption) for x in end_use.equipment])
-    ul_mat = np.array([np.array(x.useful_life) for x in end_use.equipment])
-
-    # equipment stock calc
-    equip_mat = bld_arr * sat_arr * fs_arr * eff_mat
-
-    # handle efficiency ramp if it exists
-    if end_use.ramp_efficiency:
-        ramp_mat = _create_ramp_matrix(equip_mat, end_use.ramp_efficiency)
-    else:
-        ramp_mat = np.ones(equip_mat.shape)
-
-    st_mat = _create_stock_turnover(equip_mat, ul_mat, ramp_mat)
-
-    # build the xarray
     data_xr = {
         "building_stock": (["year"], bld_arr),
         "saturation": (["year"], sat_arr),
@@ -169,10 +155,115 @@ def _create_xarray_from_end_use(building: Building, end_use: EndUse) -> xr.Datas
     return dataset_xr
 
 
+def _read_filter_load_shape_netcdf(load_shape: LoadShape) -> xr.Dataset:
+    with xr.open_dataset(load_shape.source_file) as ds:
+        subset = ds.sel(load_shape.dim_filters)
+    return subset
+
+
+def _create_load_shape_xarray(
+    dataset_xr: xr.Dataset, load_shape: LoadShape
+) -> xr.Dataset:
+    xr_subset = _read_filter_load_shape_netcdf(load_shape)
+    # if multiple efficiency levels
+    if dataset_xr["efficiency_level"].shape[0] > 1:
+        cons_shaped = np.einsum(
+            "ij,k->ijk",
+            dataset_xr["consumption"].values,
+            xr_subset[load_shape.value_filter],
+        )
+    # otherwise there is just a single efficiency level
+    else:
+        cons_shaped = np.einsum(
+            "i,i->i",
+            dataset_xr["consumption"].values,
+            xr_subset[load_shape.value_filter],
+        )
+
+    dataset_xr = dataset_xr.expand_dims(
+        {"hour_of_year": xr_subset["hour_of_year"].values}
+    )
+
+    dataset_xr["consumption_shaped"] = (
+        ("efficiency_level", "year", "hour_of_year"),
+        cons_shaped,
+    )
+    return dataset_xr
+
+
+def _create_xarray_from_end_use(building: Building, end_use: EndUse) -> xr.Dataset:
+    """
+    Extract params from EndUse object and convert to numpy arrarys
+    pass numpy arrays to stock turnover calc
+    return xarray dataset with detailed stock turnover calculation details
+    """
+    xr_dict = {}
+
+    # 1d arrays
+    xr_dict["bld_arr"] = np.array(building.building_stock)
+    xr_dict["sat_arr"] = np.array(end_use.saturation)
+    xr_dict["fs_arr"] = np.array(end_use.fuel_share)
+    xr_dict["level_arr"] = np.array([x.efficiency_level for x in end_use.equipment])
+    xr_dict["el_label_arr"] = np.array([x.label for x in end_use.equipment])
+
+    # 2d arrays
+    xr_dict["eff_mat"] = np.array(
+        [np.array(x.efficiency_share) for x in end_use.equipment]
+    )
+    xr_dict["con_mat"] = np.array([np.array(x.consumption) for x in end_use.equipment])
+    xr_dict["ul_mat"] = np.array([np.array(x.useful_life) for x in end_use.equipment])
+
+    # calculated values
+    # equipment stock calc
+    xr_dict["equip_mat"] = (
+        xr_dict["bld_arr"] * xr_dict["sat_arr"] * xr_dict["fs_arr"] * xr_dict["eff_mat"]
+    )
+
+    # handle efficiency ramp if it exists
+    if end_use.ramp_efficiency:
+        xr_dict["ramp_mat"] = _create_ramp_matrix(
+            xr_dict["equip_mat"], end_use.ramp_efficiency
+        )
+    else:
+        xr_dict["ramp_mat"] = np.ones(xr_dict["equip_mat"].shape)
+
+    xr_dict["st_mat"] = _create_stock_turnover(
+        xr_dict["equip_mat"], xr_dict["ul_mat"], xr_dict["ramp_mat"]
+    )
+    xr_dict["end_use"] = end_use
+    xr_dict["building"] = building
+
+    dataset_xr = _build_xarray(**xr_dict)
+
+    if end_use.load_shape:
+        dataset_xr = _create_load_shape_xarray(dataset_xr, end_use.load_shape)
+
+    return dataset_xr
+
+
 def _create_dataset_from_building(building: Building) -> xr.Dataset:
     """Dispatcher to create xarray DataSet from building end-use objects"""
-    xr_datasets = [_create_xarray_from_end_use(building, i) for i in building.end_uses]
-    return xr.combine_nested(xr_datasets, concat_dim="end_use_label")
+    xr_datasets = xr.combine_nested(
+        [_create_xarray_from_end_use(building, i) for i in building.end_uses],
+        concat_dim="end_use_label",
+    )
+    start_time = f"{building.start_year}-01-01"
+    end_time = f"{building.end_year + 1}-01-01"
+    # create datetime index
+    if "hour_of_year" in xr_datasets.dims:
+        # create new multiindex from year and hour
+        xr_datasets = xr_datasets.stack(datetime=("year", "hour_of_year"))
+        # override with datetime values
+        xr_datasets["datetime"] = xr.cftime_range(
+            start=start_time, end=end_time, freq="H", closed="left", calendar="noleap"
+        )
+    # create a new dim for annual datetime
+    else:
+        xr_datasets["year"] = xr.cftime_range(
+            start=start_time, end=end_time, freq="AS", closed="left"
+        )
+
+    return xr_datasets
 
 
 class BuildingModel:
@@ -181,6 +272,7 @@ class BuildingModel:
         self.model = self._create_model(building)
 
     def _create_model(self, building: Building) -> xr.DataArray:
+        model_xr = _create_dataset_from_building(building)
         return _create_dataset_from_building(building)
 
     def to_dataframe(self) -> pd.DataFrame:

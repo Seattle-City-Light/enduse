@@ -25,6 +25,7 @@ def read_load_profiles_from_csvs(path: str) -> Dict[str, pd.DataFrame]:
     return df_dict
 
 
+# TODO create heatpump shape as part of this function
 def load_shape_from_load_profile(
     label: str,
     load_profile: pd.DataFrame,

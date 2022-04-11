@@ -1,7 +1,8 @@
-import json
 import numpy as np
 
-from typing import List, Optional
+from typing import List, Optional, Dict
+from pathlib import Path
+
 from pydantic import (
     BaseModel,
     StrictStr,
@@ -99,6 +100,19 @@ class RampEfficiency(BaseModel):
         return values
 
 
+class LoadShape(BaseModel):
+    label: StrictStr = Field(None, alias="load_shape_label")
+    source_file: StrictStr
+    dim_filters: Dict[StrictStr, StrictStr]
+    value_filter: StrictStr
+
+    @validator("source_file")
+    def validate_source_file(cls, v):
+        if not Path(v).is_file():
+            raise FileNotFoundError(f"{v} is invalid path")
+        return v
+
+
 class EndUse(BaseModel):
     label: StrictStr = Field(None, alias="end_use_label")
     equipment: List[Equipment]
@@ -107,6 +121,7 @@ class EndUse(BaseModel):
     end_year: Optional[PositiveInt] = None
     saturation: List[PositiveFloat]
     fuel_share: List[confloat(ge=0, le=1)]
+    load_shape: Optional[LoadShape]
 
     # check that all equipment has same list length
     @validator("equipment")

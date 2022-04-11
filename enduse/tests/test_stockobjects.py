@@ -3,7 +3,13 @@ import copy
 import numpy as np
 
 from pydantic import ValidationError
-from enduse.stockobjects import Equipment, RampEfficiency, EndUse, Building
+from enduse.stockobjects import (
+    Equipment,
+    RampEfficiency,
+    EndUse,
+    Building,
+    LoadProfileLoadShape,
+)
 
 
 equipment = []
@@ -393,3 +399,5 @@ class TestBuilding:
 
 
 building_parsed = [Building(**i) for i in buildings]
+
+# TODO build out tests for LoadShape object

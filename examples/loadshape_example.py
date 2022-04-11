@@ -23,7 +23,9 @@ pst_offset = -pd.Timedelta(hours=3, minutes=15)
 
 # pulling from dataframes
 resstock = read_load_profiles_from_csvs(resstock_path)
-resstock_loadshapes = LoadShapesFromLoadProfiles(load_profiles=resstock)
+resstock_loadshapes = LoadShapesFromLoadProfiles(
+    load_profiles=resstock, timestamp_offset=pst_offset
+)
 
 # pulling from dir of .csvs
 comstock_loadshapes = LoadShapesFromLoadProfiles(dir=comstock_path)
