@@ -1,6 +1,6 @@
 import numpy as np
 
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict, Union
 from pathlib import Path
 
 from pydantic import (
@@ -48,7 +48,7 @@ class Equipment(BaseModel):
 class RampEfficiency(BaseModel):
     label: StrictStr = Field(None, alias="ramp_label")
     ramp_equipment: List[Equipment]
-    ramp_year: Optional[List[PositiveInt]] = None
+    ramp_year: Optional[List[PositiveInt]]
 
     # inherit ramp_year if not provided
     @validator("ramp_year", always=True)
@@ -105,6 +105,7 @@ class LoadShape(BaseModel):
     source_file: StrictStr
     dim_filters: Dict[StrictStr, StrictStr]
     value_filter: StrictStr
+    load_shape_dims: Dict[StrictStr, int]
 
     @validator("source_file")
     def validate_source_file(cls, v):
@@ -116,9 +117,9 @@ class LoadShape(BaseModel):
 class EndUse(BaseModel):
     label: StrictStr = Field(None, alias="end_use_label")
     equipment: List[Equipment]
-    ramp_efficiency: Optional[RampEfficiency] = None
-    start_year: Optional[PositiveInt] = None
-    end_year: Optional[PositiveInt] = None
+    ramp_efficiency: Optional[RampEfficiency]
+    start_year: Optional[PositiveInt]
+    end_year: Optional[PositiveInt]
     saturation: List[PositiveFloat]
     fuel_share: List[confloat(ge=0, le=1)]
     load_shape: Optional[LoadShape]
@@ -204,17 +205,28 @@ class Building(BaseModel):
     start_year: Optional[PositiveInt]
     end_year: Optional[PositiveInt]
     building_stock: List[PositiveFloat]
-    segment: Optional[StrictStr] = None
-    construction_vintage: Optional[StrictStr] = None
+    segment: Optional[StrictStr]
+    construction_vintage: Optional[StrictStr]
 
-    # private attribute to track max # of efficiency shares
-    # need this dimension to ensure all numpy arrays in enduse -> stockturnover have same dims
-    # xarray requires DataSets to have same dims for most opertations
+    # private attribute to track max # of efficiency shares and load shapes dims
+    # need to ensure all numpy arrays in enduse -> stockturnover have same dims
+    # xarray requires Datasets to have same dims
     _end_use_len: int = PrivateAttr()
+    _has_load_shape: bool = PrivateAttr()
+    _load_shape_dims: Union[None, dict] = PrivateAttr()
 
     def __init__(self, **data):
         super().__init__(**data)
         self._end_use_len = max([len(getattr(i, "equipment")) for i in self.end_uses])
+        self._has_load_shape = any(
+            [isinstance(getattr(i, "load_shape"), LoadShape) for i in self.end_uses]
+        )
+
+        # if load shapes are provided then get max dimensions
+        if self._has_load_shape:
+            self._load_shape_dims = self._get_load_shape_dims()
+        else:
+            self._load_shape_dims = None
 
     @validator("end_uses")
     def validate_end_use_list_length(cls, v, values):
@@ -260,3 +272,12 @@ class Building(BaseModel):
     _check_expected_list_length: classmethod = validator(
         "building_stock", allow_reuse=True
     )(check_expected_list_length)
+
+    def _get_load_shape_dims(self):
+        """Get maximum number of load shape dims from end_uses"""
+        dims = [
+            len(i.load_shape.load_shape_dims.keys())
+            for i in self.end_uses
+            if i.load_shape
+        ]
+        return self.end_uses[dims.index(max(dims))].load_shape.load_shape_dims
