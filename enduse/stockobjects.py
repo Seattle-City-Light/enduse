@@ -113,6 +113,24 @@ class LoadShape(BaseModel):
             raise FileNotFoundError(f"{v} is invalid path")
         return v
 
+    @validator("load_shape_dims")
+    def validate_load_shape_dims_len(cls, v):
+        if len(v.keys()) > 3:
+            raise ValueError(
+                f"Provided load shape has dims = {len(v.keys())} and exceeds max allowed (3)"
+            )
+        return v
+
+    @validator("load_shape_dims")
+    def validate_load_shape_dims_keys(cls, v):
+        for i in v.keys():
+            if i not in ["hour_of_year", "weather_year", "forecast_year"]:
+                raise ValueError(
+                    "f {i} invalid dim name must be in: hour_of_year, weather_year, forecast_year"
+                )
+        if "hour_of_year" not in v.keys():
+            raise ValueError("Required dim: hour_of_year not provided")
+
 
 class EndUse(BaseModel):
     label: StrictStr = Field(None, alias="end_use_label")
@@ -273,6 +291,7 @@ class Building(BaseModel):
         "building_stock", allow_reuse=True
     )(check_expected_list_length)
 
+    # TODO add validator that load shape dims have same name
     def _get_load_shape_dims(self):
         """Get maximum number of load shape dims from end_uses"""
         dims = [
@@ -280,4 +299,9 @@ class Building(BaseModel):
             for i in self.end_uses
             if i.load_shape
         ]
-        return self.end_uses[dims.index(max(dims))].load_shape.load_shape_dims
+
+        max_dims = sorted(
+            self.end_uses[dims.index(max(dims))].load_shape.load_shape_dims.items()
+        )
+        return max_dims
+
