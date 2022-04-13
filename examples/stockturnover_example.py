@@ -63,6 +63,7 @@ heat_central_shape = {
         "in.geometry_building_type_recs": "Single-Family Detached",
     },
     "value_filter": "out.electricity.heating.energy_consumption",
+    "freq": "H",
 }
 
 end_uses = []
@@ -97,6 +98,7 @@ cook_range_ls = {
         "in.geometry_building_type_recs": "Single-Family Detached",
     },
     "value_filter": "out.electricity.cooking_range.energy_consumption",
+    "freq": "H",
 }
 
 end_uses.append(
@@ -106,6 +108,26 @@ end_uses.append(
         "saturation": np.linspace(1, 1, 20).tolist(),
         "fuel_share": np.linspace(0.25, 0.25, 20).tolist(),
         "load_shape": LoadShape(**cook_range_ls),
+    }
+)
+
+# end use no shape
+other_equip = {
+    "equipment_label": "Other Equipment",
+    "efficiency_level": 1,
+    "start_year": 2022,
+    "end_year": 2041,
+    "efficiency_share": np.linspace(1, 1, 20).tolist(),
+    "consumption": np.linspace(250, 250, 20).tolist(),
+    "useful_life": np.linspace(5, 5, 20).tolist(),
+}
+
+end_uses.append(
+    {
+        "end_use_label": "Other Equipment",
+        "equipment": [Equipment(**other_equip)],
+        "saturation": np.linspace(1, 1, 20).tolist(),
+        "fuel_share": np.linspace(1, 1, 20).tolist(),
     }
 )
 
@@ -119,6 +141,4 @@ building_parsed = Building(**building)
 
 stock_turnover = BuildingModel(building_parsed)
 
-# TODO test case where some equipment has load shape and others do not
 # TODO create logic where single equipment can override end-use load shape
-# TODO add logic to override shape for single equipment

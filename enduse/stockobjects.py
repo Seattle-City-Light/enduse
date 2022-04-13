@@ -105,7 +105,8 @@ class LoadShape(BaseModel):
     source_file: StrictStr
     dim_filters: Dict[StrictStr, StrictStr]
     value_filter: StrictStr
-    load_shape_dims: Dict[StrictStr, int]
+    freq: StrictStr = "H"
+    extra_dims: Optional[Dict[StrictStr, int]]
 
     @validator("source_file")
     def validate_source_file(cls, v):
@@ -113,23 +114,28 @@ class LoadShape(BaseModel):
             raise FileNotFoundError(f"{v} is invalid path")
         return v
 
-    @validator("load_shape_dims")
+    @validator("freq")
+    def valdidate_freq(cls, v):
+        if v not in ["H", "D"]:
+            raise ValueError(f"{v} invalid frequency not in: 'H' or 'D'")
+        return v
+
+    @validator("extra_dims")
     def validate_load_shape_dims_len(cls, v):
-        if len(v.keys()) > 3:
+        if len(v.keys()) > 2:
             raise ValueError(
-                f"Provided load shape has dims = {len(v.keys())} and exceeds max allowed (3)"
+                f"Provided load shape has extra_dims = {len(v.keys())} and exceeds max allowed (2)"
             )
         return v
 
-    @validator("load_shape_dims")
+    @validator("extra_dims")
     def validate_load_shape_dims_keys(cls, v):
         for i in v.keys():
-            if i not in ["hour_of_year", "weather_year", "forecast_year"]:
+            if i not in ["weather_year", "forecast_year"]:
                 raise ValueError(
-                    "f {i} invalid dim name must be in: hour_of_year, weather_year, forecast_year"
+                    "f {i} invalid dim name must be in: 'weather_year' or 'forecast_year"
                 )
-        if "hour_of_year" not in v.keys():
-            raise ValueError("Required dim: hour_of_year not provided")
+        return v
 
 
 class EndUse(BaseModel):
@@ -231,7 +237,8 @@ class Building(BaseModel):
     # xarray requires Datasets to have same dims
     _end_use_len: int = PrivateAttr()
     _has_load_shape: bool = PrivateAttr()
-    _load_shape_dims: Union[None, dict] = PrivateAttr()
+    _load_shape_freq: Union[None, StrictStr] = PrivateAttr()
+    _load_shape_extra_dims: Union[None, dict] = PrivateAttr()
 
     def __init__(self, **data):
         super().__init__(**data)
@@ -242,9 +249,11 @@ class Building(BaseModel):
 
         # if load shapes are provided then get max dimensions
         if self._has_load_shape:
-            self._load_shape_dims = self._get_load_shape_dims()
+            self._load_shape_freq = self._get_load_shape_freq()
+            if self._has_load_shape_extra_dims():
+                self._load_shape_extra_dims = self._get_load_shape_extra_dims()
         else:
-            self._load_shape_dims = None
+            self._load_shape_freq = None
 
     @validator("end_uses")
     def validate_end_use_list_length(cls, v, values):
@@ -273,6 +282,13 @@ class Building(BaseModel):
             raise ValueError(f"{label} end_use end_year values not equal")
         return v
 
+    @validator("end_uses")
+    def validate_end_use_load_shape_interval(cls, v):
+        freqs = [i.load_shape.freq for i in v if i.load_shape]
+        if not len(set(freqs)) == 1:
+            raise ValueError(f"Load shape frequencies are inconsistent")
+        return v
+
     @validator("start_year", always=True)
     def set_start_year(cls, v, values):
         if v is None:
@@ -291,17 +307,32 @@ class Building(BaseModel):
         "building_stock", allow_reuse=True
     )(check_expected_list_length)
 
-    # TODO add validator that load shape dims have same name
-    def _get_load_shape_dims(self):
-        """Get maximum number of load shape dims from end_uses"""
-        dims = [
-            len(i.load_shape.load_shape_dims.keys())
-            for i in self.end_uses
-            if i.load_shape
-        ]
+    def _get_load_shape_freq(self):
+        """Extract frequency from load shape"""
+        freq = set([i.load_shape.freq for i in self.end_uses if i.load_shape])
+        return list(freq)[0]
 
-        max_dims = sorted(
-            self.end_uses[dims.index(max(dims))].load_shape.load_shape_dims.items()
+    def _has_load_shape_extra_dims(self):
+        """Check if extra dims provided in load shapes"""
+        extra_dims = [i.load_shape.extra_dims for i in self.end_uses if i.load_shape]
+        return any(extra_dims)
+
+    def _get_load_shape_extra_dims(self):
+        """Get extra dims from end_uses"""
+        extra_dims = []
+        for i in self.end_uses:
+            if i.load_shape is not None:
+                if i.load_shape.extra_dims is not None:
+                    extra_dims.append(len(i.load_shape.extra_dims.keys()))
+                else:
+                    extra_dims.append(0)
+            else:
+                extra_dims.append(0)
+
+        max_extra_dims = sorted(
+            self.end_uses[
+                extra_dims.index(max(extra_dims))
+            ].load_shape.extra_dims.items()
         )
-        return max_dims
+        return max_extra_dims
 
