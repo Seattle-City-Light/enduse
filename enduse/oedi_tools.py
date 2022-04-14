@@ -332,7 +332,7 @@ class LoadProfiles:
 
             for i in load_profiles:
                 if i[1] is not None:
-                    i[1]["Temperature"] = puma_temps
+                    i[1]["temperature"] = puma_temps
 
         return dict(load_profiles)
 
