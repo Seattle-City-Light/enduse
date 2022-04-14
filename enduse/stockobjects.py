@@ -1,6 +1,6 @@
 import numpy as np
 
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict, Union
 from pathlib import Path
 
 from pydantic import (
@@ -48,7 +48,7 @@ class Equipment(BaseModel):
 class RampEfficiency(BaseModel):
     label: StrictStr = Field(None, alias="ramp_label")
     ramp_equipment: List[Equipment]
-    ramp_year: Optional[List[PositiveInt]] = None
+    ramp_year: Optional[List[PositiveInt]]
 
     # inherit ramp_year if not provided
     @validator("ramp_year", always=True)
@@ -105,6 +105,8 @@ class LoadShape(BaseModel):
     source_file: StrictStr
     dim_filters: Dict[StrictStr, StrictStr]
     value_filter: StrictStr
+    freq: StrictStr = "H"
+    extra_dims: Optional[Dict[StrictStr, int]]
 
     @validator("source_file")
     def validate_source_file(cls, v):
@@ -112,13 +114,36 @@ class LoadShape(BaseModel):
             raise FileNotFoundError(f"{v} is invalid path")
         return v
 
+    @validator("freq")
+    def valdidate_freq(cls, v):
+        if v not in ["H", "D"]:
+            raise ValueError(f"{v} invalid frequency not in: 'H' or 'D'")
+        return v
+
+    @validator("extra_dims")
+    def validate_load_shape_dims_len(cls, v):
+        if len(v.keys()) > 2:
+            raise ValueError(
+                f"Provided load shape has extra_dims = {len(v.keys())} and exceeds max allowed (2)"
+            )
+        return v
+
+    @validator("extra_dims")
+    def validate_load_shape_dims_keys(cls, v):
+        for i in v.keys():
+            if i not in ["weather_year", "forecast_year"]:
+                raise ValueError(
+                    "f {i} invalid dim name must be in: 'weather_year' or 'forecast_year"
+                )
+        return v
+
 
 class EndUse(BaseModel):
     label: StrictStr = Field(None, alias="end_use_label")
     equipment: List[Equipment]
-    ramp_efficiency: Optional[RampEfficiency] = None
-    start_year: Optional[PositiveInt] = None
-    end_year: Optional[PositiveInt] = None
+    ramp_efficiency: Optional[RampEfficiency]
+    start_year: Optional[PositiveInt]
+    end_year: Optional[PositiveInt]
     saturation: List[PositiveFloat]
     fuel_share: List[confloat(ge=0, le=1)]
     load_shape: Optional[LoadShape]
@@ -204,17 +229,31 @@ class Building(BaseModel):
     start_year: Optional[PositiveInt]
     end_year: Optional[PositiveInt]
     building_stock: List[PositiveFloat]
-    segment: Optional[StrictStr] = None
-    construction_vintage: Optional[StrictStr] = None
+    segment: Optional[StrictStr]
+    construction_vintage: Optional[StrictStr]
 
-    # private attribute to track max # of efficiency shares
-    # need this dimension to ensure all numpy arrays in enduse -> stockturnover have same dims
-    # xarray requires DataSets to have same dims for most opertations
+    # private attribute to track max # of efficiency shares and load shapes dims
+    # need to ensure all numpy arrays in enduse -> stockturnover have same dims
+    # xarray requires Datasets to have same dims
     _end_use_len: int = PrivateAttr()
+    _has_load_shape: bool = PrivateAttr()
+    _load_shape_freq: Union[None, StrictStr] = PrivateAttr()
+    _load_shape_extra_dims: Union[None, dict] = PrivateAttr()
 
     def __init__(self, **data):
         super().__init__(**data)
         self._end_use_len = max([len(getattr(i, "equipment")) for i in self.end_uses])
+        self._has_load_shape = any(
+            [isinstance(getattr(i, "load_shape"), LoadShape) for i in self.end_uses]
+        )
+
+        # if load shapes are provided then get max dimensions
+        if self._has_load_shape:
+            self._load_shape_freq = self._get_load_shape_freq()
+            if self._has_load_shape_extra_dims():
+                self._load_shape_extra_dims = self._get_load_shape_extra_dims()
+        else:
+            self._load_shape_freq = None
 
     @validator("end_uses")
     def validate_end_use_list_length(cls, v, values):
@@ -243,6 +282,13 @@ class Building(BaseModel):
             raise ValueError(f"{label} end_use end_year values not equal")
         return v
 
+    @validator("end_uses")
+    def validate_end_use_load_shape_interval(cls, v):
+        freqs = [i.load_shape.freq for i in v if i.load_shape]
+        if not len(set(freqs)) == 1:
+            raise ValueError(f"Load shape frequencies are inconsistent")
+        return v
+
     @validator("start_year", always=True)
     def set_start_year(cls, v, values):
         if v is None:
@@ -260,3 +306,33 @@ class Building(BaseModel):
     _check_expected_list_length: classmethod = validator(
         "building_stock", allow_reuse=True
     )(check_expected_list_length)
+
+    def _get_load_shape_freq(self):
+        """Extract frequency from load shape"""
+        freq = set([i.load_shape.freq for i in self.end_uses if i.load_shape])
+        return list(freq)[0]
+
+    def _has_load_shape_extra_dims(self):
+        """Check if extra dims provided in load shapes"""
+        extra_dims = [i.load_shape.extra_dims for i in self.end_uses if i.load_shape]
+        return any(extra_dims)
+
+    def _get_load_shape_extra_dims(self):
+        """Get extra dims from end_uses"""
+        extra_dims = []
+        for i in self.end_uses:
+            if i.load_shape is not None:
+                if i.load_shape.extra_dims is not None:
+                    extra_dims.append(len(i.load_shape.extra_dims.keys()))
+                else:
+                    extra_dims.append(0)
+            else:
+                extra_dims.append(0)
+
+        max_extra_dims = sorted(
+            self.end_uses[
+                extra_dims.index(max(extra_dims))
+            ].load_shape.extra_dims.items()
+        )
+        return max_extra_dims
+

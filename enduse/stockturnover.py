@@ -1,12 +1,16 @@
+from distutils.command.build import build
 import os
 import numpy as np
 import pandas as pd
 import xarray as xr
 
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Tuple
 from datetime import datetime
 
 from enduse.stockobjects import Building, EndUse, LoadShape, RampEfficiency
+
+
+freq_dict = {"H": (8760, "hour_of_year"), "D": (365, "day_of_year")}
 
 
 def _create_ramp_matrix(
@@ -162,30 +166,34 @@ def _read_filter_load_shape_netcdf(load_shape: LoadShape) -> xr.Dataset:
 
 
 def _create_load_shape_xarray(
-    dataset_xr: xr.Dataset, load_shape: LoadShape
+    dataset_xr: xr.Dataset, building: Building, end_use: EndUse
 ) -> xr.Dataset:
-    xr_subset = _read_filter_load_shape_netcdf(load_shape)
+
+    # TODO need to build out case where efficiency level load shape can override enduse
+    # TODO need to build out to handle extra dims
+    # will do this when we start modelling NREL load shapes
+    freq, label_freq = freq_dict[building._load_shape_freq]
+
+    if end_use.load_shape:
+        xr_subset = _read_filter_load_shape_netcdf(end_use.load_shape)
+        load_shape = xr_subset[end_use.load_shape.value_filter]
+    else:
+        load_shape = np.ones(freq) / freq
+
     # if multiple efficiency levels
     if dataset_xr["efficiency_level"].shape[0] > 1:
         cons_shaped = np.einsum(
-            "ij,k->ijk",
-            dataset_xr["consumption"].values,
-            xr_subset[load_shape.value_filter],
+            "ij,k->ijk", dataset_xr["consumption"].values, load_shape,
         )
+
     # otherwise there is just a single efficiency level
     else:
-        cons_shaped = np.einsum(
-            "i,i->i",
-            dataset_xr["consumption"].values,
-            xr_subset[load_shape.value_filter],
-        )
+        cons_shaped = np.einsum("i,i->i", dataset_xr["consumption"].values, load_shape,)
 
-    dataset_xr = dataset_xr.expand_dims(
-        {"hour_of_year": xr_subset["hour_of_year"].values}
-    )
+    dataset_xr = dataset_xr.expand_dims({label_freq: np.arange(freq)})
 
     dataset_xr["consumption_shaped"] = (
-        ("efficiency_level", "year", "hour_of_year"),
+        ("efficiency_level", "year", label_freq),
         cons_shaped,
     )
     return dataset_xr
@@ -230,32 +238,41 @@ def _create_xarray_from_end_use(building: Building, end_use: EndUse) -> xr.Datas
     xr_dict["st_mat"] = _create_stock_turnover(
         xr_dict["equip_mat"], xr_dict["ul_mat"], xr_dict["ramp_mat"]
     )
+
     xr_dict["end_use"] = end_use
     xr_dict["building"] = building
 
     dataset_xr = _build_xarray(**xr_dict)
 
-    if end_use.load_shape:
-        dataset_xr = _create_load_shape_xarray(dataset_xr, end_use.load_shape)
+    if building._has_load_shape:
+        dataset_xr = _create_load_shape_xarray(dataset_xr, building, end_use,)
 
     return dataset_xr
 
 
 def _create_dataset_from_building(building: Building) -> xr.Dataset:
     """Dispatcher to create xarray DataSet from building end-use objects"""
-    xr_datasets = xr.combine_nested(
+    xr_datasets = xr.concat(
         [_create_xarray_from_end_use(building, i) for i in building.end_uses],
-        concat_dim="end_use_label",
+        dim="end_use_label",
     )
+
     start_time = f"{building.start_year}-01-01"
     end_time = f"{building.end_year + 1}-01-01"
+
     # create datetime index
-    if "hour_of_year" in xr_datasets.dims:
+    if building._load_shape_freq:
         # create new multiindex from year and hour
-        xr_datasets = xr_datasets.stack(datetime=("year", "hour_of_year"))
+        xr_datasets = xr_datasets.stack(
+            datetime=("year", freq_dict[building._load_shape_freq][1])
+        )
         # override with datetime values
         xr_datasets["datetime"] = xr.cftime_range(
-            start=start_time, end=end_time, freq="H", closed="left", calendar="noleap"
+            start=start_time,
+            end=end_time,
+            freq=building._load_shape_freq,
+            closed="left",
+            calendar="noleap",
         )
     # create a new dim for annual datetime
     else:
@@ -272,7 +289,6 @@ class BuildingModel:
         self.model = self._create_model(building)
 
     def _create_model(self, building: Building) -> xr.DataArray:
-        model_xr = _create_dataset_from_building(building)
         return _create_dataset_from_building(building)
 
     def to_dataframe(self) -> pd.DataFrame:
