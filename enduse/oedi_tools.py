@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import warnings
 import dask
 
@@ -103,6 +104,81 @@ def _generate_url_from_path_params(
     return url
 
 
+def _generate_meta_file_url_from_path_params(segment: str, weather_type: str) -> str:
+    meta_file_url = (
+        "https://oedi-data-lake.s3.amazonaws.com/nrel-pds-building-stock/end-use-load-profiles-for-us-building-stock/2021/"
+        # + segment !!!! Not using provided segment since Commercial stock meta data doesn't have puma code mapped to county
+        #               Once NREL fixes this issue change it to go to the commercial data set for the meta data
+        + "resstock"
+        + "_"
+        + weather_type
+        + "_release_1/metadata/metadata.parquet"
+    )
+    return meta_file_url
+
+
+def _pull_county_code_for_puma(
+    segment: str, weather_type: str, puma_code: str
+) -> pd.DataFrame:
+    meta_file_url = _generate_meta_file_url_from_path_params(segment, weather_type)
+
+    try:
+        meta_dat = pd.read_parquet(meta_file_url, columns=["in.puma", "in.county"])
+    except:
+        pass
+        warnings.warn(f"{meta_file_url} meta file does not exist.")
+        meta_dat = None
+
+    if meta_dat is not None:
+        meta_dat = meta_dat[meta_dat["in.puma"] == puma_code.upper()]
+        meta_dat = meta_dat.head(1)
+
+    return meta_dat
+
+
+def _generate_temp_file_url_from_path_params(
+    segment: str, weather_type: str, puma_code: str
+) -> str:
+    meta_dat = _pull_county_code_for_puma(segment, weather_type, puma_code)
+
+    temp_url = (
+        "https://oedi-data-lake.s3.amazonaws.com/nrel-pds-building-stock/end-use-load-profiles-for-us-building-stock/2021/"
+        + segment
+        + "_"
+        + weather_type
+        + "_"
+        + "release_1/weather/"
+        + weather_type
+        + "/"
+        + meta_dat.iloc[0][1]
+        + "_"
+        + weather_type
+        + ".csv"
+    )
+    return temp_url
+
+
+def _pull_puma_temp(segment: str, weather_type: str, puma_code: str) -> pd.Series:
+
+    temp_url = _generate_temp_file_url_from_path_params(
+        segment, weather_type, puma_code
+    )
+
+    try:
+        temp_dat = pd.read_csv(temp_url)
+
+    except:
+        pass
+        warnings.warn(f"{temp_url} temperature file does not exist.")
+        temp_dat = None
+
+    if temp_dat is not None:
+        temp_dat = temp_dat.iloc[:, 1]
+        temp_dat = pd.Series(np.repeat(temp_dat.values, 4, axis=0))
+
+    return temp_dat
+
+
 def _pull_nrel_load_profiles(label: str, url: str) -> Tuple[str, pd.DataFrame]:
     """
     Function that makes the request to NREL data lake to download aggregate load profile .csv
@@ -178,6 +254,7 @@ class LoadProfiles:
         validate_paths: bool = True,
         pull_load_profiles: bool = True,
         use_dask: bool = True,
+        attach_temp: bool = False,
     ):
         self.segment = segment
         self.weather_type = weather_type
@@ -185,6 +262,7 @@ class LoadProfiles:
         self.puma_code = puma_code
         self.bldg_types = bldg_types
         self.validate_paths = validate_paths
+        self.attach_temp = attach_temp
 
         # url validation is optional
         if validate_paths:
@@ -238,6 +316,15 @@ class LoadProfiles:
         else:
             for i in self.urls:
                 load_profiles.append(_pull_nrel_load_profiles(i, x))
+
+        if self.attach_temp:
+            puma_temps = _pull_puma_temp(
+                self.segment, self.weather_type, self.puma_code
+            )
+
+            for i in list(range(0, len(load_profiles))):
+                if load_profiles[i][1] is not None:
+                    load_profiles[i][1]["Temperature"] = puma_temps
 
         return dict(load_profiles)
 

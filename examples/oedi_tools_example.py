@@ -17,6 +17,7 @@ res_oedi_puma = {
     "state": "WA",
     "puma_code": "g53011606",
     "bldg_types": rs_building_types,
+    "attach_temp": True,
 }
 
 print("Pulling resstock")
@@ -35,6 +36,7 @@ com_oedi_puma = {
     "state": "WA",
     "puma_code": "g53011606",
     "bldg_types": com_building_types,
+    "attach_temp": True,
 }
 
 print("Pulling comstock")
