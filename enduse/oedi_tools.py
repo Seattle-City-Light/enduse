@@ -131,6 +131,7 @@ def _pull_county_code_for_puma(
 
     if meta_dat is not None:
         meta_dat = meta_dat[meta_dat["in.puma"] == puma_code.upper()]
+        # TODO change to .iloc
         meta_dat = meta_dat.head(1)
 
     return meta_dat
@@ -158,6 +159,7 @@ def _generate_temp_file_url_from_path_params(
     return temp_url
 
 
+# TODO change iloc to str col filter ex: df["column_name"]
 def _pull_puma_temp(segment: str, weather_type: str, puma_code: str) -> pd.Series:
 
     temp_url = _generate_temp_file_url_from_path_params(
@@ -179,6 +181,7 @@ def _pull_puma_temp(segment: str, weather_type: str, puma_code: str) -> pd.Serie
     return temp_dat
 
 
+# TODO here is where you can handle attach temps
 def _pull_nrel_load_profiles(label: str, url: str) -> Tuple[str, pd.DataFrame]:
     """
     Function that makes the request to NREL data lake to download aggregate load profile .csv
@@ -317,6 +320,7 @@ class LoadProfiles:
             for i in self.urls:
                 load_profiles.append(_pull_nrel_load_profiles(i, x))
 
+        # TODO work _pull_puma_temp into _pull_nrel_load_profiles to avoid this 2nd loop
         if self.attach_temp:
             puma_temps = _pull_puma_temp(
                 self.segment, self.weather_type, self.puma_code
