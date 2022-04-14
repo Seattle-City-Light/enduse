@@ -131,8 +131,14 @@ def _pull_county_code_for_puma(
 
     if meta_dat is not None:
         meta_dat = meta_dat[meta_dat["in.puma"] == puma_code.upper()]
-        # TODO change to .iloc
-        meta_dat = meta_dat.head(1)
+
+        meta_dat = meta_dat["in.county"].unique()
+        if len(meta_dat) > 1:
+            warnings.warn(
+                f"Puma Code {puma_code} has muiltple County Codes associated with it in the meta file. Temperatures might be inaccurate. Using county code {meta_dat[0]}."
+            )
+
+        meta_dat = meta_dat[0]
 
     return meta_dat
 
@@ -151,7 +157,7 @@ def _generate_temp_file_url_from_path_params(
         + "release_1/weather/"
         + weather_type
         + "/"
-        + meta_dat.iloc[0][1]
+        + meta_dat
         + "_"
         + weather_type
         + ".csv"
@@ -159,7 +165,6 @@ def _generate_temp_file_url_from_path_params(
     return temp_url
 
 
-# TODO change iloc to str col filter ex: df["column_name"]
 def _pull_puma_temp(segment: str, weather_type: str, puma_code: str) -> pd.Series:
 
     temp_url = _generate_temp_file_url_from_path_params(
@@ -175,13 +180,13 @@ def _pull_puma_temp(segment: str, weather_type: str, puma_code: str) -> pd.Serie
         temp_dat = None
 
     if temp_dat is not None:
+        # temperature column has special character so using iloc
         temp_dat = temp_dat.iloc[:, 1]
         temp_dat = pd.Series(np.repeat(temp_dat.values, 4, axis=0))
 
     return temp_dat
 
 
-# TODO here is where you can handle attach temps
 def _pull_nrel_load_profiles(label: str, url: str) -> Tuple[str, pd.DataFrame]:
     """
     Function that makes the request to NREL data lake to download aggregate load profile .csv
@@ -320,15 +325,14 @@ class LoadProfiles:
             for i in self.urls:
                 load_profiles.append(_pull_nrel_load_profiles(i, x))
 
-        # TODO work _pull_puma_temp into _pull_nrel_load_profiles to avoid this 2nd loop
         if self.attach_temp:
             puma_temps = _pull_puma_temp(
                 self.segment, self.weather_type, self.puma_code
             )
 
-            for i in list(range(0, len(load_profiles))):
-                if load_profiles[i][1] is not None:
-                    load_profiles[i][1]["Temperature"] = puma_temps
+            for i in load_profiles:
+                if i[1] is not None:
+                    i[1]["Temperature"] = puma_temps
 
         return dict(load_profiles)
 
