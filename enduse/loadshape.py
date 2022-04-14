@@ -33,6 +33,8 @@ def load_shape_from_load_profile(
     meta_filt: List[str] = ["puma", "building_type"],
     values_filt: str = ["out.electricity"],
     freq: str = "H",
+    attach_temp: bool = True,
+    agg_cols: Optional[List[Dict[str, Union[list, str]]]] = None,
 ) -> Tuple[str, xr.Dataset]:
     """
     Generate xarray load shape dataset from NREL aggregate load profile
@@ -43,6 +45,14 @@ def load_shape_from_load_profile(
     """
     if timestamp_offset is None:
         timestamp_offset = pd.Timedelta(hours=0)
+
+    if agg_cols:
+        for i in agg_cols:
+            load_profile[i["label"]] = load_profile.filter(
+                regex="|".join(i["agg_cols"])
+            ).agg(i["agg_func"], axis=1)
+
+            values_filt = values_filt + [i["label"]]
 
     load_profile_resampled = (
         load_profile.set_index(load_profile["timestamp"] + timestamp_offset)
@@ -65,6 +75,17 @@ def load_shape_from_load_profile(
     for i, x in zip(meta_cols, meta_fields):
         load_shape[i] = x
 
+    if attach_temp:
+        temp_resampled = (
+            load_profile.set_index(load_profile["timestamp"] + timestamp_offset)[
+                "temperature"
+            ]
+            .resample(freq)
+            .mean()
+        )
+
+        load_shape["temperature"] = temp_resampled.values
+
     load_shape_xr = xr.Dataset.from_dataframe(
         load_shape.set_index(meta_cols, append=True)
     )
@@ -78,6 +99,8 @@ def load_shape_from_multiple_load_profiles(
     values_filt: List[str] = ["out.electricity"],
     freq: str = "H",
     concat: bool = True,
+    attach_temp: bool = True,
+    agg_cols: Optional[List[Dict[str, Union[list, str]]]] = None,
 ) -> Union[xr.Dataset, Dict[str, xr.Dataset]]:
     """
     Wrapper function to handle multiple load profiles returned from read_profiles_from_csvs
@@ -88,7 +111,14 @@ def load_shape_from_multiple_load_profiles(
     for i, x in load_profiles.items():
         xarrays.append(
             load_shape_from_load_profile(
-                i, x, timestamp_offset, meta_filt, values_filt, freq
+                i,
+                x,
+                timestamp_offset,
+                meta_filt,
+                values_filt,
+                freq,
+                attach_temp,
+                agg_cols,
             )
         )
     xarrays = dict(xarrays)
@@ -111,6 +141,8 @@ class LoadShapesFromLoadProfiles:
         meta_filt: List[str] = ["puma", "building_type"],
         values_filt: List[str] = ["out.electricity"],
         freq: str = "H",
+        attach_temp: bool = True,
+        agg_cols: Optional[List[Dict[str, Union[list, str]]]] = None,
         dir: Optional[str] = None,
     ):
         # initialize params
@@ -119,6 +151,8 @@ class LoadShapesFromLoadProfiles:
         self.meta_filt = meta_filt
         self.values_filt = values_filt
         self.freq = freq
+        self.attach_temp = attach_temp
+        self.agg_cols = agg_cols
 
         self._validate_load_profile_params(load_profiles, dir)
 
@@ -150,6 +184,8 @@ class LoadShapesFromLoadProfiles:
             meta_filt=self.meta_filt,
             values_filt=self.values_filt,
             freq=self.freq,
+            attach_temp=self.attach_temp,
+            agg_cols=self.agg_cols,
         )
         return load_shapes
 

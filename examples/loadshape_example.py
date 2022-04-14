@@ -21,14 +21,26 @@ comstock_path = str(
 # offset to PST
 pst_offset = -pd.Timedelta(hours=3, minutes=15)
 
+agg_cols = [
+    {
+        "label": "agg.electric.heat_pump",
+        "agg_func": "sum",
+        "agg_cols": [
+            "out.electricity.cooling.energy_consumption",
+            "out.electricity.heating.energy_consumption",
+            "out.electricity.heating_supplement.energy_consumption",
+        ],
+    }
+]
+
 # pulling from dataframes
 resstock = read_load_profiles_from_csvs(resstock_path)
 resstock_loadshapes = LoadShapesFromLoadProfiles(
-    load_profiles=resstock, timestamp_offset=pst_offset
+    load_profiles=resstock, timestamp_offset=pst_offset, agg_cols=agg_cols
 )
 
 # pulling from dir of .csvs
-comstock_loadshapes = LoadShapesFromLoadProfiles(dir=comstock_path)
+comstock_loadshapes = LoadShapesFromLoadProfiles(dir=comstock_path, agg_cols=agg_cols)
 
 # netcdf output path
 netcdf_path = str((Path(__file__).parents[1] / "outputs/loadshapes/").as_posix())
