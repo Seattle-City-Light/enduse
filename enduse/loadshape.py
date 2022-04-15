@@ -9,11 +9,12 @@ from typing import Optional, Tuple, Dict, List, Union
 from glob import glob
 
 
+freq_dict = {"H": (8760, "hour_of_year"), "D": (365, "day_of_year")}
+
+
 def read_load_profiles_from_csvs(path: str) -> Dict[str, pd.DataFrame]:
     """
     Read in single or multiple NREL load profile .csv(s)
-    Note that dask will only provide a performance boost when there are many large .csv files
-    Since dask requires some overheard for scheduling
     Required params:
         path: path/to/dir/
     """
@@ -25,13 +26,16 @@ def read_load_profiles_from_csvs(path: str) -> Dict[str, pd.DataFrame]:
     return df_dict
 
 
-# TODO create heatpump shape as part of this function
+def xarray_from_load_profiles() -> None:
+    return None
+
+
 def load_shape_from_load_profile(
     label: str,
     load_profile: pd.DataFrame,
     timestamp_offset: Optional[pd.Timedelta] = None,
     meta_filt: List[str] = ["puma", "building_type"],
-    values_filt: str = ["out.electricity"],
+    values_filt: List[str] = ["out.electricity"],
     freq: str = "H",
     attach_temp: bool = True,
     agg_cols: Optional[List[Dict[str, Union[list, str]]]] = None,
@@ -59,6 +63,7 @@ def load_shape_from_load_profile(
         .filter(regex="|".join(values_filt))
         .resample(freq)
         .mean()
+        .reset_index(drop=True)
     )
 
     load_shape = (
@@ -67,12 +72,14 @@ def load_shape_from_load_profile(
         .reset_index(drop=True)
     )
 
-    load_shape.index.name = "hour_of_year"
+    for i in [load_profile_resampled, load_shape]:
+        i.index.name = freq_dict[freq][1]
 
     meta_cols = sorted(list(load_profile.filter(regex="|".join(meta_filt))))
     meta_fields = [np.unique(load_profile[i])[0] for i in meta_cols]
 
     for i, x in zip(meta_cols, meta_fields):
+        load_profile_resampled[i] = x
         load_shape[i] = x
 
     if attach_temp:
@@ -84,10 +91,17 @@ def load_shape_from_load_profile(
             .mean()
         )
 
-        load_shape["temperature"] = temp_resampled.values
+        for i in [load_profile_resampled, load_shape]:
+            i["temperature"] = temp_resampled.values
+
+    # create new dims for shape type
+    load_profile_resampled["shape.type"] = "Load Profile"
+    load_shape["shape.type"] = "Load Shape"
 
     load_shape_xr = xr.Dataset.from_dataframe(
-        load_shape.set_index(meta_cols, append=True)
+        pd.concat([load_profile_resampled, load_shape]).set_index(
+            ["shape.type"] + meta_cols, append=True
+        )
     )
     return (label, load_shape_xr)
 

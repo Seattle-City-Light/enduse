@@ -48,6 +48,7 @@ resstock_loadshapes.to_netcdf(netcdf_path + "/resstock_loadshapes.nc")
 comstock_loadshapes.to_netcdf(netcdf_path + "/comstock_loadshapes.nc")
 
 subset_params = {
+    "shape.type": "Load Shape",
     "in.geometry_building_type_recs": "Mobile Home",
     "in.puma": "G53011606",
 }
