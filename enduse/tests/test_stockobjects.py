@@ -8,9 +8,9 @@ from enduse.stockobjects import (
     RampEfficiency,
     EndUse,
     Building,
-    LoadProfileLoadShape,
 )
 
+# TODO test LoadShape
 
 equipment = []
 
@@ -21,7 +21,7 @@ equipment.append(
         "start_year": 2022,
         "end_year": 2031,
         "efficiency_share": np.linspace(0.75, 0.75, 10).tolist(),
-        "consumption": np.linspace(8742, 8742, 10).tolist(),
+        "unit_consumption": np.linspace(8742, 8742, 10).tolist(),
         "useful_life": np.linspace(9, 9, 10).tolist(),
     }
 )
@@ -33,7 +33,7 @@ equipment.append(
         "start_year": 2022,
         "end_year": 2031,
         "efficiency_share": np.linspace(0.20, 0.20, 10).tolist(),
-        "consumption": np.linspace(7442, 7442, 10).tolist(),
+        "unit_consumption": np.linspace(7442, 7442, 10).tolist(),
         "useful_life": np.linspace(18, 18, 10).tolist(),
     }
 )
@@ -45,7 +45,7 @@ equipment.append(
         "start_year": 2022,
         "end_year": 2031,
         "efficiency_share": np.linspace(0.05, 0.05, 10).tolist(),
-        "consumption": np.linspace(6442, 6442, 10).tolist(),
+        "unit_consumption": np.linspace(6442, 6442, 10).tolist(),
         "useful_life": np.linspace(18, 18, 10).tolist(),
     }
 )
@@ -56,7 +56,7 @@ bad_equipment = {
     "start_year": 2022,
     "end_year": 2031,
     "efficiency_share": np.linspace(0.75, 0.75, 5).tolist(),
-    "consumption": np.linspace(8742, 8742, 10).tolist(),
+    "unit_consumption": np.linspace(8742, 8742, 10).tolist(),
     "useful_life": np.linspace(9, 9, 10).tolist(),
 }
 
@@ -151,7 +151,7 @@ equipment_bad_list_length.append(
         "start_year": 2022,
         "end_year": 2026,
         "efficiency_share": np.linspace(0, 0, 5).tolist(),
-        "consumption": np.linspace(8742, 8742, 5).tolist(),
+        "unit_consumption": np.linspace(8742, 8742, 5).tolist(),
         "useful_life": np.linspace(9, 9, 5).tolist(),
     }
 )
@@ -174,7 +174,7 @@ equipment_bad_allocation.append(
         "start_year": 2022,
         "end_year": 2031,
         "efficiency_share": np.linspace(0.5, 0.5, 10).tolist(),
-        "consumption": np.linspace(8742, 8742, 10).tolist(),
+        "unit_consumption": np.linspace(8742, 8742, 10).tolist(),
         "useful_life": np.linspace(9, 9, 10).tolist(),
     }
 )
@@ -197,7 +197,7 @@ equipment_bad_levels.append(
         "start_year": 2022,
         "end_year": 2031,
         "efficiency_share": np.linspace(0.5, 0.5, 10).tolist(),
-        "consumption": np.linspace(8742, 8742, 10).tolist(),
+        "unit_consumption": np.linspace(8742, 8742, 10).tolist(),
         "useful_life": np.linspace(9, 9, 10).tolist(),
     }
 )
@@ -220,7 +220,7 @@ equipment_bad_start_end_year.append(
         "start_year": 2032,
         "end_year": 2041,
         "efficiency_share": np.linspace(0.5, 0.5, 10).tolist(),
-        "consumption": np.linspace(8742, 8742, 10).tolist(),
+        "unit_consumption": np.linspace(8742, 8742, 10).tolist(),
         "useful_life": np.linspace(9, 9, 10).tolist(),
     }
 )
@@ -261,7 +261,7 @@ wrong_equipment = {
     "start_year": 2022,
     "end_year": 2031,
     "efficiency_share": np.linspace(0.75, 0.75, 10).tolist(),
-    "consumption": np.linspace(8742, 8742, 10).tolist(),
+    "unit_consumption": np.linspace(8742, 8742, 10).tolist(),
     "useful_life": np.linspace(9, 9, 10).tolist(),
 }
 
@@ -338,7 +338,7 @@ equipment_fail_end_use_list_len.append(
         "start_year": 2022,
         "end_year": 2041,
         "efficiency_share": np.linspace(0.5, 0.5, 20).tolist(),
-        "consumption": np.linspace(8742, 8742, 20).tolist(),
+        "unit_consumption": np.linspace(8742, 8742, 20).tolist(),
         "useful_life": np.linspace(9, 9, 20).tolist(),
     }
 )
@@ -350,7 +350,7 @@ equipment_fail_end_use_list_len.append(
         "start_year": 2022,
         "end_year": 2041,
         "efficiency_share": np.linspace(0.5, 0.5, 20).tolist(),
-        "consumption": np.linspace(7442, 7442, 20).tolist(),
+        "unit_consumption": np.linspace(7442, 7442, 20).tolist(),
         "useful_life": np.linspace(18, 18, 20).tolist(),
     }
 )

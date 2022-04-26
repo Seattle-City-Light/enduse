@@ -84,7 +84,7 @@ valid_equipment.append(
         "start_year": 2022,
         "end_year": 2031,
         "efficiency_share": np.linspace(0.75, 0.75, 10).tolist(),
-        "consumption": np.linspace(8742, 8742, 10).tolist(),
+        "unit_consumption": np.linspace(8742, 8742, 10).tolist(),
         "useful_life": np.linspace(5, 15, 10).tolist(),
     }
 )
@@ -96,7 +96,7 @@ valid_equipment.append(
         "start_year": 2022,
         "end_year": 2031,
         "efficiency_share": np.linspace(0.20, 0.20, 10).tolist(),
-        "consumption": np.linspace(7442, 7442, 10).tolist(),
+        "unit_consumption": np.linspace(7442, 7442, 10).tolist(),
         "useful_life": np.linspace(18, 18, 10).tolist(),
     }
 )
@@ -108,7 +108,7 @@ valid_equipment.append(
         "start_year": 2022,
         "end_year": 2031,
         "efficiency_share": np.linspace(0.05, 0.05, 10).tolist(),
-        "consumption": np.linspace(5000, 5000, 10).tolist(),
+        "unit_consumption": np.linspace(5000, 5000, 10).tolist(),
         "useful_life": np.linspace(20, 20, 10).tolist(),
     }
 )
@@ -159,7 +159,7 @@ valid_equipment_2.append(
         "start_year": 2022,
         "end_year": 2031,
         "efficiency_share": np.linspace(0.50, 0.50, 10).tolist(),
-        "consumption": np.linspace(8742, 8742, 10).tolist(),
+        "unit_consumption": np.linspace(8742, 8742, 10).tolist(),
         "useful_life": np.linspace(5, 15, 10).tolist(),
     }
 )
@@ -171,7 +171,7 @@ valid_equipment_2.append(
         "start_year": 2022,
         "end_year": 2031,
         "efficiency_share": np.linspace(0.50, 0.50, 10).tolist(),
-        "consumption": np.linspace(7442, 7442, 10).tolist(),
+        "unit_consumption": np.linspace(7442, 7442, 10).tolist(),
         "useful_life": np.linspace(18, 18, 10).tolist(),
     }
 )
