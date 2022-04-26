@@ -29,19 +29,19 @@ heat_central_equip.append(
         "start_year": 2022,
         "end_year": 2041,
         "efficiency_share": np.linspace(1, 1, 20).tolist(),
-        "consumption": np.linspace(13312, 13312, 20).tolist(),
+        "unit_consumption": np.linspace(13312, 13312, 20).tolist(),
         "useful_life": np.linspace(15, 15, 20).tolist(),
     }
 )
 
 heat_central_equip.append(
     {
-        "equipment_label": "Install Ductless Heat Pump in House with Existing FAF - HZ1",
+        "equipment_label": "High Efficiency Electric Furnace",
         "efficiency_level": 2,
         "start_year": 2022,
         "end_year": 2041,
         "efficiency_share": np.linspace(0, 0, 20).tolist(),
-        "consumption": np.linspace(8500, 8500, 20).tolist(),
+        "unit_consumption": np.linspace(8500, 8500, 20).tolist(),
         "useful_life": np.linspace(18, 18, 20).tolist(),
     }
 )
@@ -49,16 +49,16 @@ heat_central_equip.append(
 heat_central_equip_parsed = [Equipment(**i) for i in heat_central_equip]
 
 heat_central_ramp = {
-    "ramp_label": "Forced Air Furnance to Heat Pump Upgrade",
+    "ramp_label": "Forced Air Furnance High Efficiency Upgrade",
     "ramp_equipment": [heat_central_equip[1]],
 }
 
 heat_central_ramp_parsed = RampEfficiency(**heat_central_ramp)
 
 heat_central_shape = {
-    "label": "Heat Central",
     "source_file": resstock_path,
     "dim_filters": {
+        "shape.type": "Load Shape",
         "in.puma": "G53011606",
         "in.geometry_building_type_recs": "Single-Family Detached",
     },
@@ -86,14 +86,14 @@ cook_range_equip = {
     "start_year": 2022,
     "end_year": 2041,
     "efficiency_share": np.linspace(1, 1, 20).tolist(),
-    "consumption": np.linspace(125, 125, 20).tolist(),
+    "unit_consumption": np.linspace(125, 125, 20).tolist(),
     "useful_life": np.linspace(19, 19, 20).tolist(),
 }
 
 cook_range_ls = {
-    "label": "Cooking Range",
     "source_file": resstock_path,
     "dim_filters": {
+        "shape.type": "Load Shape",
         "in.puma": "G53011606",
         "in.geometry_building_type_recs": "Single-Family Detached",
     },
@@ -112,13 +112,24 @@ end_uses.append(
 )
 
 # end use no shape
+heat_pump_ls = {
+    "source_file": resstock_path,
+    "dim_filters": {
+        "shape.type": "Load Shape",
+        "in.puma": "G53011606",
+        "in.geometry_building_type_recs": "Single-Family Detached",
+    },
+    "value_filter": "agg.electric.heat_pump.energy_consumption",
+    "freq": "H",
+}
+
 other_equip = {
     "equipment_label": "Other Equipment",
     "efficiency_level": 1,
     "start_year": 2022,
     "end_year": 2041,
     "efficiency_share": np.linspace(1, 1, 20).tolist(),
-    "consumption": np.linspace(250, 250, 20).tolist(),
+    "unit_consumption": np.linspace(250, 250, 20).tolist(),
     "useful_life": np.linspace(5, 5, 20).tolist(),
 }
 
@@ -131,6 +142,72 @@ end_uses.append(
     }
 )
 
+# end use with multiple load shapes
+heat_pump_ls = {
+    "source_file": resstock_path,
+    "dim_filters": {
+        "shape.type": "Load Shape",
+        "in.puma": "G53011606",
+        "in.geometry_building_type_recs": "Single-Family Detached",
+    },
+    "value_filter": "agg.electric.heat_pump.energy_consumption",
+    "freq": "H",
+}
+
+
+heat_central_multi_shape_equip = []
+
+heat_central_multi_shape_equip.append(
+    {
+        "equipment_label": "Standard Electric Furnace HSPF = 1",
+        "efficiency_level": 1,
+        "start_year": 2022,
+        "end_year": 2041,
+        "efficiency_share": np.linspace(1, 1, 20).tolist(),
+        "unit_consumption": np.linspace(13312, 13312, 20).tolist(),
+        "useful_life": np.linspace(15, 15, 20).tolist(),
+    }
+)
+
+heat_central_multi_shape_equip.append(
+    {
+        "equipment_label": "Install Ductless Heat Pump in House with Existing FAF - HZ1",
+        "efficiency_level": 2,
+        "start_year": 2022,
+        "end_year": 2041,
+        "efficiency_share": np.linspace(0, 0, 20).tolist(),
+        "unit_consumption": np.linspace(8500, 8500, 20).tolist(),
+        "useful_life": np.linspace(18, 18, 20).tolist(),
+        "load_shape": LoadShape(**heat_pump_ls),
+    }
+)
+
+heat_central_multi_shape_equip_parsed = [
+    Equipment(**i) for i in heat_central_multi_shape_equip
+]
+
+heat_central_multi_ramp = {
+    "ramp_label": "Heat Pump Efficiency Upgrade",
+    "ramp_equipment": [
+        heat_central_multi_shape_equip[0],
+        heat_central_multi_shape_equip[1],
+    ],
+    "ramp_year": [2022, 2025],
+}
+
+heat_central_multi_ramp_parsed = RampEfficiency(**heat_central_multi_ramp)
+
+end_uses.append(
+    {
+        "end_use_label": "Heat Central Multi Shape",
+        "equipment": heat_central_multi_shape_equip_parsed,
+        "ramp_efficiency": heat_central_multi_ramp_parsed,
+        "saturation": np.linspace(0.25, 0.25, 20).tolist(),
+        "fuel_share": np.linspace(0.25, 0.25, 20).tolist(),
+        "load_shape": LoadShape(**heat_central_shape),
+    }
+)
+
 building = {
     "building_label": "Single Family",
     "end_uses": [EndUse(**i) for i in end_uses],
@@ -138,7 +215,7 @@ building = {
 }
 
 building_parsed = Building(**building)
-
 stock_turnover = BuildingModel(building_parsed)
 
 # TODO create logic where single equipment can override end-use load shape
+# TODO need to add attrs to end_use to validate that equipment load shape is consistent with end_use

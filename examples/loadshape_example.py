@@ -23,7 +23,7 @@ pst_offset = -pd.Timedelta(hours=3, minutes=15)
 
 agg_cols = [
     {
-        "label": "agg.electric.heat_pump",
+        "label": "agg.electric.heat_pump.energy_consumption",
         "agg_func": "sum",
         "agg_cols": [
             "out.electricity.cooling.energy_consumption",

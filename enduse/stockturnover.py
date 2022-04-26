@@ -1,10 +1,9 @@
-from distutils.command.build import build
 import os
 import numpy as np
 import pandas as pd
 import xarray as xr
 
-from typing import List, Dict, Optional, Tuple
+from typing import Optional
 from datetime import datetime
 
 from enduse.stockobjects import Building, EndUse, LoadShape, RampEfficiency
@@ -162,7 +161,7 @@ def _build_xarray(
 def _read_filter_load_shape_netcdf(load_shape: LoadShape) -> xr.Dataset:
     with xr.open_dataset(load_shape.source_file) as ds:
         subset = ds.sel(load_shape.dim_filters)
-    return subset
+    return subset[load_shape.value_filter]
 
 
 def _create_load_shape_xarray(
@@ -175,8 +174,7 @@ def _create_load_shape_xarray(
     freq, label_freq = freq_dict[building._load_shape_freq]
 
     if end_use.load_shape:
-        xr_subset = _read_filter_load_shape_netcdf(end_use.load_shape)
-        load_shape = xr_subset[end_use.load_shape.value_filter]
+        load_shape = _read_filter_load_shape_netcdf(end_use.load_shape)
     else:
         load_shape = np.ones(freq) / freq
 
@@ -188,7 +186,21 @@ def _create_load_shape_xarray(
 
     # otherwise there is just a single efficiency level
     else:
-        cons_shaped = np.einsum("i,i->i", dataset_xr["consumption"].values, load_shape,)
+        cons_shaped = np.einsum(
+            "i,j->ij", dataset_xr["consumption"].values, load_shape,
+        )
+
+    # check if equipment has load shape:
+    if end_use._has_equipment_load_shape:
+        for n, i in enumerate(end_use.equipment):
+            # if equipment has load shape then override end_use load shape
+            # TODO might be possible to make this step more efficient
+            # by creating a load_shape matrix before applying einsum calcs
+            if i.load_shape:
+                load_shape = _read_filter_load_shape_netcdf(i.load_shape)
+                cons_shaped[n] = np.einsum(
+                    "i,j->ij", dataset_xr["consumption"].values[n], load_shape
+                )
 
     dataset_xr = dataset_xr.expand_dims({label_freq: np.arange(freq)})
 
@@ -218,7 +230,9 @@ def _create_xarray_from_end_use(building: Building, end_use: EndUse) -> xr.Datas
     xr_dict["eff_mat"] = np.array(
         [np.array(x.efficiency_share) for x in end_use.equipment]
     )
-    xr_dict["con_mat"] = np.array([np.array(x.consumption) for x in end_use.equipment])
+    xr_dict["con_mat"] = np.array(
+        [np.array(x.unit_consumption) for x in end_use.equipment]
+    )
     xr_dict["ul_mat"] = np.array([np.array(x.useful_life) for x in end_use.equipment])
 
     # calculated values
@@ -244,7 +258,7 @@ def _create_xarray_from_end_use(building: Building, end_use: EndUse) -> xr.Datas
 
     dataset_xr = _build_xarray(**xr_dict)
 
-    if building._has_load_shape:
+    if building._has_end_use_load_shape:
         dataset_xr = _create_load_shape_xarray(dataset_xr, building, end_use,)
 
     return dataset_xr
