@@ -102,8 +102,16 @@ def _create_stock_turnover(
                     + equip_turn_mat[:, i]
                     # subtract converted equipment stock from original efficiency levels
                     - equip_turn
-                    # account for any exogenous equiment additions or substractions
-                    + equip_diff_mat[:, i]
+                    # account for any exogenous equiment additions
+                )
+
+                # distribute exogenous add/subs
+                equip_diff_alloc = equip_turn_cum_mat[:, i] / np.sum(
+                    equip_turn_cum_mat[:, i]
+                )
+                equip_turn_cum_mat[:, i] = (
+                    equip_turn_cum_mat[:, i]
+                    + np.sum(equip_diff_mat[:, i]) * equip_diff_alloc
                 )
 
     return equip_turn_cum_mat

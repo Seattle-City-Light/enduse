@@ -24,13 +24,13 @@ valid_ramp_mat_ones = np.ones(valid_ramp_mat.shape)
 # valid equipment mat with exogenous additions
 valid_equip_mat_adds = np.array([np.linspace(100, 150, 5), np.linspace(50, 100, 5)])
 exp_valid_st_mat_adds = np.array(
-    [[100, 112.5, 102.5, 94.5, 88.1], [50, 62.5, 97.5, 130.5, 161.9]]
+    [[100, 116.67, 106.67, 96, 85.33], [50, 58.33, 93.33, 129, 164.66]]
 )
 
 # valid equipment mat with exogenous subtractions
 valid_equip_mat_subs = np.array([np.linspace(100, 25, 5), np.linspace(50, 25, 5)])
 exp_valid_st_mat_subs = np.array(
-    [[100, 81.25, 46.25, 18.25, -4.15], [50, 43.75, 53.75, 56.75, 54.15]]
+    [[100, 83.3, 53.3, 32, 17.06], [50, 41.6, 46.6, 43, 32.93]]
 )
 
 
@@ -59,18 +59,16 @@ class TestStockTurnoverCalculation:
         calc_stock_turn = _create_stock_turnover(
             valid_equip_mat_adds, valid_ul_mat, valid_ramp_mat
         )
-        assert np.array_equal(calc_stock_turn, exp_valid_st_mat_adds)
         assert np.array_equal(
-            np.sum(calc_stock_turn, axis=0), np.sum(valid_equip_mat_adds, axis=0)
+            np.round(calc_stock_turn, 0), np.round(exp_valid_st_mat_adds, 0)
         )
 
     def test_valid_st_mat_subs(self):
         calc_stock_turn = _create_stock_turnover(
             valid_equip_mat_subs, valid_ul_mat, valid_ramp_mat
         )
-        assert np.array_equal(calc_stock_turn, exp_valid_st_mat_subs)
         assert np.array_equal(
-            np.sum(calc_stock_turn, axis=0), np.sum(valid_equip_mat_subs, axis=0)
+            np.round(calc_stock_turn, 0), np.round(exp_valid_st_mat_subs, 0)
         )
 
 
@@ -187,21 +185,32 @@ valid_end_uses.append(
 
 valid_end_use_parsed = [EndUse(**i) for i in valid_end_uses]
 
-valid_buildings = []
+valid_building = {
+    "building_label": "Test Building",
+    "end_uses": valid_end_use_parsed,
+    "building_stock": np.linspace(1000, 1000, 10).tolist(),
+}
 
-for i in [f"Building_{i}" for i in range(10)]:
-    valid_buildings.append(
-        {
-            "building_label": i,
-            "end_uses": valid_end_use_parsed,
-            "building_stock": np.linspace(1000, 1000, 10).tolist(),
-        }
-    )
+valid_building_parsed = Building(**valid_building)
 
-valid_building_parsed = [Building(**i) for i in valid_buildings]
+stock_turnover = BuildingModel(valid_building_parsed)
 
-# TODO need to build out test framework for xarray functionality
-# test_xarray = BuildingModel(valid_building_parsed[0])
 
-# netcdf_path = "I:/FINANCE/FPU/LOAD/Model Development/enduse/outputs/netcdf/"
-# test_xarray.to_netcdf(netcdf_path)
+# class TestBuildingModel:
+#     def test_xarray_dims(self):
+
+#         expected_dims = {"end_use_label": 11, "year": 10, "efficiency_level": 3}
+
+#         assert expected_dims == stock_turnover.model.dims
+
+#     def test_xarray_coords_keys(self):
+
+#         expected_coords_keys = [
+#             "efficiency_level",
+#             "efficiency_label",
+#             "year",
+#             "end_use_label",
+#             "building_label",
+#         ]
+
+#         assert expected_coords_keys == list(stock_turnover.model.coords.keys())
