@@ -176,9 +176,7 @@ def _create_load_shape_xarray(
     dataset_xr: xr.Dataset, building: Building, end_use: EndUse
 ) -> xr.Dataset:
 
-    # TODO need to build out case where efficiency level load shape can override enduse
     # TODO need to build out to handle extra dims
-    # will do this when we start modelling NREL load shapes
     freq, label_freq = freq_dict[building._load_shape_freq]
 
     if end_use.load_shape:
@@ -186,6 +184,7 @@ def _create_load_shape_xarray(
     else:
         load_shape = np.ones(freq) / freq
 
+    # TODO have dictionary map of einsum calc based on dims
     # if multiple efficiency levels
     if dataset_xr["efficiency_level"].shape[0] > 1:
         cons_shaped = np.einsum(
@@ -261,10 +260,7 @@ def _create_xarray_from_end_use(building: Building, end_use: EndUse) -> xr.Datas
         xr_dict["equip_mat"], xr_dict["ul_mat"], xr_dict["ramp_mat"]
     )
 
-    xr_dict["end_use"] = end_use
-    xr_dict["building"] = building
-
-    dataset_xr = _build_xarray(**xr_dict)
+    dataset_xr = _build_xarray(**xr_dict, building=building, end_use=end_use)
 
     if building._has_end_use_load_shape:
         dataset_xr = _create_load_shape_xarray(dataset_xr, building, end_use,)

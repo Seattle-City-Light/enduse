@@ -51,9 +51,6 @@ class TestStockTurnoverCalculation:
             valid_equip_mat, valid_ul_mat, valid_ramp_mat_ones
         )
         assert np.array_equal(calc_stock_turn, valid_equip_mat)
-        assert np.array_equal(
-            np.sum(calc_stock_turn, axis=0), np.sum(valid_equip_mat, axis=0)
-        )
 
     def test_valid_st_mat_adds(self):
         calc_stock_turn = _create_stock_turnover(
@@ -82,7 +79,7 @@ valid_equipment.append(
         "start_year": 2022,
         "end_year": 2031,
         "efficiency_share": np.linspace(0.75, 0.75, 10).tolist(),
-        "unit_consumption": np.linspace(8742, 8742, 10).tolist(),
+        "unit_consumption": np.linspace(8000, 8000, 10).tolist(),
         "useful_life": np.linspace(5, 15, 10).tolist(),
     }
 )
@@ -94,7 +91,7 @@ valid_equipment.append(
         "start_year": 2022,
         "end_year": 2031,
         "efficiency_share": np.linspace(0.20, 0.20, 10).tolist(),
-        "unit_consumption": np.linspace(7442, 7442, 10).tolist(),
+        "unit_consumption": np.linspace(7000, 7000, 10).tolist(),
         "useful_life": np.linspace(18, 18, 10).tolist(),
     }
 )
@@ -114,15 +111,22 @@ valid_equipment.append(
 
 valid_equipment_parsed = [Equipment(**i) for i in valid_equipment]
 
-valid_ramp = {
+valid_multi_ramp = {
     "ramp_label": "Upgrade Heat Pump",
     "ramp_year": [2022, 2025],
     "ramp_equipment": [valid_equipment_parsed[1], valid_equipment_parsed[2]],
 }
 
-valid_ramp_parsed = RampEfficiency(**valid_ramp)
+valid_multi_ramp_parsed = RampEfficiency(**valid_multi_ramp)
 
-expected_ramp_matrix = np.array(
+valid_single_ramp = {
+    "ramp_label": "No Ramp",
+    "ramp_equipment": [valid_equipment_parsed[2]],
+}
+
+valid_single_ramp_parsed = RampEfficiency(**valid_single_ramp)
+
+expected_multi_ramp_matrix = np.array(
     [
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
@@ -130,24 +134,38 @@ expected_ramp_matrix = np.array(
     ]
 )
 
+expected_single_ramp_matrix = np.array(
+    [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    ]
+)
 
-def test_valid_create_ramp_matrix():
+
+class TestCreateRampMatix:
+
     equip_mat = np.tile(np.linspace(100, 100, 10), (3, 1))
-    ramp_matrix = _create_ramp_matrix(equip_mat, valid_ramp_parsed)
-    assert np.array_equal(ramp_matrix, expected_ramp_matrix)
+
+    def test_ramp_matrix_multiple_ramps(self):
+        ramp_matrix = _create_ramp_matrix(self.equip_mat, valid_multi_ramp_parsed)
+        assert np.array_equal(ramp_matrix, expected_multi_ramp_matrix)
+
+    def test_ramp_matrix_single_ramp(self):
+        ramp_matrix = _create_ramp_matrix(self.equip_mat, valid_single_ramp_parsed)
+        assert np.array_equal(ramp_matrix, expected_single_ramp_matrix)
 
 
 valid_end_uses = []
-for i in [f"Heat Pump 1 {i}" for i in range(10)]:
-    valid_end_uses.append(
-        {
-            "end_use_label": i,
-            "equipment": valid_equipment_parsed,
-            "ramp_efficiency": valid_ramp_parsed,
-            "saturation": np.linspace(0.10, 0.25, 10).tolist(),
-            "fuel_share": np.linspace(0.90, 0.90, 10).tolist(),
-        }
-    )
+valid_end_uses.append(
+    {
+        "end_use_label": "Heat Pump 1",
+        "equipment": valid_equipment_parsed,
+        "ramp_efficiency": valid_multi_ramp_parsed,
+        "saturation": np.linspace(0.50, 0.50, 10).tolist(),
+        "fuel_share": np.linspace(0.50, 0.50, 10).tolist(),
+    }
+)
 
 valid_equipment_2 = []
 valid_equipment_2.append(
@@ -157,7 +175,7 @@ valid_equipment_2.append(
         "start_year": 2022,
         "end_year": 2031,
         "efficiency_share": np.linspace(0.50, 0.50, 10).tolist(),
-        "unit_consumption": np.linspace(8742, 8742, 10).tolist(),
+        "unit_consumption": np.linspace(8000, 8000, 10).tolist(),
         "useful_life": np.linspace(5, 15, 10).tolist(),
     }
 )
@@ -169,7 +187,7 @@ valid_equipment_2.append(
         "start_year": 2022,
         "end_year": 2031,
         "efficiency_share": np.linspace(0.50, 0.50, 10).tolist(),
-        "unit_consumption": np.linspace(7442, 7442, 10).tolist(),
+        "unit_consumption": np.linspace(7000, 7000, 10).tolist(),
         "useful_life": np.linspace(18, 18, 10).tolist(),
     }
 )
@@ -178,8 +196,8 @@ valid_end_uses.append(
     {
         "end_use_label": "Heat Pump 2",
         "equipment": valid_equipment_2,
-        "saturation": np.linspace(0.10, 0.25, 10).tolist(),
-        "fuel_share": np.linspace(0.90, 0.90, 10).tolist(),
+        "saturation": np.linspace(0.50, 0.50, 10).tolist(),
+        "fuel_share": np.linspace(1, 1, 10).tolist(),
     }
 )
 
@@ -196,21 +214,53 @@ valid_building_parsed = Building(**valid_building)
 stock_turnover = BuildingModel(valid_building_parsed)
 
 
-# class TestBuildingModel:
-#     def test_xarray_dims(self):
+class TestBuildingModel:
 
-#         expected_dims = {"end_use_label": 11, "year": 10, "efficiency_level": 3}
+    sel = {"end_use_label": "Heat Pump 1"}
 
-#         assert expected_dims == stock_turnover.model.dims
+    def test_xarray_dims(self):
 
-#     def test_xarray_coords_keys(self):
+        expected_dims = {"end_use_label": 2, "year": 10, "efficiency_level": 3}
 
-#         expected_coords_keys = [
-#             "efficiency_level",
-#             "efficiency_label",
-#             "year",
-#             "end_use_label",
-#             "building_label",
-#         ]
+        assert expected_dims == stock_turnover.model.dims
 
-#         assert expected_coords_keys == list(stock_turnover.model.coords.keys())
+    def test_xarray_coords_keys(self):
+
+        expected_coords_keys = [
+            "efficiency_level",
+            "efficiency_label",
+            "year",
+            "end_use_label",
+            "building_label",
+        ]
+
+        assert expected_coords_keys == list(stock_turnover.model.coords.keys())
+
+    def test_xarray_data_vars(self):
+        expected_data_vars = [
+            "building_stock",
+            "saturation",
+            "fuel_share",
+            "ramp_matrix",
+            "efficiency_share",
+            "unit_consumption",
+            "useful_life",
+            "init_equipment_stock",
+            "equipment_stock",
+            "consumption",
+        ]
+        assert list(stock_turnover.model.data_vars.keys()) == expected_data_vars
+
+    def test_xarray_equipment_stock(self):
+        expected_stock = np.linspace(250, 250, 10)
+        calc_stock = np.sum(
+            stock_turnover.model.sel(self.sel)["equipment_stock"], axis=0
+        )
+        assert np.array_equal(np.round(expected_stock, 0), np.round(calc_stock, 0))
+
+    def test_xarray_consumptions(self):
+        calc_stock = stock_turnover.model.sel(self.sel)["equipment_stock"]
+        exp_cons = np.array([8000, 7000, 5000])
+        exp_cons = calc_stock * exp_cons[:, None]
+        calc_cons = stock_turnover.model.sel(self.sel)["consumption"]
+        assert np.array_equal(np.round(exp_cons, 0), np.round(calc_cons, 0))
