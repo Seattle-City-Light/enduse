@@ -1,0 +1,5 @@
+[run]
+branch = True
+omit = 
+    enduse/tests/*
+    enduse/__init__.py

@@ -1,5 +1,4 @@
 import numpy as np
-import pytest
 
 from enduse.stockobjects import Equipment, RampEfficiency, EndUse, Building
 from enduse.stockturnover import (

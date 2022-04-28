@@ -16,7 +16,7 @@ from enduse.stockturnover import BuildingModel
 
 # set load shape path
 resstock_path = str(
-    (Path(__file__).parents[1] / "outputs/loadshapes/resstock_loadshapes.nc").as_posix()
+    (Path(__file__).parents[2] / "outputs/loadshapes/resstock_loadshapes.nc").as_posix()
 )
 
 # heat central
@@ -216,3 +216,13 @@ building = {
 
 building_parsed = Building(**building)
 stock_turnover = BuildingModel(building_parsed)
+
+
+class TestStockTurnoverLoadShape:
+    def test_load_shape_consumption(self):
+        """Mean of annual consumption should equal sum of shaped consumption"""
+        cons_grp = stock_turnover.model.groupby("datetime.year").mean()["consumption"]
+        cons_shaped_grp = stock_turnover.model.groupby("datetime.year").sum()[
+            "consumption_shaped"
+        ]
+        assert np.round(np.sum(cons_grp), 0) == np.round(np.sum(cons_shaped_grp), 0)
