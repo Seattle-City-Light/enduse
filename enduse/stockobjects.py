@@ -73,7 +73,7 @@ class Equipment(BaseModel):
     start_year: PositiveInt
     end_year: PositiveInt
     efficiency_share: List[confloat(ge=0, le=1)]
-    unit_consumption: List[PositiveFloat]
+    unit_consumption: List[confloat(ge=0)]
     useful_life: List[PositiveInt]
     load_shape: Optional[LoadShape]
 
@@ -141,9 +141,9 @@ class EndUse(BaseModel):
     label: StrictStr = Field(None, alias="end_use_label")
     equipment: List[Equipment]
     ramp_efficiency: Optional[RampEfficiency]
-    start_year: Optional[PositiveInt]
-    end_year: Optional[PositiveInt]
-    saturation: List[PositiveFloat]
+    start_year: PositiveInt
+    end_year: PositiveInt
+    saturation: List[confloat(ge=0)]
     fuel_share: List[confloat(ge=0, le=1)]
     load_shape: Optional[LoadShape]
 
@@ -172,7 +172,7 @@ class EndUse(BaseModel):
     def validate_equipment_allocation(cls, v, values):
         label = values["label"]
         allocations = np.array([i.efficiency_share for i in v])
-        if np.any(allocations.sum(axis=0) != 1):
+        if np.any(np.round(allocations.sum(axis=0), 0) != 1):
             raise ValueError(
                 f"{label} equipment efficiency_share allocations do not sum to 1"
             )
@@ -200,20 +200,6 @@ class EndUse(BaseModel):
             raise ValueError(f"{label} equipment end_year values not equal")
         return v
 
-    # set start year if not provided
-    @validator("start_year", always=True)
-    def set_start_year(cls, v, values):
-        if v is None:
-            v = values["equipment"][0].start_year
-        return v
-
-    # set end year if not provided
-    @validator("end_year", always=True)
-    def set_end_year(cls, v, values):
-        if v is None:
-            v = values["equipment"][0].end_year
-        return v
-
     @validator("ramp_efficiency")
     def check_ramp_equipment_valid(cls, v, values):
         if "equipment" in values.keys():
@@ -234,8 +220,8 @@ class EndUse(BaseModel):
 class Building(BaseModel):
     label: StrictStr = Field(None, alias="building_label")
     end_uses: List[EndUse]
-    start_year: Optional[PositiveInt]
-    end_year: Optional[PositiveInt]
+    start_year: PositiveInt
+    end_year: PositiveInt
     building_stock: List[PositiveFloat]
     segment: Optional[StrictStr]
     construction_vintage: Optional[StrictStr]
@@ -295,20 +281,6 @@ class Building(BaseModel):
         freqs = [i.load_shape.freq for i in v if i.load_shape]
         if len(set(freqs)) > 1:
             raise ValueError(f"Load shape frequencies are inconsistent")
-        return v
-
-    @validator("start_year", always=True)
-    def set_start_year(cls, v, values):
-        if "end_uses" in values.keys():
-            if v is None:
-                v = values["end_uses"][0].start_year
-        return v
-
-    @validator("end_year", always=True)
-    def set_end_year(cls, v, values):
-        if "end_uses" in values.keys():
-            if v is None:
-                v = values["end_uses"][0].end_year
         return v
 
     _check_expected_list_length: classmethod = validator(

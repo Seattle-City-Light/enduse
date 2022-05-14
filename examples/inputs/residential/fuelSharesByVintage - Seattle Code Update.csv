@@ -1,0 +1,565 @@
+RegionSegment,RegionSegmentEndUse,Region,Segment,End Use,Construction Vintage,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041
+SCLMultifamily - High Rise,SCLMultifamily - High RiseAir Purifier,SCL,Multifamily - High Rise,Air Purifier,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeAir Purifier,SCL,Multifamily - High Rise Low Income,Air Purifier,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseAir Purifier,SCL,Multifamily - Low Rise,Air Purifier,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeAir Purifier,SCL,Multifamily - Low Rise Low Income,Air Purifier,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseAir Purifier,SCL,Multifamily - Mid Rise,Air Purifier,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeAir Purifier,SCL,Multifamily - Mid Rise Low Income,Air Purifier,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyAir Purifier,SCL,Single Family,Air Purifier,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeAir Purifier,SCL,Single Family Low Income,Air Purifier,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseCirculation - DHW,SCL,Multifamily - High Rise,Circulation - DHW,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeCirculation - DHW,SCL,Multifamily - High Rise Low Income,Circulation - DHW,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseCirculation - DHW,SCL,Multifamily - Low Rise,Circulation - DHW,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeCirculation - DHW,SCL,Multifamily - Low Rise Low Income,Circulation - DHW,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseCirculation - DHW,SCL,Multifamily - Mid Rise,Circulation - DHW,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeCirculation - DHW,SCL,Multifamily - Mid Rise Low Income,Circulation - DHW,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyCirculation - DHW,SCL,Single Family,Circulation - DHW,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeCirculation - DHW,SCL,Single Family Low Income,Circulation - DHW,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseCirculation - Hydronic Heating,SCL,Multifamily - High Rise,Circulation - Hydronic Heating,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeCirculation - Hydronic Heating,SCL,Multifamily - High Rise Low Income,Circulation - Hydronic Heating,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseCirculation - Hydronic Heating,SCL,Multifamily - Low Rise,Circulation - Hydronic Heating,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeCirculation - Hydronic Heating,SCL,Multifamily - Low Rise Low Income,Circulation - Hydronic Heating,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseCirculation - Hydronic Heating,SCL,Multifamily - Mid Rise,Circulation - Hydronic Heating,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeCirculation - Hydronic Heating,SCL,Multifamily - Mid Rise Low Income,Circulation - Hydronic Heating,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyCirculation - Hydronic Heating,SCL,Single Family,Circulation - Hydronic Heating,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeCirculation - Hydronic Heating,SCL,Single Family Low Income,Circulation - Hydronic Heating,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseComputer - Desktop,SCL,Multifamily - High Rise,Computer - Desktop,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeComputer - Desktop,SCL,Multifamily - High Rise Low Income,Computer - Desktop,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseComputer - Desktop,SCL,Multifamily - Low Rise,Computer - Desktop,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeComputer - Desktop,SCL,Multifamily - Low Rise Low Income,Computer - Desktop,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseComputer - Desktop,SCL,Multifamily - Mid Rise,Computer - Desktop,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeComputer - Desktop,SCL,Multifamily - Mid Rise Low Income,Computer - Desktop,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyComputer - Desktop,SCL,Single Family,Computer - Desktop,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeComputer - Desktop,SCL,Single Family Low Income,Computer - Desktop,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseComputer - Laptop,SCL,Multifamily - High Rise,Computer - Laptop,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeComputer - Laptop,SCL,Multifamily - High Rise Low Income,Computer - Laptop,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseComputer - Laptop,SCL,Multifamily - Low Rise,Computer - Laptop,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeComputer - Laptop,SCL,Multifamily - Low Rise Low Income,Computer - Laptop,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseComputer - Laptop,SCL,Multifamily - Mid Rise,Computer - Laptop,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeComputer - Laptop,SCL,Multifamily - Mid Rise Low Income,Computer - Laptop,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyComputer - Laptop,SCL,Single Family,Computer - Laptop,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeComputer - Laptop,SCL,Single Family Low Income,Computer - Laptop,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseCooking Oven,SCL,Multifamily - High Rise,Cooking Oven,Existing,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeCooking Oven,SCL,Multifamily - High Rise Low Income,Cooking Oven,Existing,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseCooking Oven,SCL,Multifamily - Low Rise,Cooking Oven,Existing,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeCooking Oven,SCL,Multifamily - Low Rise Low Income,Cooking Oven,Existing,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseCooking Oven,SCL,Multifamily - Mid Rise,Cooking Oven,Existing,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeCooking Oven,SCL,Multifamily - Mid Rise Low Income,Cooking Oven,Existing,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558
+SCLSingle Family,SCLSingle FamilyCooking Oven,SCL,Single Family,Cooking Oven,Existing,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169
+SCLSingle Family Low Income,SCLSingle Family Low IncomeCooking Oven,SCL,Single Family Low Income,Cooking Oven,Existing,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169
+SCLMultifamily - High Rise,SCLMultifamily - High RiseCooking Range,SCL,Multifamily - High Rise,Cooking Range,Existing,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeCooking Range,SCL,Multifamily - High Rise Low Income,Cooking Range,Existing,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseCooking Range,SCL,Multifamily - Low Rise,Cooking Range,Existing,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeCooking Range,SCL,Multifamily - Low Rise Low Income,Cooking Range,Existing,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseCooking Range,SCL,Multifamily - Mid Rise,Cooking Range,Existing,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeCooking Range,SCL,Multifamily - Mid Rise Low Income,Cooking Range,Existing,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558
+SCLSingle Family,SCLSingle FamilyCooking Range,SCL,Single Family,Cooking Range,Existing,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556
+SCLSingle Family Low Income,SCLSingle Family Low IncomeCooking Range,SCL,Single Family Low Income,Cooking Range,Existing,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556
+SCLMultifamily - High Rise,SCLMultifamily - High RiseCool Central,SCL,Multifamily - High Rise,Cool Central,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeCool Central,SCL,Multifamily - High Rise Low Income,Cool Central,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseCool Central,SCL,Multifamily - Low Rise,Cool Central,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeCool Central,SCL,Multifamily - Low Rise Low Income,Cool Central,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseCool Central,SCL,Multifamily - Mid Rise,Cool Central,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeCool Central,SCL,Multifamily - Mid Rise Low Income,Cool Central,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyCool Central,SCL,Single Family,Cool Central,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeCool Central,SCL,Single Family Low Income,Cool Central,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseCool Room,SCL,Multifamily - High Rise,Cool Room,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeCool Room,SCL,Multifamily - High Rise Low Income,Cool Room,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseCool Room,SCL,Multifamily - Low Rise,Cool Room,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeCool Room,SCL,Multifamily - Low Rise Low Income,Cool Room,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseCool Room,SCL,Multifamily - Mid Rise,Cool Room,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeCool Room,SCL,Multifamily - Mid Rise Low Income,Cool Room,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyCool Room,SCL,Single Family,Cool Room,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeCool Room,SCL,Single Family Low Income,Cool Room,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseCopier,SCL,Multifamily - High Rise,Copier,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeCopier,SCL,Multifamily - High Rise Low Income,Copier,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseCopier,SCL,Multifamily - Low Rise,Copier,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeCopier,SCL,Multifamily - Low Rise Low Income,Copier,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseCopier,SCL,Multifamily - Mid Rise,Copier,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeCopier,SCL,Multifamily - Mid Rise Low Income,Copier,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyCopier,SCL,Single Family,Copier,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeCopier,SCL,Single Family Low Income,Copier,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseDryer,SCL,Multifamily - High Rise,Dryer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeDryer,SCL,Multifamily - High Rise Low Income,Dryer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseDryer,SCL,Multifamily - Low Rise,Dryer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeDryer,SCL,Multifamily - Low Rise Low Income,Dryer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseDryer,SCL,Multifamily - Mid Rise,Dryer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeDryer,SCL,Multifamily - Mid Rise Low Income,Dryer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyDryer,SCL,Single Family,Dryer,Existing,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449
+SCLSingle Family Low Income,SCLSingle Family Low IncomeDryer,SCL,Single Family Low Income,Dryer,Existing,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449
+SCLMultifamily - High Rise,SCLMultifamily - High RiseDVD Player,SCL,Multifamily - High Rise,DVD Player,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeDVD Player,SCL,Multifamily - High Rise Low Income,DVD Player,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseDVD Player,SCL,Multifamily - Low Rise,DVD Player,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeDVD Player,SCL,Multifamily - Low Rise Low Income,DVD Player,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseDVD Player,SCL,Multifamily - Mid Rise,DVD Player,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeDVD Player,SCL,Multifamily - Mid Rise Low Income,DVD Player,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyDVD Player,SCL,Single Family,DVD Player,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeDVD Player,SCL,Single Family Low Income,DVD Player,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseElectric Vehicles,SCL,Multifamily - High Rise,Electric Vehicles,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeElectric Vehicles,SCL,Multifamily - High Rise Low Income,Electric Vehicles,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseElectric Vehicles,SCL,Multifamily - Low Rise,Electric Vehicles,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeElectric Vehicles,SCL,Multifamily - Low Rise Low Income,Electric Vehicles,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseElectric Vehicles,SCL,Multifamily - Mid Rise,Electric Vehicles,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeElectric Vehicles,SCL,Multifamily - Mid Rise Low Income,Electric Vehicles,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyElectric Vehicles,SCL,Single Family,Electric Vehicles,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeElectric Vehicles,SCL,Single Family Low Income,Electric Vehicles,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseFreezer,SCL,Multifamily - High Rise,Freezer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeFreezer,SCL,Multifamily - High Rise Low Income,Freezer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseFreezer,SCL,Multifamily - Low Rise,Freezer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeFreezer,SCL,Multifamily - Low Rise Low Income,Freezer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseFreezer,SCL,Multifamily - Mid Rise,Freezer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeFreezer,SCL,Multifamily - Mid Rise Low Income,Freezer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyFreezer,SCL,Single Family,Freezer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeFreezer,SCL,Single Family Low Income,Freezer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseHeat Central,SCL,Multifamily - High Rise,Heat Central,Existing,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeHeat Central,SCL,Multifamily - High Rise Low Income,Heat Central,Existing,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseHeat Central,SCL,Multifamily - Low Rise,Heat Central,Existing,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeHeat Central,SCL,Multifamily - Low Rise Low Income,Heat Central,Existing,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseHeat Central,SCL,Multifamily - Mid Rise,Heat Central,Existing,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeHeat Central,SCL,Multifamily - Mid Rise Low Income,Heat Central,Existing,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+SCLSingle Family,SCLSingle FamilyHeat Central,SCL,Single Family,Heat Central,Existing,0.022034463,0.021667222,0.021254076,0.020795025,0.020290068,0.019739207,0.01914244,0.018499768,0.017811191,0.017076709,0.016275456,0.015407432,0.014472636,0.01347107,0.012402732,0.011267623,0.009883255,0.008378403,0.006741523,0.004958736,0.00301324
+SCLSingle Family Low Income,SCLSingle Family Low IncomeHeat Central,SCL,Single Family Low Income,Heat Central,Existing,0.022034463,0.021667222,0.021254076,0.020795025,0.020290068,0.019739207,0.01914244,0.018499768,0.017811191,0.017076709,0.016275456,0.015407432,0.014472636,0.01347107,0.012402732,0.011267623,0.009883255,0.008378403,0.006741523,0.004958736,0.00301324
+SCLMultifamily - High Rise,SCLMultifamily - High RiseHeat Pump,SCL,Multifamily - High Rise,Heat Pump,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeHeat Pump,SCL,Multifamily - High Rise Low Income,Heat Pump,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseHeat Pump,SCL,Multifamily - Low Rise,Heat Pump,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeHeat Pump,SCL,Multifamily - Low Rise Low Income,Heat Pump,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseHeat Pump,SCL,Multifamily - Mid Rise,Heat Pump,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeHeat Pump,SCL,Multifamily - Mid Rise Low Income,Heat Pump,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyHeat Pump,SCL,Single Family,Heat Pump,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeHeat Pump,SCL,Single Family Low Income,Heat Pump,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseHeat Room,SCL,Multifamily - High Rise,Heat Room,Existing,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeHeat Room,SCL,Multifamily - High Rise Low Income,Heat Room,Existing,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseHeat Room,SCL,Multifamily - Low Rise,Heat Room,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeHeat Room,SCL,Multifamily - Low Rise Low Income,Heat Room,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseHeat Room,SCL,Multifamily - Mid Rise,Heat Room,Existing,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeHeat Room,SCL,Multifamily - Mid Rise Low Income,Heat Room,Existing,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222,0.972222222
+SCLSingle Family,SCLSingle FamilyHeat Room,SCL,Single Family,Heat Room,Existing,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632
+SCLSingle Family Low Income,SCLSingle Family Low IncomeHeat Room,SCL,Single Family Low Income,Heat Room,Existing,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632
+SCLMultifamily - High Rise,SCLMultifamily - High RiseHome Audio System,SCL,Multifamily - High Rise,Home Audio System,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeHome Audio System,SCL,Multifamily - High Rise Low Income,Home Audio System,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseHome Audio System,SCL,Multifamily - Low Rise,Home Audio System,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeHome Audio System,SCL,Multifamily - Low Rise Low Income,Home Audio System,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseHome Audio System,SCL,Multifamily - Mid Rise,Home Audio System,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeHome Audio System,SCL,Multifamily - Mid Rise Low Income,Home Audio System,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyHome Audio System,SCL,Single Family,Home Audio System,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeHome Audio System,SCL,Single Family Low Income,Home Audio System,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseLighting Exterior Standard,SCL,Multifamily - High Rise,Lighting Exterior Standard,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeLighting Exterior Standard,SCL,Multifamily - High Rise Low Income,Lighting Exterior Standard,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseLighting Exterior Standard,SCL,Multifamily - Low Rise,Lighting Exterior Standard,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeLighting Exterior Standard,SCL,Multifamily - Low Rise Low Income,Lighting Exterior Standard,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseLighting Exterior Standard,SCL,Multifamily - Mid Rise,Lighting Exterior Standard,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeLighting Exterior Standard,SCL,Multifamily - Mid Rise Low Income,Lighting Exterior Standard,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyLighting Exterior Standard,SCL,Single Family,Lighting Exterior Standard,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeLighting Exterior Standard,SCL,Single Family Low Income,Lighting Exterior Standard,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseLighting Interior Linear Fluorescent,SCL,Multifamily - High Rise,Lighting Interior Linear Fluorescent,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeLighting Interior Linear Fluorescent,SCL,Multifamily - High Rise Low Income,Lighting Interior Linear Fluorescent,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseLighting Interior Linear Fluorescent,SCL,Multifamily - Low Rise,Lighting Interior Linear Fluorescent,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeLighting Interior Linear Fluorescent,SCL,Multifamily - Low Rise Low Income,Lighting Interior Linear Fluorescent,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseLighting Interior Linear Fluorescent,SCL,Multifamily - Mid Rise,Lighting Interior Linear Fluorescent,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeLighting Interior Linear Fluorescent,SCL,Multifamily - Mid Rise Low Income,Lighting Interior Linear Fluorescent,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyLighting Interior Linear Fluorescent,SCL,Single Family,Lighting Interior Linear Fluorescent,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeLighting Interior Linear Fluorescent,SCL,Single Family Low Income,Lighting Interior Linear Fluorescent,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseLighting Interior Specialty,SCL,Multifamily - High Rise,Lighting Interior Specialty,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeLighting Interior Specialty,SCL,Multifamily - High Rise Low Income,Lighting Interior Specialty,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseLighting Interior Specialty,SCL,Multifamily - Low Rise,Lighting Interior Specialty,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeLighting Interior Specialty,SCL,Multifamily - Low Rise Low Income,Lighting Interior Specialty,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseLighting Interior Specialty,SCL,Multifamily - Mid Rise,Lighting Interior Specialty,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeLighting Interior Specialty,SCL,Multifamily - Mid Rise Low Income,Lighting Interior Specialty,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyLighting Interior Specialty,SCL,Single Family,Lighting Interior Specialty,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeLighting Interior Specialty,SCL,Single Family Low Income,Lighting Interior Specialty,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseLighting Interior Standard,SCL,Multifamily - High Rise,Lighting Interior Standard,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeLighting Interior Standard,SCL,Multifamily - High Rise Low Income,Lighting Interior Standard,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseLighting Interior Standard,SCL,Multifamily - Low Rise,Lighting Interior Standard,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeLighting Interior Standard,SCL,Multifamily - Low Rise Low Income,Lighting Interior Standard,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseLighting Interior Standard,SCL,Multifamily - Mid Rise,Lighting Interior Standard,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeLighting Interior Standard,SCL,Multifamily - Mid Rise Low Income,Lighting Interior Standard,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyLighting Interior Standard,SCL,Single Family,Lighting Interior Standard,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeLighting Interior Standard,SCL,Single Family Low Income,Lighting Interior Standard,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseMicrowave,SCL,Multifamily - High Rise,Microwave,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeMicrowave,SCL,Multifamily - High Rise Low Income,Microwave,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseMicrowave,SCL,Multifamily - Low Rise,Microwave,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeMicrowave,SCL,Multifamily - Low Rise Low Income,Microwave,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseMicrowave,SCL,Multifamily - Mid Rise,Microwave,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeMicrowave,SCL,Multifamily - Mid Rise Low Income,Microwave,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyMicrowave,SCL,Single Family,Microwave,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeMicrowave,SCL,Single Family Low Income,Microwave,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseMonitor,SCL,Multifamily - High Rise,Monitor,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeMonitor,SCL,Multifamily - High Rise Low Income,Monitor,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseMonitor,SCL,Multifamily - Low Rise,Monitor,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeMonitor,SCL,Multifamily - Low Rise Low Income,Monitor,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseMonitor,SCL,Multifamily - Mid Rise,Monitor,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeMonitor,SCL,Multifamily - Mid Rise Low Income,Monitor,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyMonitor,SCL,Single Family,Monitor,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeMonitor,SCL,Single Family Low Income,Monitor,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseMultifunction Device,SCL,Multifamily - High Rise,Multifunction Device,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeMultifunction Device,SCL,Multifamily - High Rise Low Income,Multifunction Device,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseMultifunction Device,SCL,Multifamily - Low Rise,Multifunction Device,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeMultifunction Device,SCL,Multifamily - Low Rise Low Income,Multifunction Device,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseMultifunction Device,SCL,Multifamily - Mid Rise,Multifunction Device,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeMultifunction Device,SCL,Multifamily - Mid Rise Low Income,Multifunction Device,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyMultifunction Device,SCL,Single Family,Multifunction Device,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeMultifunction Device,SCL,Single Family Low Income,Multifunction Device,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseOther,SCL,Multifamily - High Rise,Other,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeOther,SCL,Multifamily - High Rise Low Income,Other,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseOther,SCL,Multifamily - Low Rise,Other,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeOther,SCL,Multifamily - Low Rise Low Income,Other,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseOther,SCL,Multifamily - Mid Rise,Other,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeOther,SCL,Multifamily - Mid Rise Low Income,Other,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyOther,SCL,Single Family,Other,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeOther,SCL,Single Family Low Income,Other,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RisePlug Load Other,SCL,Multifamily - High Rise,Plug Load Other,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomePlug Load Other,SCL,Multifamily - High Rise Low Income,Plug Load Other,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RisePlug Load Other,SCL,Multifamily - Low Rise,Plug Load Other,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomePlug Load Other,SCL,Multifamily - Low Rise Low Income,Plug Load Other,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RisePlug Load Other,SCL,Multifamily - Mid Rise,Plug Load Other,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomePlug Load Other,SCL,Multifamily - Mid Rise Low Income,Plug Load Other,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyPlug Load Other,SCL,Single Family,Plug Load Other,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomePlug Load Other,SCL,Single Family Low Income,Plug Load Other,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyPool Pump,SCL,Single Family,Pool Pump,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomePool Pump,SCL,Single Family Low Income,Pool Pump,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RisePrinter,SCL,Multifamily - High Rise,Printer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomePrinter,SCL,Multifamily - High Rise Low Income,Printer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RisePrinter,SCL,Multifamily - Low Rise,Printer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomePrinter,SCL,Multifamily - Low Rise Low Income,Printer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RisePrinter,SCL,Multifamily - Mid Rise,Printer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomePrinter,SCL,Multifamily - Mid Rise Low Income,Printer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyPrinter,SCL,Single Family,Printer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomePrinter,SCL,Single Family Low Income,Printer,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseRefrigerator,SCL,Multifamily - High Rise,Refrigerator,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeRefrigerator,SCL,Multifamily - High Rise Low Income,Refrigerator,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseRefrigerator,SCL,Multifamily - Low Rise,Refrigerator,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeRefrigerator,SCL,Multifamily - Low Rise Low Income,Refrigerator,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseRefrigerator,SCL,Multifamily - Mid Rise,Refrigerator,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeRefrigerator,SCL,Multifamily - Mid Rise Low Income,Refrigerator,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyRefrigerator,SCL,Single Family,Refrigerator,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeRefrigerator,SCL,Single Family Low Income,Refrigerator,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseSet Top Box,SCL,Multifamily - High Rise,Set Top Box,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeSet Top Box,SCL,Multifamily - High Rise Low Income,Set Top Box,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseSet Top Box,SCL,Multifamily - Low Rise,Set Top Box,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeSet Top Box,SCL,Multifamily - Low Rise Low Income,Set Top Box,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseSet Top Box,SCL,Multifamily - Mid Rise,Set Top Box,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeSet Top Box,SCL,Multifamily - Mid Rise Low Income,Set Top Box,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilySet Top Box,SCL,Single Family,Set Top Box,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeSet Top Box,SCL,Single Family Low Income,Set Top Box,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseTelevision,SCL,Multifamily - High Rise,Television,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeTelevision,SCL,Multifamily - High Rise Low Income,Television,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseTelevision,SCL,Multifamily - Low Rise,Television,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeTelevision,SCL,Multifamily - Low Rise Low Income,Television,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseTelevision,SCL,Multifamily - Mid Rise,Television,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeTelevision,SCL,Multifamily - Mid Rise Low Income,Television,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyTelevision,SCL,Single Family,Television,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeTelevision,SCL,Single Family Low Income,Television,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseVentilation - Air,SCL,Multifamily - High Rise,Ventilation - Air,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeVentilation - Air,SCL,Multifamily - High Rise Low Income,Ventilation - Air,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseVentilation - Air,SCL,Multifamily - Low Rise,Ventilation - Air,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeVentilation - Air,SCL,Multifamily - Low Rise Low Income,Ventilation - Air,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseVentilation - Air,SCL,Multifamily - Mid Rise,Ventilation - Air,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeVentilation - Air,SCL,Multifamily - Mid Rise Low Income,Ventilation - Air,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyVentilation - Air,SCL,Single Family,Ventilation - Air,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeVentilation - Air,SCL,Single Family Low Income,Ventilation - Air,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseWaste Water,SCL,Multifamily - High Rise,Waste Water,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeWaste Water,SCL,Multifamily - High Rise Low Income,Waste Water,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseWaste Water,SCL,Multifamily - Low Rise,Waste Water,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeWaste Water,SCL,Multifamily - Low Rise Low Income,Waste Water,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseWaste Water,SCL,Multifamily - Mid Rise,Waste Water,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeWaste Water,SCL,Multifamily - Mid Rise Low Income,Waste Water,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyWaste Water,SCL,Single Family,Waste Water,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeWaste Water,SCL,Single Family Low Income,Waste Water,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseWater Heat GT 55 Gal,SCL,Multifamily - High Rise,Water Heat GT 55 Gal,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeWater Heat GT 55 Gal,SCL,Multifamily - High Rise Low Income,Water Heat GT 55 Gal,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseWater Heat GT 55 Gal,SCL,Multifamily - Low Rise,Water Heat GT 55 Gal,Existing,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeWater Heat GT 55 Gal,SCL,Multifamily - Low Rise Low Income,Water Heat GT 55 Gal,Existing,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseWater Heat GT 55 Gal,SCL,Multifamily - Mid Rise,Water Heat GT 55 Gal,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeWater Heat GT 55 Gal,SCL,Multifamily - Mid Rise Low Income,Water Heat GT 55 Gal,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyWater Heat GT 55 Gal,SCL,Single Family,Water Heat GT 55 Gal,Existing,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88
+SCLSingle Family Low Income,SCLSingle Family Low IncomeWater Heat GT 55 Gal,SCL,Single Family Low Income,Water Heat GT 55 Gal,Existing,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88
+SCLMultifamily - High Rise,SCLMultifamily - High RiseWater Heat LE 55 Gal,SCL,Multifamily - High Rise,Water Heat LE 55 Gal,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeWater Heat LE 55 Gal,SCL,Multifamily - High Rise Low Income,Water Heat LE 55 Gal,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseWater Heat LE 55 Gal,SCL,Multifamily - Low Rise,Water Heat LE 55 Gal,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeWater Heat LE 55 Gal,SCL,Multifamily - Low Rise Low Income,Water Heat LE 55 Gal,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseWater Heat LE 55 Gal,SCL,Multifamily - Mid Rise,Water Heat LE 55 Gal,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeWater Heat LE 55 Gal,SCL,Multifamily - Mid Rise Low Income,Water Heat LE 55 Gal,Existing,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyWater Heat LE 55 Gal,SCL,Single Family,Water Heat LE 55 Gal,Existing,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159
+SCLSingle Family Low Income,SCLSingle Family Low IncomeWater Heat LE 55 Gal,SCL,Single Family Low Income,Water Heat LE 55 Gal,Existing,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159
+SCLMultifamily - High Rise,SCLMultifamily - High RiseAir Purifier,SCL,Multifamily - High Rise,Air Purifier,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeAir Purifier,SCL,Multifamily - High Rise Low Income,Air Purifier,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseAir Purifier,SCL,Multifamily - Low Rise,Air Purifier,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeAir Purifier,SCL,Multifamily - Low Rise Low Income,Air Purifier,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseAir Purifier,SCL,Multifamily - Mid Rise,Air Purifier,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeAir Purifier,SCL,Multifamily - Mid Rise Low Income,Air Purifier,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyAir Purifier,SCL,Single Family,Air Purifier,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeAir Purifier,SCL,Single Family Low Income,Air Purifier,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseCirculation - DHW,SCL,Multifamily - High Rise,Circulation - DHW,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeCirculation - DHW,SCL,Multifamily - High Rise Low Income,Circulation - DHW,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseCirculation - DHW,SCL,Multifamily - Low Rise,Circulation - DHW,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeCirculation - DHW,SCL,Multifamily - Low Rise Low Income,Circulation - DHW,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseCirculation - DHW,SCL,Multifamily - Mid Rise,Circulation - DHW,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeCirculation - DHW,SCL,Multifamily - Mid Rise Low Income,Circulation - DHW,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyCirculation - DHW,SCL,Single Family,Circulation - DHW,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeCirculation - DHW,SCL,Single Family Low Income,Circulation - DHW,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseCirculation - Hydronic Heating,SCL,Multifamily - High Rise,Circulation - Hydronic Heating,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeCirculation - Hydronic Heating,SCL,Multifamily - High Rise Low Income,Circulation - Hydronic Heating,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseCirculation - Hydronic Heating,SCL,Multifamily - Low Rise,Circulation - Hydronic Heating,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeCirculation - Hydronic Heating,SCL,Multifamily - Low Rise Low Income,Circulation - Hydronic Heating,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseCirculation - Hydronic Heating,SCL,Multifamily - Mid Rise,Circulation - Hydronic Heating,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeCirculation - Hydronic Heating,SCL,Multifamily - Mid Rise Low Income,Circulation - Hydronic Heating,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyCirculation - Hydronic Heating,SCL,Single Family,Circulation - Hydronic Heating,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeCirculation - Hydronic Heating,SCL,Single Family Low Income,Circulation - Hydronic Heating,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseComputer - Desktop,SCL,Multifamily - High Rise,Computer - Desktop,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeComputer - Desktop,SCL,Multifamily - High Rise Low Income,Computer - Desktop,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseComputer - Desktop,SCL,Multifamily - Low Rise,Computer - Desktop,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeComputer - Desktop,SCL,Multifamily - Low Rise Low Income,Computer - Desktop,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseComputer - Desktop,SCL,Multifamily - Mid Rise,Computer - Desktop,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeComputer - Desktop,SCL,Multifamily - Mid Rise Low Income,Computer - Desktop,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyComputer - Desktop,SCL,Single Family,Computer - Desktop,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeComputer - Desktop,SCL,Single Family Low Income,Computer - Desktop,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseComputer - Laptop,SCL,Multifamily - High Rise,Computer - Laptop,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeComputer - Laptop,SCL,Multifamily - High Rise Low Income,Computer - Laptop,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseComputer - Laptop,SCL,Multifamily - Low Rise,Computer - Laptop,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeComputer - Laptop,SCL,Multifamily - Low Rise Low Income,Computer - Laptop,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseComputer - Laptop,SCL,Multifamily - Mid Rise,Computer - Laptop,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeComputer - Laptop,SCL,Multifamily - Mid Rise Low Income,Computer - Laptop,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyComputer - Laptop,SCL,Single Family,Computer - Laptop,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeComputer - Laptop,SCL,Single Family Low Income,Computer - Laptop,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseCooking Oven,SCL,Multifamily - High Rise,Cooking Oven,New,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeCooking Oven,SCL,Multifamily - High Rise Low Income,Cooking Oven,New,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseCooking Oven,SCL,Multifamily - Low Rise,Cooking Oven,New,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeCooking Oven,SCL,Multifamily - Low Rise Low Income,Cooking Oven,New,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseCooking Oven,SCL,Multifamily - Mid Rise,Cooking Oven,New,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeCooking Oven,SCL,Multifamily - Mid Rise Low Income,Cooking Oven,New,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558
+SCLSingle Family,SCLSingle FamilyCooking Oven,SCL,Single Family,Cooking Oven,New,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169
+SCLSingle Family Low Income,SCLSingle Family Low IncomeCooking Oven,SCL,Single Family Low Income,Cooking Oven,New,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169,0.808743169
+SCLMultifamily - High Rise,SCLMultifamily - High RiseCooking Range,SCL,Multifamily - High Rise,Cooking Range,New,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeCooking Range,SCL,Multifamily - High Rise Low Income,Cooking Range,New,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseCooking Range,SCL,Multifamily - Low Rise,Cooking Range,New,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeCooking Range,SCL,Multifamily - Low Rise Low Income,Cooking Range,New,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842,0.894736842
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseCooking Range,SCL,Multifamily - Mid Rise,Cooking Range,New,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeCooking Range,SCL,Multifamily - Mid Rise Low Income,Cooking Range,New,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558,0.930232558
+SCLSingle Family,SCLSingle FamilyCooking Range,SCL,Single Family,Cooking Range,New,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556
+SCLSingle Family Low Income,SCLSingle Family Low IncomeCooking Range,SCL,Single Family Low Income,Cooking Range,New,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556,0.755555556
+SCLMultifamily - High Rise,SCLMultifamily - High RiseCool Central,SCL,Multifamily - High Rise,Cool Central,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeCool Central,SCL,Multifamily - High Rise Low Income,Cool Central,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseCool Central,SCL,Multifamily - Low Rise,Cool Central,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeCool Central,SCL,Multifamily - Low Rise Low Income,Cool Central,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseCool Central,SCL,Multifamily - Mid Rise,Cool Central,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeCool Central,SCL,Multifamily - Mid Rise Low Income,Cool Central,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyCool Central,SCL,Single Family,Cool Central,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeCool Central,SCL,Single Family Low Income,Cool Central,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseCool Room,SCL,Multifamily - High Rise,Cool Room,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeCool Room,SCL,Multifamily - High Rise Low Income,Cool Room,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseCool Room,SCL,Multifamily - Low Rise,Cool Room,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeCool Room,SCL,Multifamily - Low Rise Low Income,Cool Room,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseCool Room,SCL,Multifamily - Mid Rise,Cool Room,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeCool Room,SCL,Multifamily - Mid Rise Low Income,Cool Room,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyCool Room,SCL,Single Family,Cool Room,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeCool Room,SCL,Single Family Low Income,Cool Room,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseCopier,SCL,Multifamily - High Rise,Copier,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeCopier,SCL,Multifamily - High Rise Low Income,Copier,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseCopier,SCL,Multifamily - Low Rise,Copier,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeCopier,SCL,Multifamily - Low Rise Low Income,Copier,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseCopier,SCL,Multifamily - Mid Rise,Copier,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeCopier,SCL,Multifamily - Mid Rise Low Income,Copier,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyCopier,SCL,Single Family,Copier,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeCopier,SCL,Single Family Low Income,Copier,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseDryer,SCL,Multifamily - High Rise,Dryer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeDryer,SCL,Multifamily - High Rise Low Income,Dryer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseDryer,SCL,Multifamily - Low Rise,Dryer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeDryer,SCL,Multifamily - Low Rise Low Income,Dryer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseDryer,SCL,Multifamily - Mid Rise,Dryer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeDryer,SCL,Multifamily - Mid Rise Low Income,Dryer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyDryer,SCL,Single Family,Dryer,New,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449
+SCLSingle Family Low Income,SCLSingle Family Low IncomeDryer,SCL,Single Family Low Income,Dryer,New,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449,0.862275449
+SCLMultifamily - High Rise,SCLMultifamily - High RiseDVD Player,SCL,Multifamily - High Rise,DVD Player,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeDVD Player,SCL,Multifamily - High Rise Low Income,DVD Player,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseDVD Player,SCL,Multifamily - Low Rise,DVD Player,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeDVD Player,SCL,Multifamily - Low Rise Low Income,DVD Player,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseDVD Player,SCL,Multifamily - Mid Rise,DVD Player,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeDVD Player,SCL,Multifamily - Mid Rise Low Income,DVD Player,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyDVD Player,SCL,Single Family,DVD Player,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeDVD Player,SCL,Single Family Low Income,DVD Player,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseElectric Vehicles,SCL,Multifamily - High Rise,Electric Vehicles,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeElectric Vehicles,SCL,Multifamily - High Rise Low Income,Electric Vehicles,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseElectric Vehicles,SCL,Multifamily - Low Rise,Electric Vehicles,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeElectric Vehicles,SCL,Multifamily - Low Rise Low Income,Electric Vehicles,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseElectric Vehicles,SCL,Multifamily - Mid Rise,Electric Vehicles,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeElectric Vehicles,SCL,Multifamily - Mid Rise Low Income,Electric Vehicles,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyElectric Vehicles,SCL,Single Family,Electric Vehicles,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeElectric Vehicles,SCL,Single Family Low Income,Electric Vehicles,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseFreezer,SCL,Multifamily - High Rise,Freezer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeFreezer,SCL,Multifamily - High Rise Low Income,Freezer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseFreezer,SCL,Multifamily - Low Rise,Freezer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeFreezer,SCL,Multifamily - Low Rise Low Income,Freezer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseFreezer,SCL,Multifamily - Mid Rise,Freezer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeFreezer,SCL,Multifamily - Mid Rise Low Income,Freezer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyFreezer,SCL,Single Family,Freezer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeFreezer,SCL,Single Family Low Income,Freezer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseHeat Central,SCL,Multifamily - High Rise,Heat Central,New,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeHeat Central,SCL,Multifamily - High Rise Low Income,Heat Central,New,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseHeat Central,SCL,Multifamily - Low Rise,Heat Central,New,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeHeat Central,SCL,Multifamily - Low Rise Low Income,Heat Central,New,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseHeat Central,SCL,Multifamily - Mid Rise,Heat Central,New,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeHeat Central,SCL,Multifamily - Mid Rise Low Income,Heat Central,New,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyHeat Central,SCL,Single Family,Heat Central,New,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeHeat Central,SCL,Single Family Low Income,Heat Central,New,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseHeat Pump,SCL,Multifamily - High Rise,Heat Pump,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeHeat Pump,SCL,Multifamily - High Rise Low Income,Heat Pump,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseHeat Pump,SCL,Multifamily - Low Rise,Heat Pump,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeHeat Pump,SCL,Multifamily - Low Rise Low Income,Heat Pump,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseHeat Pump,SCL,Multifamily - Mid Rise,Heat Pump,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeHeat Pump,SCL,Multifamily - Mid Rise Low Income,Heat Pump,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyHeat Pump,SCL,Single Family,Heat Pump,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeHeat Pump,SCL,Single Family Low Income,Heat Pump,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseHeat Room,SCL,Multifamily - High Rise,Heat Room,New,0.972222222,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeHeat Room,SCL,Multifamily - High Rise Low Income,Heat Room,New,0.972222222,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseHeat Room,SCL,Multifamily - Low Rise,Heat Room,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeHeat Room,SCL,Multifamily - Low Rise Low Income,Heat Room,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseHeat Room,SCL,Multifamily - Mid Rise,Heat Room,New,0.972222222,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeHeat Room,SCL,Multifamily - Mid Rise Low Income,Heat Room,New,0.972222222,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyHeat Room,SCL,Single Family,Heat Room,New,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632
+SCLSingle Family Low Income,SCLSingle Family Low IncomeHeat Room,SCL,Single Family Low Income,Heat Room,New,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632,0.704041632
+SCLMultifamily - High Rise,SCLMultifamily - High RiseHome Audio System,SCL,Multifamily - High Rise,Home Audio System,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeHome Audio System,SCL,Multifamily - High Rise Low Income,Home Audio System,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseHome Audio System,SCL,Multifamily - Low Rise,Home Audio System,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeHome Audio System,SCL,Multifamily - Low Rise Low Income,Home Audio System,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseHome Audio System,SCL,Multifamily - Mid Rise,Home Audio System,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeHome Audio System,SCL,Multifamily - Mid Rise Low Income,Home Audio System,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyHome Audio System,SCL,Single Family,Home Audio System,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeHome Audio System,SCL,Single Family Low Income,Home Audio System,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseLighting Exterior Standard,SCL,Multifamily - High Rise,Lighting Exterior Standard,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeLighting Exterior Standard,SCL,Multifamily - High Rise Low Income,Lighting Exterior Standard,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseLighting Exterior Standard,SCL,Multifamily - Low Rise,Lighting Exterior Standard,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeLighting Exterior Standard,SCL,Multifamily - Low Rise Low Income,Lighting Exterior Standard,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseLighting Exterior Standard,SCL,Multifamily - Mid Rise,Lighting Exterior Standard,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeLighting Exterior Standard,SCL,Multifamily - Mid Rise Low Income,Lighting Exterior Standard,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyLighting Exterior Standard,SCL,Single Family,Lighting Exterior Standard,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeLighting Exterior Standard,SCL,Single Family Low Income,Lighting Exterior Standard,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseLighting Interior Linear Fluorescent,SCL,Multifamily - High Rise,Lighting Interior Linear Fluorescent,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeLighting Interior Linear Fluorescent,SCL,Multifamily - High Rise Low Income,Lighting Interior Linear Fluorescent,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseLighting Interior Linear Fluorescent,SCL,Multifamily - Low Rise,Lighting Interior Linear Fluorescent,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeLighting Interior Linear Fluorescent,SCL,Multifamily - Low Rise Low Income,Lighting Interior Linear Fluorescent,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseLighting Interior Linear Fluorescent,SCL,Multifamily - Mid Rise,Lighting Interior Linear Fluorescent,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeLighting Interior Linear Fluorescent,SCL,Multifamily - Mid Rise Low Income,Lighting Interior Linear Fluorescent,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyLighting Interior Linear Fluorescent,SCL,Single Family,Lighting Interior Linear Fluorescent,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeLighting Interior Linear Fluorescent,SCL,Single Family Low Income,Lighting Interior Linear Fluorescent,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseLighting Interior Specialty,SCL,Multifamily - High Rise,Lighting Interior Specialty,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeLighting Interior Specialty,SCL,Multifamily - High Rise Low Income,Lighting Interior Specialty,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseLighting Interior Specialty,SCL,Multifamily - Low Rise,Lighting Interior Specialty,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeLighting Interior Specialty,SCL,Multifamily - Low Rise Low Income,Lighting Interior Specialty,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseLighting Interior Specialty,SCL,Multifamily - Mid Rise,Lighting Interior Specialty,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeLighting Interior Specialty,SCL,Multifamily - Mid Rise Low Income,Lighting Interior Specialty,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyLighting Interior Specialty,SCL,Single Family,Lighting Interior Specialty,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeLighting Interior Specialty,SCL,Single Family Low Income,Lighting Interior Specialty,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseLighting Interior Standard,SCL,Multifamily - High Rise,Lighting Interior Standard,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeLighting Interior Standard,SCL,Multifamily - High Rise Low Income,Lighting Interior Standard,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseLighting Interior Standard,SCL,Multifamily - Low Rise,Lighting Interior Standard,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeLighting Interior Standard,SCL,Multifamily - Low Rise Low Income,Lighting Interior Standard,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseLighting Interior Standard,SCL,Multifamily - Mid Rise,Lighting Interior Standard,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeLighting Interior Standard,SCL,Multifamily - Mid Rise Low Income,Lighting Interior Standard,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyLighting Interior Standard,SCL,Single Family,Lighting Interior Standard,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeLighting Interior Standard,SCL,Single Family Low Income,Lighting Interior Standard,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseMicrowave,SCL,Multifamily - High Rise,Microwave,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeMicrowave,SCL,Multifamily - High Rise Low Income,Microwave,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseMicrowave,SCL,Multifamily - Low Rise,Microwave,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeMicrowave,SCL,Multifamily - Low Rise Low Income,Microwave,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseMicrowave,SCL,Multifamily - Mid Rise,Microwave,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeMicrowave,SCL,Multifamily - Mid Rise Low Income,Microwave,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyMicrowave,SCL,Single Family,Microwave,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeMicrowave,SCL,Single Family Low Income,Microwave,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseMonitor,SCL,Multifamily - High Rise,Monitor,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeMonitor,SCL,Multifamily - High Rise Low Income,Monitor,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseMonitor,SCL,Multifamily - Low Rise,Monitor,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeMonitor,SCL,Multifamily - Low Rise Low Income,Monitor,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseMonitor,SCL,Multifamily - Mid Rise,Monitor,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeMonitor,SCL,Multifamily - Mid Rise Low Income,Monitor,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyMonitor,SCL,Single Family,Monitor,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeMonitor,SCL,Single Family Low Income,Monitor,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseMultifunction Device,SCL,Multifamily - High Rise,Multifunction Device,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeMultifunction Device,SCL,Multifamily - High Rise Low Income,Multifunction Device,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseMultifunction Device,SCL,Multifamily - Low Rise,Multifunction Device,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeMultifunction Device,SCL,Multifamily - Low Rise Low Income,Multifunction Device,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseMultifunction Device,SCL,Multifamily - Mid Rise,Multifunction Device,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeMultifunction Device,SCL,Multifamily - Mid Rise Low Income,Multifunction Device,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyMultifunction Device,SCL,Single Family,Multifunction Device,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeMultifunction Device,SCL,Single Family Low Income,Multifunction Device,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseOther,SCL,Multifamily - High Rise,Other,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeOther,SCL,Multifamily - High Rise Low Income,Other,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseOther,SCL,Multifamily - Low Rise,Other,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeOther,SCL,Multifamily - Low Rise Low Income,Other,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseOther,SCL,Multifamily - Mid Rise,Other,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeOther,SCL,Multifamily - Mid Rise Low Income,Other,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyOther,SCL,Single Family,Other,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeOther,SCL,Single Family Low Income,Other,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RisePlug Load Other,SCL,Multifamily - High Rise,Plug Load Other,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomePlug Load Other,SCL,Multifamily - High Rise Low Income,Plug Load Other,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RisePlug Load Other,SCL,Multifamily - Low Rise,Plug Load Other,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomePlug Load Other,SCL,Multifamily - Low Rise Low Income,Plug Load Other,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RisePlug Load Other,SCL,Multifamily - Mid Rise,Plug Load Other,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomePlug Load Other,SCL,Multifamily - Mid Rise Low Income,Plug Load Other,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyPlug Load Other,SCL,Single Family,Plug Load Other,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomePlug Load Other,SCL,Single Family Low Income,Plug Load Other,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyPool Pump,SCL,Single Family,Pool Pump,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomePool Pump,SCL,Single Family Low Income,Pool Pump,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RisePrinter,SCL,Multifamily - High Rise,Printer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomePrinter,SCL,Multifamily - High Rise Low Income,Printer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RisePrinter,SCL,Multifamily - Low Rise,Printer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomePrinter,SCL,Multifamily - Low Rise Low Income,Printer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RisePrinter,SCL,Multifamily - Mid Rise,Printer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomePrinter,SCL,Multifamily - Mid Rise Low Income,Printer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyPrinter,SCL,Single Family,Printer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomePrinter,SCL,Single Family Low Income,Printer,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseRefrigerator,SCL,Multifamily - High Rise,Refrigerator,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeRefrigerator,SCL,Multifamily - High Rise Low Income,Refrigerator,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseRefrigerator,SCL,Multifamily - Low Rise,Refrigerator,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeRefrigerator,SCL,Multifamily - Low Rise Low Income,Refrigerator,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseRefrigerator,SCL,Multifamily - Mid Rise,Refrigerator,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeRefrigerator,SCL,Multifamily - Mid Rise Low Income,Refrigerator,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyRefrigerator,SCL,Single Family,Refrigerator,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeRefrigerator,SCL,Single Family Low Income,Refrigerator,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseSet Top Box,SCL,Multifamily - High Rise,Set Top Box,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeSet Top Box,SCL,Multifamily - High Rise Low Income,Set Top Box,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseSet Top Box,SCL,Multifamily - Low Rise,Set Top Box,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeSet Top Box,SCL,Multifamily - Low Rise Low Income,Set Top Box,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseSet Top Box,SCL,Multifamily - Mid Rise,Set Top Box,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeSet Top Box,SCL,Multifamily - Mid Rise Low Income,Set Top Box,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilySet Top Box,SCL,Single Family,Set Top Box,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeSet Top Box,SCL,Single Family Low Income,Set Top Box,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseTelevision,SCL,Multifamily - High Rise,Television,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeTelevision,SCL,Multifamily - High Rise Low Income,Television,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseTelevision,SCL,Multifamily - Low Rise,Television,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeTelevision,SCL,Multifamily - Low Rise Low Income,Television,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseTelevision,SCL,Multifamily - Mid Rise,Television,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeTelevision,SCL,Multifamily - Mid Rise Low Income,Television,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyTelevision,SCL,Single Family,Television,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeTelevision,SCL,Single Family Low Income,Television,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseVentilation - Air,SCL,Multifamily - High Rise,Ventilation - Air,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeVentilation - Air,SCL,Multifamily - High Rise Low Income,Ventilation - Air,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseVentilation - Air,SCL,Multifamily - Low Rise,Ventilation - Air,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeVentilation - Air,SCL,Multifamily - Low Rise Low Income,Ventilation - Air,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseVentilation - Air,SCL,Multifamily - Mid Rise,Ventilation - Air,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeVentilation - Air,SCL,Multifamily - Mid Rise Low Income,Ventilation - Air,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyVentilation - Air,SCL,Single Family,Ventilation - Air,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeVentilation - Air,SCL,Single Family Low Income,Ventilation - Air,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseWaste Water,SCL,Multifamily - High Rise,Waste Water,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeWaste Water,SCL,Multifamily - High Rise Low Income,Waste Water,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseWaste Water,SCL,Multifamily - Low Rise,Waste Water,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeWaste Water,SCL,Multifamily - Low Rise Low Income,Waste Water,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseWaste Water,SCL,Multifamily - Mid Rise,Waste Water,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeWaste Water,SCL,Multifamily - Mid Rise Low Income,Waste Water,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyWaste Water,SCL,Single Family,Waste Water,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family Low Income,SCLSingle Family Low IncomeWaste Water,SCL,Single Family Low Income,Waste Water,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise,SCLMultifamily - High RiseWater Heat GT 55 Gal,SCL,Multifamily - High Rise,Water Heat GT 55 Gal,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeWater Heat GT 55 Gal,SCL,Multifamily - High Rise Low Income,Water Heat GT 55 Gal,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseWater Heat GT 55 Gal,SCL,Multifamily - Low Rise,Water Heat GT 55 Gal,New,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeWater Heat GT 55 Gal,SCL,Multifamily - Low Rise Low Income,Water Heat GT 55 Gal,New,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseWater Heat GT 55 Gal,SCL,Multifamily - Mid Rise,Water Heat GT 55 Gal,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeWater Heat GT 55 Gal,SCL,Multifamily - Mid Rise Low Income,Water Heat GT 55 Gal,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyWater Heat GT 55 Gal,SCL,Single Family,Water Heat GT 55 Gal,New,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88
+SCLSingle Family Low Income,SCLSingle Family Low IncomeWater Heat GT 55 Gal,SCL,Single Family Low Income,Water Heat GT 55 Gal,New,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88,0.88
+SCLMultifamily - High Rise,SCLMultifamily - High RiseWater Heat LE 55 Gal,SCL,Multifamily - High Rise,Water Heat LE 55 Gal,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - High Rise Low Income,SCLMultifamily - High Rise Low IncomeWater Heat LE 55 Gal,SCL,Multifamily - High Rise Low Income,Water Heat LE 55 Gal,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise,SCLMultifamily - Low RiseWater Heat LE 55 Gal,SCL,Multifamily - Low Rise,Water Heat LE 55 Gal,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Low Rise Low Income,SCLMultifamily - Low Rise Low IncomeWater Heat LE 55 Gal,SCL,Multifamily - Low Rise Low Income,Water Heat LE 55 Gal,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise,SCLMultifamily - Mid RiseWater Heat LE 55 Gal,SCL,Multifamily - Mid Rise,Water Heat LE 55 Gal,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLMultifamily - Mid Rise Low Income,SCLMultifamily - Mid Rise Low IncomeWater Heat LE 55 Gal,SCL,Multifamily - Mid Rise Low Income,Water Heat LE 55 Gal,New,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+SCLSingle Family,SCLSingle FamilyWater Heat LE 55 Gal,SCL,Single Family,Water Heat LE 55 Gal,New,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159
+SCLSingle Family Low Income,SCLSingle Family Low IncomeWater Heat LE 55 Gal,SCL,Single Family Low Income,Water Heat LE 55 Gal,New,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159,0.637681159
