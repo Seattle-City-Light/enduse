@@ -16,7 +16,6 @@ from pydantic import (
     PrivateAttr,
 )
 
-# TODO alias on all field names for DF conversion?
 # TODO modify ramp to handle multiple efficiency ramp levels
 # TODO transition matrix could be used to handle multiple efficiency levels
 # TODO modify stock objects to handle different adoption logic: type='decay', type='logit'
@@ -76,6 +75,7 @@ class Equipment(BaseModel):
     unit_consumption: List[confloat(ge=0)]
     useful_life: List[PositiveInt]
     load_shape: Optional[LoadShape]
+    end_use_override: Optional[str]
 
     # check list lengths match expected
     _check_expected_list_length: classmethod = validator(
@@ -148,12 +148,14 @@ class EndUse(BaseModel):
     load_shape: Optional[LoadShape]
 
     _has_equipment_load_shape = PrivateAttr()
+    _has_end_use_override = PrivateAttr()
 
     def __init__(self, **data):
         super().__init__(**data)
         self._has_equipment_load_shape = any(
             [isinstance(i.load_shape, LoadShape) for i in self.equipment]
         )
+        self._has_end_use_override = any([i.end_use_override for i in self.equipment])
 
     # check that all equipment has same list length
     @validator("equipment")

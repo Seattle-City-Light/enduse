@@ -103,15 +103,7 @@ def _create_stock_turnover(
                     # subtract converted equipment stock from original efficiency levels
                     - equip_turn
                     # account for any exogenous equiment additions
-                )
-
-                # distribute exogenous add/subs
-                equip_diff_alloc = equip_turn_cum_mat[:, i] / np.sum(
-                    equip_turn_cum_mat[:, i]
-                )
-                equip_turn_cum_mat[:, i] = (
-                    equip_turn_cum_mat[:, i]
-                    + np.sum(equip_diff_mat[:, i]) * equip_diff_alloc
+                    + equip_diff_mat[:, i]
                 )
 
     return equip_turn_cum_mat
@@ -129,6 +121,7 @@ def _build_xarray(
     st_mat: np.ndarray,
     level_arr: np.ndarray,
     el_label_arr: np.ndarray,
+    eu_label_arr: np.ndarray,
     end_use: EndUse,
     building: Building,
 ) -> xr.Dataset:
@@ -150,7 +143,9 @@ def _build_xarray(
         "efficiency_level": level_arr,
         "efficiency_label": ("efficiency_level", el_label_arr),
         "year": np.arange(end_use.start_year, end_use.end_year + 1),
-        "end_use_label": end_use.label,
+        # "end_use_label": end_use.label,
+        "end_use_label": ("efficiency_level", eu_label_arr),
+        "init_end_use_label": end_use.label,
         "building_label": building.label,
     }
 
@@ -233,6 +228,20 @@ def _create_xarray_from_end_use(building: Building, end_use: EndUse) -> xr.Datas
     xr_dict["level_arr"] = np.array([x.efficiency_level for x in end_use.equipment])
     xr_dict["el_label_arr"] = np.array([x.label for x in end_use.equipment])
 
+    # create final end_use array
+    # need to check if equipment has an end_use overide (ex space_heat -> heat_pump)
+    if end_use._has_end_use_override:
+        xr_dict["eu_label_arr"] = np.array(
+            [
+                x.end_use_override if x.end_use_override is not None else end_use.label
+                for x in end_use.equipment
+            ]
+        )
+    else:
+        xr_dict["eu_label_arr"] = np.repeat(
+            end_use.label, xr_dict["el_label_arr"].shape[0]
+        )
+
     # 2d arrays
     xr_dict["eff_mat"] = np.array(
         [np.array(x.efficiency_share) for x in end_use.equipment]
@@ -272,7 +281,7 @@ def _create_dataset_from_building(building: Building) -> xr.Dataset:
     """Dispatcher to create xarray DataSet from building end-use objects"""
     xr_datasets = xr.concat(
         [_create_xarray_from_end_use(building, i) for i in building.end_uses],
-        dim="end_use_label",
+        dim="init_end_use_label",
     )
 
     start_time = f"{building.start_year}-01-01"
