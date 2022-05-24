@@ -104,6 +104,8 @@ netcdf_path = str((Path(__file__).parents[1] / "outputs/loadshapes/").as_posix()
 resstock_loadshapes.to_netcdf(netcdf_path + "/resstock_loadshapes.nc")
 comstock_loadshapes.to_netcdf(netcdf_path + "/comstock_loadshapes.nc")
 
+
+# to bring back in and subset
 subset_params = {
     "shape.type": "Load Shape",
     "in.geometry_building_type_recs": "Mobile Home",

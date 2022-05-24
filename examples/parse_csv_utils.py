@@ -10,13 +10,10 @@ from enduse.stockobjects import (
     Equipment,
     RampEfficiency,
     EndUse,
-    Building,
     LoadShape,
 )
 
-from typing import List, Tuple, Dict
-
-from enduse.stockturnover import BuildingModel
+from typing import List, Tuple, Dict, Optional
 
 
 def create_filter_query(filters: List[Tuple[str, str]]) -> str:
@@ -37,6 +34,8 @@ def parse_equipment(
     level: int,
     subset: pd.DataFrame,
     shares: pd.DataFrame,
+    load_shape: Optional[LoadShape],
+    eu_override: Optional[str],
 ) -> Equipment:
     # create consumption
     cons = np.repeat(
@@ -46,19 +45,6 @@ def parse_equipment(
     # create useful like
     ul = np.repeat(subset["Effective Useful Life"].to_list(), len(shares.columns))
 
-    # override any equipment labels
-    # TODO this should be built into .csvs in the future
-    eu_override_equip = {
-        "Install Ductless Heat Pump in House with Existing FAF - HZ1": "Heat Pump",
-        "MF DHP Upgrade": "Heat Pump",
-        "Zonal to Ductless Heat Pump": "Heat Pump",
-    }
-
-    eu_override = None
-    if equipment in eu_override_equip:
-        eu_override = eu_override_equip[equipment]
-
-    # parse into Equipment object
     equipment = Equipment(
         equipment_label=equipment,
         efficiency_level=level,
@@ -67,6 +53,7 @@ def parse_equipment(
         efficiency_share=shares.loc[end_use, level, equipment].values.tolist(),
         unit_consumption=cons.tolist(),
         useful_life=ul.tolist(),
+        load_shape=load_shape,
         end_use_override=eu_override,
     )
     return equipment
@@ -84,16 +71,16 @@ def parse_standards(
     return ramp
 
 
-def parse_load_shape(load_shapes: pd.DataFrame, path: str, freq: str) -> LoadShape:
+def parse_load_shape(load_shapes: pd.DataFrame, path: str, freq: str,) -> LoadShape:
     dim_filters = {
         "shape.type": "Load Shape",
-        "in.geometry_building_type_recs": load_shapes["Building Type"].iloc[0],
-        "in.puma": load_shapes["Puma"].iloc[0],
+        "in.geometry_building_type_recs": load_shapes["Building Type"],
+        "in.puma": load_shapes["Puma"],
     }
     load_shape = LoadShape(
         source_file=path,
         dim_filters=dim_filters,
-        value_filter=load_shapes["Load Shape"].iloc[0],
+        value_filter=load_shapes["Load Shape"],
         freq=freq,
     )
     return load_shape
@@ -185,7 +172,7 @@ def create_end_uses(
     )
 
     load_shapes = load_shape.query(create_filter_query(equip_filters)).set_index(
-        ["End Use"]
+        ["End Use", "Efficiency Description"]
     )
 
     # loop over each end use
@@ -194,6 +181,16 @@ def create_end_uses(
         # Parse Equipment
         equip_dict = OrderedDict()
         for (n, j), y in x.groupby(level=[1, 2]):
+
+            load_shape_eq = None
+            eu_override = None
+            if j in load_shapes.index.levels[1]:
+                load_shape_eq = parse_load_shape(
+                    load_shapes=load_shapes.loc[i, j], path=load_shape_path, freq="H",
+                )
+
+                eu_override = load_shapes.loc[i, j]["End Use Override"]
+
             equip_dict[j] = parse_equipment(
                 start_year=start_year,
                 end_year=end_year,
@@ -202,6 +199,8 @@ def create_end_uses(
                 level=n,
                 subset=y,
                 shares=shares,
+                load_shape=load_shape_eq,
+                eu_override=eu_override,
             )
 
         # parse equipment standards
@@ -209,8 +208,14 @@ def create_end_uses(
             end_use=i, standards=standards, equipment_dict=equip_dict
         )
 
+        # Filtering out end_uses with equipment load shapes - will have NA equipment values
+        load_shapes_eu = load_shapes.iloc[
+            load_shapes.index.get_level_values(1).isnull()
+        ].loc[i, np.nan]
+
+        # parse load shapes
         load_shape = parse_load_shape(
-            load_shapes=load_shapes, path=load_shape_path, freq="H"
+            load_shapes=load_shapes_eu, path=load_shape_path, freq="H",
         )
 
         end_use = parse_end_use(

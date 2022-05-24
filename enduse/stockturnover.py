@@ -143,7 +143,6 @@ def _build_xarray(
         "efficiency_level": level_arr,
         "efficiency_label": ("efficiency_level", el_label_arr),
         "year": np.arange(end_use.start_year, end_use.end_year + 1),
-        # "end_use_label": end_use.label,
         "end_use_label": ("efficiency_level", eu_label_arr),
         "init_end_use_label": end_use.label,
         "building_label": building.label,
@@ -192,6 +191,11 @@ def _create_load_shape_xarray(
             "i,j->ij", dataset_xr["consumption"].values, load_shape,
         )
 
+    # create initial load shape array
+    load_shape_arr = np.repeat(
+        np.array(end_use.load_shape.value_filter, dtype=object), dataset_xr["efficiency_level"].shape[0],
+    )
+
     # check if equipment has load shape:
     if end_use._has_equipment_load_shape:
         for n, i in enumerate(end_use.equipment):
@@ -203,8 +207,15 @@ def _create_load_shape_xarray(
                 cons_shaped[n] = np.einsum(
                     "i,j->ij", dataset_xr["consumption"].values[n], load_shape
                 )
+                # modify load shape label
+                load_shape_arr[n] = i.load_shape.value_filter
 
     dataset_xr = dataset_xr.expand_dims({label_freq: np.arange(freq)})
+
+    # create coords for load_shape
+    dataset_xr = dataset_xr.assign_coords(
+        {"load_shape": ("efficiency_level", load_shape_arr)}
+    )
 
     dataset_xr["consumption_shaped"] = (
         ("efficiency_level", "year", label_freq),
