@@ -3,12 +3,7 @@ import copy
 import numpy as np
 
 from pydantic import ValidationError
-from enduse.stockobjects import (
-    Equipment,
-    RampEfficiency,
-    EndUse,
-    Building,
-)
+from enduse.stockobjects import Equipment, RampEfficiency, EndUse, Building, LoadShape
 
 # TODO test LoadShape
 
@@ -235,16 +230,6 @@ bad_end_use_4 = {
     "ramp_efficiency": ramp_parsed,
 }
 
-end_use.append(
-    {
-        "end_use_label": "Heat Pump",
-        "saturation": np.linspace(0.25, 0.25, 10).tolist(),
-        "fuel_share": np.linspace(1, 1, 10).tolist(),
-        "equipment": equipment_parsed,
-        "ramp_efficiency": ramp_parsed,
-    }
-)
-
 bad_end_use_5 = {
     "end_use_label": "Heat Pump",
     "start_year": 2022,
@@ -298,15 +283,6 @@ class TestEndUse:
         with pytest.raises(ValidationError):
             EndUse(**bad_end_use_4)
 
-    def test_inherit_start_end_year(self):
-        end_use_parsed = EndUse(**end_use[1])
-        assert getattr(equipment_parsed[0], "start_year") == getattr(
-            end_use_parsed, "start_year"
-        )
-        assert getattr(equipment_parsed[0], "end_year") == getattr(
-            end_use_parsed, "end_year"
-        )
-
     def test_end_use_fail_expected_list_length(self):
         with pytest.raises(ValidationError):
             EndUse(**bad_end_use_5)
@@ -322,6 +298,8 @@ buildings = []
 buildings.append(
     {
         "building_label": "Single Family",
+        "start_year": 2022,
+        "end_year": 2031,
         "end_uses": end_use_parsed,
         "building_stock": np.linspace(1000, 1000, 10).tolist(),
         "segment": "Residential",
@@ -373,6 +351,8 @@ end_use_fail_list_length = copy.deepcopy(end_use)
 end_use_fail_list_length.append(
     {
         "end_use_label": "Heat Pump",
+        "start_year": 2022,
+        "end_year": 2041,
         "saturation": np.linspace(0.25, 0.25, 20).tolist(),
         "fuel_share": np.linspace(1, 1, 20).tolist(),
         "equipment": equipment_fail_end_use_list_len_parsed,
@@ -382,6 +362,8 @@ end_use_fail_list_length.append(
 
 building_fail_list_length = {
     "building_label": "Single Family",
+    "start_year": 2022,
+    "end_year": 2041,
     "end_uses": [EndUse(**i) for i in end_use_fail_list_length],
     "building_stock": np.linspace(1000, 1000, 10).tolist(),
     "segment": "Residential",
@@ -400,4 +382,50 @@ class TestBuilding:
 
 building_parsed = [Building(**i) for i in buildings]
 
-# TODO build out tests for LoadShape object
+valid_resstock_path = "I:/FINANCE/FPU/LOAD/Model Development/enduse/examples/inputs/residential/resstock_loadshapes.nc"
+
+valid_load_shape = {
+    "source_file": valid_resstock_path,
+    "dim_filters": {
+        "shape.type": "Load Shape",
+        "in.geometry_building_type_recs": "Mobile Home",
+        "in.puma": "G53011606",
+    },
+    "value_filter": "out.electricity.heating.energy_consumption",
+    "freq": "H",
+    "extra_dims": {"weather_year": 30, "forecast_year": 20},
+}
+
+load_shape_fail_path = copy.deepcopy(valid_load_shape)
+load_shape_fail_path["source_file"] = "./invalid_path/no_file.nc"
+
+load_shape_fail_extra_dims_len = copy.deepcopy(valid_load_shape)
+load_shape_fail_extra_dims_len["extra_dims"] = {
+    "weather_year": 10,
+    "forecast_year": 10,
+    "bad_dim": 5,
+}
+
+
+load_shape_fail_extra_dims_keys = copy.deepcopy(valid_load_shape)
+load_shape_fail_extra_dims_keys["extra_dims"] = {
+    "bad_weather_year": 10,
+    "bad_forecast_year": 10,
+}
+
+
+class TestLoadShape:
+    def test_valid_load_shape(self):
+        assert isinstance(LoadShape(**valid_load_shape), LoadShape)
+
+    def test_load_shape_fail_path(self):
+        with pytest.raises(FileNotFoundError):
+            LoadShape(**load_shape_fail_path)
+
+    def test_load_shape_fail_extra_dim_len(self):
+        with pytest.raises(ValueError):
+            LoadShape(**load_shape_fail_extra_dims_len)
+
+    def test_load_shape_fail_extra_dim_keys(self):
+        with pytest.raises(ValueError):
+            LoadShape(**load_shape_fail_extra_dims_keys)

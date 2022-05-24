@@ -71,6 +71,8 @@ end_uses = []
 end_uses.append(
     {
         "end_use_label": "Heat Central",
+        "start_year": 2022,
+        "end_year": 2041,
         "equipment": heat_central_equip_parsed,
         "ramp_efficiency": heat_central_ramp_parsed,
         "saturation": np.linspace(0.50, 0.50, 20).tolist(),
@@ -104,6 +106,8 @@ cook_range_ls = {
 end_uses.append(
     {
         "end_use_label": "Cooking Range",
+        "start_year": 2022,
+        "end_year": 2041,
         "equipment": [Equipment(**cook_range_equip)],
         "saturation": np.linspace(1, 1, 20).tolist(),
         "fuel_share": np.linspace(0.25, 0.25, 20).tolist(),
@@ -136,6 +140,8 @@ other_equip = {
 end_uses.append(
     {
         "end_use_label": "Other Equipment",
+        "start_year": 2022,
+        "end_year": 2041,
         "equipment": [Equipment(**other_equip)],
         "saturation": np.linspace(1, 1, 20).tolist(),
         "fuel_share": np.linspace(1, 1, 20).tolist(),
@@ -200,6 +206,8 @@ heat_central_multi_ramp_parsed = RampEfficiency(**heat_central_multi_ramp)
 end_uses.append(
     {
         "end_use_label": "Heat Central Multi Shape",
+        "start_year": 2022,
+        "end_year": 2041,
         "equipment": heat_central_multi_shape_equip_parsed,
         "ramp_efficiency": heat_central_multi_ramp_parsed,
         "saturation": np.linspace(0.25, 0.25, 20).tolist(),
@@ -210,6 +218,8 @@ end_uses.append(
 
 building = {
     "building_label": "Single Family",
+    "start_year": 2022,
+    "end_year": 2041,
     "end_uses": [EndUse(**i) for i in end_uses],
     "building_stock": np.linspace(200000, 200000, 20).tolist(),
 }

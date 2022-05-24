@@ -23,13 +23,14 @@ valid_ramp_mat_ones = np.ones(valid_ramp_mat.shape)
 # valid equipment mat with exogenous additions
 valid_equip_mat_adds = np.array([np.linspace(100, 150, 5), np.linspace(50, 100, 5)])
 exp_valid_st_mat_adds = np.array(
-    [[100, 116.67, 106.67, 96, 85.33], [50, 58.33, 93.33, 129, 164.66]]
+    [[100, 112.5, 102.5, 94.5, 88.10], [50, 62.5, 97.5, 130.5, 161.9]]
 )
 
+
 # valid equipment mat with exogenous subtractions
-valid_equip_mat_subs = np.array([np.linspace(100, 25, 5), np.linspace(50, 25, 5)])
+valid_equip_mat_subs = np.array([np.linspace(100, 75, 5), np.linspace(50, 25, 5)])
 exp_valid_st_mat_subs = np.array(
-    [[100, 83.3, 53.3, 32, 17.06], [50, 41.6, 46.6, 43, 32.93]]
+    [[100, 93.75, 68.75, 48.75, 32.75], [50, 43.75, 56.25, 63.75, 67.25]]
 )
 
 
@@ -159,6 +160,8 @@ valid_end_uses = []
 valid_end_uses.append(
     {
         "end_use_label": "Heat Pump 1",
+        "start_year": 2022,
+        "end_year": 2031,
         "equipment": valid_equipment_parsed,
         "ramp_efficiency": valid_multi_ramp_parsed,
         "saturation": np.linspace(0.50, 0.50, 10).tolist(),
@@ -194,6 +197,8 @@ valid_equipment_2.append(
 valid_end_uses.append(
     {
         "end_use_label": "Heat Pump 2",
+        "start_year": 2022,
+        "end_year": 2031,
         "equipment": valid_equipment_2,
         "saturation": np.linspace(0.50, 0.50, 10).tolist(),
         "fuel_share": np.linspace(1, 1, 10).tolist(),
@@ -204,6 +209,8 @@ valid_end_use_parsed = [EndUse(**i) for i in valid_end_uses]
 
 valid_building = {
     "building_label": "Test Building",
+    "start_year": 2022,
+    "end_year": 2031,
     "end_uses": valid_end_use_parsed,
     "building_stock": np.linspace(1000, 1000, 10).tolist(),
 }
@@ -215,11 +222,11 @@ stock_turnover = BuildingModel(valid_building_parsed)
 
 class TestBuildingModel:
 
-    sel = {"end_use_label": "Heat Pump 1"}
+    sel = {"init_end_use_label": "Heat Pump 1"}
 
     def test_xarray_dims(self):
 
-        expected_dims = {"end_use_label": 2, "year": 10, "efficiency_level": 3}
+        expected_dims = {"init_end_use_label": 2, "year": 10, "efficiency_level": 3}
 
         assert expected_dims == stock_turnover.model.dims
 
@@ -230,6 +237,7 @@ class TestBuildingModel:
             "efficiency_label",
             "year",
             "end_use_label",
+            "init_end_use_label",
             "building_label",
         ]
 

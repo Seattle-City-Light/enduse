@@ -199,11 +199,15 @@ def _create_load_shape_xarray(
             "i,j->ij", dataset_xr["consumption"].values, load_shape,
         )
 
+    # check if end use has load shape and initialize label array
     # create initial load shape array
-    load_shape_arr = np.repeat(
-        np.array(end_use.load_shape.value_filter, dtype=object),
-        dataset_xr["efficiency_level"].shape[0],
-    )
+    if end_use.load_shape:
+        load_shape_arr = np.repeat(
+            np.array(end_use.load_shape.value_filter, dtype=object),
+            dataset_xr["efficiency_level"].shape[0],
+        )
+    else:
+        load_shape_arr = np.repeat(np.nan, dataset_xr["efficiency_level"].shape[0],)
 
     # check if equipment has load shape:
     if end_use._has_equipment_load_shape:
