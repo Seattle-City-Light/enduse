@@ -12,6 +12,14 @@ from enduse.stockobjects import Building, EndUse, LoadShape, RampEfficiency
 freq_dict = {"H": (8760, "hour_of_year"), "D": (365, "day_of_year")}
 
 
+def xarray_agg_map(xarray: xr.Dataset, coord: str, agg_func: str) -> xr.Dataset:
+    """
+    Helper function to parse xarray group by opertations since xarray does not have .agg method"
+    """
+    agg_map = {"sum": xarray.groupby(coord).sum(), "mean": xarray.groupby(coord).mean()}
+    return agg_map[agg_func]
+
+
 def _create_ramp_matrix(
     equip_mat: np.ndarray, ramp_efficiency: RampEfficiency
 ) -> np.array:
@@ -193,7 +201,8 @@ def _create_load_shape_xarray(
 
     # create initial load shape array
     load_shape_arr = np.repeat(
-        np.array(end_use.load_shape.value_filter, dtype=object), dataset_xr["efficiency_level"].shape[0],
+        np.array(end_use.load_shape.value_filter, dtype=object),
+        dataset_xr["efficiency_level"].shape[0],
     )
 
     # check if equipment has load shape:
@@ -355,3 +364,20 @@ class BuildingModel:
 
         # dump dataset to file
         self.model.to_netcdf(path)
+
+    def summarize_by(self, coord: str, data_dim: str, agg_func: str) -> pd.DataFrame:
+        """
+        Summarize xarray over given coord and data dim
+        Valid agg_func: [sum, mean]
+        """
+        xr_agg = xarray_agg_map(self.model, coord=coord, agg_func=agg_func)
+        xr_agg_df = (
+            xr_agg[data_dim]
+            .to_dataframe()
+            .drop(columns="building_label")
+            .unstack(level=0)
+            .droplevel(level=0, axis=1)
+            .set_index(self.model.indexes["datetime"].to_datetimeindex())
+        )
+
+        return xr_agg_df

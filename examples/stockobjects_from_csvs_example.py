@@ -114,12 +114,14 @@ mf_building_1 = {
 mf_building_parsed_1 = Building(**mf_building_1)
 mf_stockturnover_1 = BuildingModel(mf_building_parsed_1)
 
-mf_load_shape_detail_2 = (
-    mf_stockturnover_1.model.groupby("load_shape")
-    .sum()["consumption_shaped"]
-    .to_dataframe()
-    .drop(columns={"building_label"})
-    .unstack(level=0)
-    .set_index(mf_stockturnover_1.model.indexes["datetime"].to_datetimeindex())
-    .div(1000)
+sf1_equip_count = sf_stockturnover_1.summarize_by(
+    coord="end_use_label", data_dim="equipment_stock", agg_func="sum"
+)
+
+sf2_load_shape = sf_stockturnover_2.summarize_by(
+    coord="load_shape", data_dim="consumption_shaped", agg_func="sum"
+)
+
+mf_load_shape = mf_stockturnover_1.summarize_by(
+    coord="load_shape", data_dim="consumption_shaped", agg_func="sum"
 )
