@@ -83,9 +83,16 @@ class Equipment(BaseModel):
 
 
 class RampEfficiency(BaseModel):
+    """
+    Valid ramp_logic: [fixed, forced]
+        fixed: prioritize equipment allocation based on exogenous changes in building, end_use and equipment (existing construction)
+        forced: prioritize equipment allocation based on ramp efficiency (new construciton)
+    """
+
     label: StrictStr = Field(None, alias="ramp_label")
     ramp_equipment: List[Equipment]
     ramp_year: Optional[List[PositiveInt]]
+    ramp_logic: Optional[str] = "exog"
 
     # inherit ramp_year if not provided
     @validator("ramp_year", pre=True, always=True)
@@ -124,6 +131,13 @@ class RampEfficiency(BaseModel):
                     if v[i] <= v[i - 1]:
                         raise ValueError(f"{label} invalid ramp_year order")
         return v
+
+    @validator("ramp_logic")
+    def validate_ramp_logic(cls, v):
+        if v not in ["exog", "forced"]:
+            raise ValueError(
+                f"{v} is invalid ramp_type. Valid ramp_types: [exog, forced]"
+            )
 
     # check that ramp inputs are a consistent length
     @root_validator(skip_on_failure=True)

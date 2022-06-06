@@ -12,7 +12,7 @@ from enduse.stockobjects import Building, EndUse, LoadShape, RampEfficiency
 freq_dict = {"H": (8760, "hour_of_year"), "D": (365, "day_of_year")}
 
 
-def xarray_agg_map(xarray: xr.Dataset, coord: str, agg_func: str) -> xr.Dataset:
+def _xarray_agg_map(xarray: xr.Dataset, coord: str, agg_func: str) -> xr.Dataset:
     """
     Helper function to parse xarray group by opertations since xarray does not have .agg method"
     """
@@ -61,7 +61,7 @@ def _create_ramp_matrix(
 
 
 def _create_stock_turnover(
-    equip_mat: np.ndarray, ul_mat: np.ndarray, ramp_mat: np.array
+    equip_mat: np.ndarray, ul_mat: np.ndarray, ramp_mat: np.array, ramp_logic: str,
 ) -> np.ndarray:
     """
     Create an n x d matrix equal to dim(equip_mat)
@@ -100,8 +100,18 @@ def _create_stock_turnover(
                     / ul_mat[: ramp_loc + 1, i - 1]
                     * (1 - ramp_mat[: ramp_loc + 1, i])
                 )
+
                 # allocate turned over equipment to minumum ramp level
                 equip_turn_mat[ramp_loc, i] = np.sum(equip_turn)
+
+                # handle exogenous changes to equipment
+                exog_equip = equip_diff_mat[:, i]
+
+                # TODO better handling for ramp logic
+                if ramp_logic == "forced":
+                    exog_equip = np.zeros_like(exog_equip)
+                    exog_equip[ramp_loc] = np.sum(equip_diff_mat[:, i])
+
                 # calculate total equipment for each efficiency level
                 equip_turn_cum_mat[:, i] = (
                     # prior years total equipment stock
@@ -111,7 +121,7 @@ def _create_stock_turnover(
                     # subtract converted equipment stock from original efficiency levels
                     - equip_turn
                     # account for any exogenous equiment additions
-                    + equip_diff_mat[:, i]
+                    + exog_equip
                 )
 
     return equip_turn_cum_mat
@@ -133,6 +143,9 @@ def _build_xarray(
     end_use: EndUse,
     building: Building,
 ) -> xr.Dataset:
+    """
+    Convert numpy vectors into xarray Dataset
+    """
 
     data_xr = {
         "building_stock": (["year"], bld_arr),
@@ -169,6 +182,9 @@ def _build_xarray(
 
 
 def _read_filter_load_shape_netcdf(load_shape: LoadShape) -> xr.Dataset:
+    """
+    Load netcdf file and extract load_shape data
+    """
     with xr.open_dataset(load_shape.source_file) as ds:
         subset = ds.sel(load_shape.dim_filters)
     return subset[load_shape.value_filter]
@@ -177,6 +193,9 @@ def _read_filter_load_shape_netcdf(load_shape: LoadShape) -> xr.Dataset:
 def _create_load_shape_xarray(
     dataset_xr: xr.Dataset, building: Building, end_use: EndUse
 ) -> xr.Dataset:
+    """
+    Expand xarray Dataset to include extra dimensions if end_use has load_shape
+    """
 
     # TODO need to build out to handle extra dims
     freq, label_freq = freq_dict[building._load_shape_freq]
@@ -286,11 +305,13 @@ def _create_xarray_from_end_use(building: Building, end_use: EndUse) -> xr.Datas
         xr_dict["ramp_mat"] = _create_ramp_matrix(
             xr_dict["equip_mat"], end_use.ramp_efficiency
         )
+        ramp_logic = end_use.ramp_efficiency
     else:
         xr_dict["ramp_mat"] = np.ones(xr_dict["equip_mat"].shape)
+        ramp_logic = "exog"
 
     xr_dict["st_mat"] = _create_stock_turnover(
-        xr_dict["equip_mat"], xr_dict["ul_mat"], xr_dict["ramp_mat"]
+        xr_dict["equip_mat"], xr_dict["ul_mat"], xr_dict["ramp_mat"], ramp_logic,
     )
 
     dataset_xr = _build_xarray(**xr_dict, building=building, end_use=end_use)
@@ -374,7 +395,7 @@ class BuildingModel:
         Summarize xarray over given coord and data dim
         Valid agg_func: [sum, mean]
         """
-        xr_agg = xarray_agg_map(self.model, coord=coord, agg_func=agg_func)
+        xr_agg = _xarray_agg_map(self.model, coord=coord, agg_func=agg_func)
         xr_agg_df = (
             xr_agg[data_dim]
             .to_dataframe()

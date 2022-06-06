@@ -26,6 +26,9 @@ exp_valid_st_mat_adds = np.array(
     [[100, 112.5, 102.5, 94.5, 88.10], [50, 62.5, 97.5, 130.5, 161.9]]
 )
 
+exp_valid_st_mat_adds_forced = np.array(
+    [[100, 125.0, 100.0, 80.0, 64.0], [50.0, 50.0, 100.0, 145.0, 186.0]]
+)
 
 # valid equipment mat with exogenous subtractions
 valid_equip_mat_subs = np.array([np.linspace(100, 75, 5), np.linspace(50, 25, 5)])
@@ -33,11 +36,15 @@ exp_valid_st_mat_subs = np.array(
     [[100, 93.75, 68.75, 48.75, 32.75], [50, 43.75, 56.25, 63.75, 67.25]]
 )
 
+exp_valid_st_mat_subs_forced = np.array(
+    [[100, 87.5, 70.0, 56.0, 44.8], [50, 50.0, 55.0, 56.5, 55.2]]
+)
+
 
 class TestStockTurnoverCalculation:
     def test_valid_stock_turnover_with_ramp(self):
         calc_stock_turn = _create_stock_turnover(
-            valid_equip_mat, valid_ul_mat, valid_ramp_mat
+            valid_equip_mat, valid_ul_mat, valid_ramp_mat, None
         )
         # check to make sure that calculated match expected
         assert np.array_equal(calc_stock_turn, exp_valid_st_mat)
@@ -48,13 +55,13 @@ class TestStockTurnoverCalculation:
 
     def test_valid_ramp_mat_ones(self):
         calc_stock_turn = _create_stock_turnover(
-            valid_equip_mat, valid_ul_mat, valid_ramp_mat_ones
+            valid_equip_mat, valid_ul_mat, valid_ramp_mat_ones, None
         )
         assert np.array_equal(calc_stock_turn, valid_equip_mat)
 
     def test_valid_st_mat_adds(self):
         calc_stock_turn = _create_stock_turnover(
-            valid_equip_mat_adds, valid_ul_mat, valid_ramp_mat
+            valid_equip_mat_adds, valid_ul_mat, valid_ramp_mat, None
         )
         assert np.array_equal(
             np.round(calc_stock_turn, 0), np.round(exp_valid_st_mat_adds, 0)
@@ -62,10 +69,28 @@ class TestStockTurnoverCalculation:
 
     def test_valid_st_mat_subs(self):
         calc_stock_turn = _create_stock_turnover(
-            valid_equip_mat_subs, valid_ul_mat, valid_ramp_mat
+            valid_equip_mat_subs, valid_ul_mat, valid_ramp_mat, None
         )
         assert np.array_equal(
             np.round(calc_stock_turn, 0), np.round(exp_valid_st_mat_subs, 0)
+        )
+
+    def test_valid_st_adds_forced(self):
+        calc_stock_turn = _create_stock_turnover(
+            valid_equip_mat_adds, valid_ul_mat, valid_ramp_mat, "forced"
+        )
+
+        assert np.array_equal(
+            np.round(calc_stock_turn, 0), np.round(exp_valid_st_mat_adds_forced, 0)
+        )
+
+    def test_valid_st_subs_forced(self):
+        calc_stock_turn = _create_stock_turnover(
+            valid_equip_mat_subs, valid_ul_mat, valid_ramp_mat, "forced"
+        )
+
+        assert np.array_equal(
+            np.round(calc_stock_turn, 0), np.round(exp_valid_st_mat_subs_forced, 0)
         )
 
 
