@@ -50,6 +50,14 @@ def load_shape_from_load_profile(
     if timestamp_offset is None:
         timestamp_offset = pd.Timedelta(hours=0)
 
+    # need to create timestamp from a resample to avoid conflicts with aggregation steps below
+    timestamp = (
+        load_profile.set_index(load_profile["timestamp"] + timestamp_offset)
+        .resample(freq)
+        .sum()
+        .index
+    )
+
     if agg_cols:
         for i in agg_cols:
             load_profile[i["label"]] = load_profile.filter(
@@ -103,6 +111,11 @@ def load_shape_from_load_profile(
             ["shape.type"] + meta_cols, append=True
         )
     )
+
+    load_shape_xr = load_shape_xr.assign_coords(
+        timestamp=(freq_dict[freq][1], timestamp)
+    )
+
     return (label, load_shape_xr)
 
 

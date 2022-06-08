@@ -97,7 +97,9 @@ resstock_loadshapes = LoadShapesFromLoadProfiles(
 )
 
 # pulling from dir of .csvs
-comstock_loadshapes = LoadShapesFromLoadProfiles(dir=comstock_path)
+comstock_loadshapes = LoadShapesFromLoadProfiles(
+    dir=comstock_path, timestamp_offset=pst_offset
+)
 
 # netcdf output path
 netcdf_path = str((Path(__file__).parents[1] / "outputs/loadshapes/").as_posix())
